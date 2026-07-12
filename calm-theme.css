@@ -1,0 +1,561 @@
+/* Care Nova AI Calm theme final layer */
+body[data-theme="calm"] {
+  --bg: #edf1ea;
+  --surface: #f8faf5;
+  --surface-soft: #e7ede4;
+  --ink: #223128;
+  --muted: #667168;
+  --line: #cad4c7;
+  --teal: #557968;
+  --teal-dark: #375847;
+  --blue: #7b7ab0;
+  --green: #557451;
+  --focus-ring: rgba(123, 122, 176, 0.26);
+  --shadow: 0 18px 38px rgba(33, 50, 40, 0.10);
+  --soft-shadow: 0 10px 24px rgba(33, 50, 40, 0.07);
+  color: var(--ink) !important;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(191, 216, 199, 0.56), transparent 28%),
+    radial-gradient(circle at 88% 8%, rgba(216, 208, 236, 0.46), transparent 24%),
+    linear-gradient(180deg, #fbfcf8 0%, #eff4ed 44%, #e8efeb 100%) !important;
+}
+
+/* Final calm separation pass: make Calm visibly distinct from the Light clinical theme. */
+body[data-theme="calm"] {
+  --bg: #ebece2;
+  --surface: #fbf8f0;
+  --surface-soft: #e8ede2;
+  --line: #c7d0c4;
+  --teal: #5c7c63;
+  --teal-dark: #3f5b46;
+  --blue: #8a7fad;
+  background:
+    radial-gradient(circle at 16% 8%, rgba(196, 216, 190, 0.64), transparent 26%),
+    radial-gradient(circle at 88% 12%, rgba(214, 205, 232, 0.54), transparent 22%),
+    linear-gradient(180deg, #fbfaf4 0%, #f0f3ea 44%, #e7ece4 100%) !important;
+}
+
+body[data-theme="calm"] .topbar {
+  background:
+    linear-gradient(135deg, rgba(251, 249, 242, 0.98), rgba(241, 245, 236, 0.98) 56%, rgba(236, 238, 244, 0.95)) !important;
+}
+
+body[data-theme="calm"] .interface-tabs.nova-command-hub {
+  background: linear-gradient(180deg, rgba(243, 246, 241, 0.98), rgba(233, 238, 231, 0.98) 54%, rgba(228, 234, 226, 0.98) 100%) !important;
+  border-right-color: rgba(141, 156, 145, 0.24) !important;
+}
+
+body[data-theme="calm"] .nova-zone,
+body[data-theme="calm"] .nova-zone-clinical,
+body[data-theme="calm"] .nova-zone-ops,
+body[data-theme="calm"] .nova-zone-independent {
+  border-bottom-color: rgba(141, 156, 145, 0.18) !important;
+}
+
+body[data-theme="calm"] .nova-zone-title span {
+  color: #6f7b72 !important;
+}
+
+body[data-theme="calm"] .nova-zone-title strong {
+  color: #223128 !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab {
+  color: #223128 !important;
+  border-color: rgba(141, 156, 145, 0.18) !important;
+  background: rgba(251, 252, 248, 0.86) !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab strong {
+  color: #24342a !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab small {
+  color: #69736b !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab > .ui-icon {
+  color: #557968 !important;
+  background: #eef2ea !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab:hover,
+body[data-theme="calm"] .nova-tab.interface-tab:focus-visible {
+  border-color: rgba(122, 140, 128, 0.32) !important;
+  background: rgba(247, 249, 244, 0.96) !important;
+}
+
+body[data-theme="calm"] .panel,
+body[data-theme="calm"] .workspace-header,
+body[data-theme="calm"] .workspace-card,
+body[data-theme="calm"] .workspace-search,
+body[data-theme="calm"] .metric-card,
+body[data-theme="calm"] .precision-card,
+body[data-theme="calm"] .live-preview,
+body[data-theme="calm"] .realtime-card,
+body[data-theme="calm"] .context-panel,
+body[data-theme="calm"] .profile-summary,
+body[data-theme="calm"] .profile-details,
+body[data-theme="calm"] .risk-band,
+body[data-theme="calm"] .tab-agent-panel,
+body[data-theme="calm"] .tab-agent-cockpit,
+body[data-theme="calm"] .cockpit-card,
+body[data-theme="calm"] .model-tab-panel,
+body[data-theme="calm"] .model-hero-card,
+body[data-theme="calm"] .model-intelligence-card,
+body[data-theme="calm"] .model-route-card,
+body[data-theme="calm"] .agent-hero,
+body[data-theme="calm"] .autonomous-agent-card,
+body[data-theme="calm"] .access-hero,
+body[data-theme="calm"] .access-card,
+body[data-theme="calm"] .general-hero,
+body[data-theme="calm"] .general-question-card,
+body[data-theme="calm"] .general-assist-card {
+  border-color: rgba(143, 156, 136, 0.32) !important;
+  background: linear-gradient(145deg, rgba(251, 248, 240, 0.97), rgba(239, 243, 233, 0.95)) !important;
+}
+
+body[data-theme="calm"] .brand-ai,
+body[data-theme="calm"] .primary-action,
+body[data-theme="calm"] .header-download-button,
+body[data-theme="calm"] .workspace-search-submit,
+body[data-theme="calm"] .tab-agent-action.is-primary,
+body[data-theme="calm"] .ui-mode-button.is-active,
+body[data-theme="calm"] .mode-button.is-active,
+body[data-theme="calm"] .answer-mode-button.is-active {
+  background: linear-gradient(135deg, #5e7f64 0%, #75906e 54%, #8c81ad 100%) !important;
+  border-color: rgba(116, 137, 113, 0.46) !important;
+  box-shadow: 0 12px 24px rgba(73, 94, 77, 0.16) !important;
+}
+
+body[data-theme="calm"] .theme-switcher,
+body[data-theme="calm"] .language-picker,
+body[data-theme="calm"] .server-pill,
+body[data-theme="calm"] .ui-mode-switcher,
+body[data-theme="calm"] .ui-mode-purpose {
+  background: rgba(250, 249, 243, 0.94) !important;
+  border-color: rgba(133, 149, 127, 0.34) !important;
+}
+
+body[data-theme="calm"] .theme-button.is-active {
+  background: linear-gradient(135deg, #5e7f64, #8c81ad) !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab.is-active,
+body[data-theme="calm"] .nova-zone-clinical .nova-tab.interface-tab.is-active,
+body[data-theme="calm"] .nova-zone-ops .nova-tab.interface-tab.is-active,
+body[data-theme="calm"] .nova-zone-independent .nova-tab.interface-tab.is-active {
+  border-left-color: #d9e4d6 !important;
+  background: linear-gradient(135deg, #5e7f64 0%, #75906e 54%, #8c81ad 100%) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab.is-active strong,
+body[data-theme="calm"] .nova-tab.interface-tab.is-active small,
+body[data-theme="calm"] .nova-tab.interface-tab.is-active > .ui-icon {
+  color: #ffffff !important;
+}
+
+body[data-theme="calm"] .mode-button:not(.is-active),
+body[data-theme="calm"] .answer-mode-button:not(.is-active),
+body[data-theme="calm"] .ui-mode-button:not(.is-active) {
+  background: rgba(249, 248, 242, 0.92) !important;
+  border-color: rgba(150, 164, 143, 0.28) !important;
+}
+
+body[data-theme="calm"] input,
+body[data-theme="calm"] select,
+body[data-theme="calm"] textarea {
+  background: rgba(255, 252, 246, 0.95) !important;
+}
+
+body[data-theme="calm"] .topbar {
+  border-bottom-color: rgba(129, 149, 136, 0.36) !important;
+  background:
+    linear-gradient(135deg, rgba(251, 252, 249, 0.98), rgba(241, 246, 239, 0.97) 55%, rgba(235, 239, 245, 0.96)) !important;
+  box-shadow: 0 14px 34px rgba(33, 50, 40, 0.08) !important;
+}
+
+body[data-theme="calm"] .brand-care,
+body[data-theme="calm"] .brand-nova {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #375847 !important;
+  color: #375847 !important;
+}
+
+body[data-theme="calm"] .topbar .brand-title,
+body[data-theme="calm"] .topbar .brand-care,
+body[data-theme="calm"] .topbar .brand-nova {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #375847 !important;
+  color: #375847 !important;
+  text-shadow: none !important;
+}
+
+body[data-theme="calm"] .topbar .brand-ai {
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="calm"] .brand-ai,
+body[data-theme="calm"] .primary-action,
+body[data-theme="calm"] .header-download-button,
+body[data-theme="calm"] .workspace-search-submit,
+body[data-theme="calm"] .tab-agent-action.is-primary {
+  background: linear-gradient(135deg, #557968 0%, #7b7ab0 100%) !important;
+  box-shadow: 0 12px 24px rgba(123, 122, 176, 0.18) !important;
+}
+
+body[data-theme="calm"] .theme-switcher,
+body[data-theme="calm"] .language-picker,
+body[data-theme="calm"] .header-download-button,
+body[data-theme="calm"] .server-pill {
+  border-color: rgba(128, 147, 134, 0.32) !important;
+  box-shadow: 0 8px 22px rgba(33, 50, 40, 0.07) !important;
+}
+
+body[data-theme="calm"] .theme-switcher,
+body[data-theme="calm"] .language-picker,
+body[data-theme="calm"] .server-pill {
+  background: rgba(249, 250, 246, 0.92) !important;
+}
+
+body[data-theme="calm"] .header-download-button {
+  color: #ffffff !important;
+}
+
+body[data-theme="calm"] .theme-button.is-active {
+  background: linear-gradient(135deg, #557968, #7b7ab0) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="calm"] .theme-button:not(.is-active) {
+  color: #5d685f !important;
+  background: rgba(243, 246, 241, 0.88) !important;
+}
+
+body[data-theme="calm"] .interface-tabs.nova-command-hub {
+  background: linear-gradient(180deg, #25342e 0%, #2b3c35 54%, #263732 100%) !important;
+  border-right-color: rgba(220, 229, 220, 0.16) !important;
+}
+
+body[data-theme="calm"] .nova-zone,
+body[data-theme="calm"] .nova-zone-clinical,
+body[data-theme="calm"] .nova-zone-ops,
+body[data-theme="calm"] .nova-zone-independent {
+  border-bottom-color: rgba(194, 224, 219, 0.14) !important;
+}
+
+body[data-theme="calm"] .nova-zone-title span {
+  color: #b6c4ba !important;
+}
+
+body[data-theme="calm"] .nova-zone-title strong {
+  color: #f5faf5 !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab {
+  color: #e7efe8 !important;
+  border-color: transparent !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab > .ui-icon {
+  color: #c7ddd1 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab:hover,
+body[data-theme="calm"] .nova-tab.interface-tab:focus-visible {
+  border-color: rgba(187, 205, 193, 0.28) !important;
+  background: rgba(236, 242, 237, 0.08) !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab.is-active,
+body[data-theme="calm"] .nova-zone-clinical .nova-tab.interface-tab.is-active,
+body[data-theme="calm"] .nova-zone-ops .nova-tab.interface-tab.is-active,
+body[data-theme="calm"] .nova-zone-independent .nova-tab.interface-tab.is-active {
+  border-color: rgba(184, 199, 188, 0.58) !important;
+  border-left-color: #b9d3c2 !important;
+  background: linear-gradient(90deg, rgba(85, 121, 104, 0.52), rgba(123, 122, 176, 0.24)) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.055), 0 14px 28px rgba(0, 0, 0, 0.15) !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab.is-active > .ui-icon {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+}
+
+body[data-theme="calm"] .panel,
+body[data-theme="calm"] .workspace-header,
+body[data-theme="calm"] .workspace-card,
+body[data-theme="calm"] .workspace-search,
+body[data-theme="calm"] .metric-card,
+body[data-theme="calm"] .precision-card,
+body[data-theme="calm"] .live-preview,
+body[data-theme="calm"] .realtime-card,
+body[data-theme="calm"] .context-panel,
+body[data-theme="calm"] .profile-summary,
+body[data-theme="calm"] .profile-details,
+body[data-theme="calm"] .risk-band,
+body[data-theme="calm"] .tab-agent-panel,
+body[data-theme="calm"] .tab-agent-cockpit,
+body[data-theme="calm"] .cockpit-card,
+body[data-theme="calm"] .model-tab-panel,
+body[data-theme="calm"] .model-hero-card,
+body[data-theme="calm"] .model-intelligence-card,
+body[data-theme="calm"] .model-route-card,
+body[data-theme="calm"] .agent-hero,
+body[data-theme="calm"] .autonomous-agent-card,
+body[data-theme="calm"] .access-hero,
+body[data-theme="calm"] .access-card,
+body[data-theme="calm"] .general-hero,
+body[data-theme="calm"] .general-question-card,
+body[data-theme="calm"] .general-assist-card {
+  border-color: rgba(140, 156, 145, 0.28) !important;
+  background: linear-gradient(145deg, rgba(252, 252, 248, 0.96), rgba(239, 244, 238, 0.94)) !important;
+  box-shadow: 0 14px 30px rgba(33, 50, 40, 0.075) !important;
+}
+
+body[data-theme="calm"] input,
+body[data-theme="calm"] select,
+body[data-theme="calm"] textarea {
+  border-color: rgba(132, 150, 138, 0.38) !important;
+  background: rgba(253, 253, 250, 0.94) !important;
+  color: #223128 !important;
+}
+
+body[data-theme="calm"] input:focus,
+body[data-theme="calm"] select:focus,
+body[data-theme="calm"] textarea:focus {
+  border-color: rgba(85, 121, 104, 0.68) !important;
+  box-shadow: 0 0 0 4px rgba(123, 122, 176, 0.12) !important;
+}
+
+body[data-theme="calm"] .section-icon,
+body[data-theme="calm"] .heading-icon,
+body[data-theme="calm"] .metric-icon,
+body[data-theme="calm"] .workspace-search-icon,
+body[data-theme="calm"] .profile-avatar,
+body[data-theme="calm"] .field-title-main .section-icon,
+body[data-theme="calm"] .cockpit-card .section-icon,
+body[data-theme="calm"] .precision-card .ui-icon {
+  color: #557968 !important;
+  background: linear-gradient(145deg, #fbfcf9, #e7ede4) !important;
+  border-color: rgba(128, 147, 134, 0.24) !important;
+  box-shadow: 0 10px 22px rgba(55, 88, 71, 0.08) !important;
+}
+
+@media (max-width: 1023px) {
+  body[data-theme="calm"] .topbar {
+    background: linear-gradient(180deg, rgba(251, 252, 249, 0.98), rgba(241, 246, 239, 0.98)) !important;
+  }
+
+  body[data-theme="calm"] .brand-care,
+  body[data-theme="calm"] .brand-nova {
+    -webkit-text-fill-color: #375847 !important;
+    color: #375847 !important;
+  }
+
+  body[data-theme="calm"] .interface-tabs.nova-command-hub {
+    background: linear-gradient(180deg, rgba(243, 246, 241, 0.97), rgba(234, 239, 236, 0.97)) !important;
+    border-right-color: rgba(141, 156, 145, 0.24) !important;
+  }
+
+  body[data-theme="calm"] .nova-zone,
+  body[data-theme="calm"] .nova-zone-clinical,
+  body[data-theme="calm"] .nova-zone-ops,
+  body[data-theme="calm"] .nova-zone-independent {
+    border-color: rgba(141, 156, 145, 0.26) !important;
+    background: rgba(249, 250, 246, 0.82) !important;
+  }
+
+  body[data-theme="calm"] .nova-zone-title span {
+    color: #6f7b72 !important;
+  }
+
+  body[data-theme="calm"] .nova-zone-title strong {
+    color: #223128 !important;
+  }
+
+  body[data-theme="calm"] .nova-tab.interface-tab {
+    color: #223128 !important;
+    border-color: rgba(141, 156, 145, 0.24) !important;
+    background: rgba(251, 252, 248, 0.92) !important;
+  }
+
+  body[data-theme="calm"] .nova-tab.interface-tab strong {
+    color: #2a3a31 !important;
+  }
+
+  body[data-theme="calm"] .nova-tab.interface-tab small {
+    color: #68736a !important;
+  }
+
+  body[data-theme="calm"] .nova-tab.interface-tab > .ui-icon {
+    color: #557968 !important;
+    background: #eef2ea !important;
+  }
+
+  body[data-theme="calm"] .nova-tab.interface-tab.is-active,
+  body[data-theme="calm"] .nova-zone-clinical .nova-tab.interface-tab.is-active,
+  body[data-theme="calm"] .nova-zone-ops .nova-tab.interface-tab.is-active,
+  body[data-theme="calm"] .nova-zone-independent .nova-tab.interface-tab.is-active {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #557968, #7b7ab0) !important;
+  }
+
+  body[data-theme="calm"] .nova-tab.interface-tab.is-active strong,
+  body[data-theme="calm"] .nova-tab.interface-tab.is-active small {
+    color: #ffffff !important;
+  }
+}
+
+/* Final desktop and global Calm overrides must stay at EOF so older calm rules do not override them. */
+body[data-theme="calm"] {
+  --bg: #ebece2;
+  --surface: #fbf8f0;
+  --surface-soft: #e8ede2;
+  --line: #c7d0c4;
+  --teal: #5c7c63;
+  --teal-dark: #3f5b46;
+  --blue: #8a7fad;
+  background:
+    radial-gradient(circle at 16% 8%, rgba(196, 216, 190, 0.64), transparent 26%),
+    radial-gradient(circle at 88% 12%, rgba(214, 205, 232, 0.54), transparent 22%),
+    linear-gradient(180deg, #fbfaf4 0%, #f0f3ea 44%, #e7ece4 100%) !important;
+}
+
+body[data-theme="calm"] .topbar {
+  background:
+    linear-gradient(135deg, rgba(251, 249, 242, 0.98), rgba(241, 245, 236, 0.98) 56%, rgba(236, 238, 244, 0.95)) !important;
+}
+
+body[data-theme="calm"] .interface-tabs.nova-command-hub {
+  background: linear-gradient(180deg, rgba(243, 246, 241, 0.98), rgba(233, 238, 231, 0.98) 54%, rgba(228, 234, 226, 0.98) 100%) !important;
+  border-right-color: rgba(141, 156, 145, 0.24) !important;
+}
+
+body[data-theme="calm"] .nova-zone,
+body[data-theme="calm"] .nova-zone-clinical,
+body[data-theme="calm"] .nova-zone-ops,
+body[data-theme="calm"] .nova-zone-independent {
+  border-bottom-color: rgba(141, 156, 145, 0.18) !important;
+}
+
+body[data-theme="calm"] .nova-zone-title span {
+  color: #6f7b72 !important;
+}
+
+body[data-theme="calm"] .nova-zone-title strong {
+  color: #223128 !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab {
+  color: #223128 !important;
+  border-color: rgba(141, 156, 145, 0.18) !important;
+  background: rgba(251, 252, 248, 0.86) !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab strong {
+  color: #24342a !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab small {
+  color: #69736b !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab > .ui-icon {
+  color: #557968 !important;
+  background: #eef2ea !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab:hover,
+body[data-theme="calm"] .nova-tab.interface-tab:focus-visible {
+  border-color: rgba(122, 140, 128, 0.32) !important;
+  background: rgba(247, 249, 244, 0.96) !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab.is-active,
+body[data-theme="calm"] .nova-zone-clinical .nova-tab.interface-tab.is-active,
+body[data-theme="calm"] .nova-zone-ops .nova-tab.interface-tab.is-active,
+body[data-theme="calm"] .nova-zone-independent .nova-tab.interface-tab.is-active {
+  background: linear-gradient(135deg, #5e7f64 0%, #75906e 54%, #8c81ad 100%) !important;
+  border-left-color: #d9e4d6 !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="calm"] .nova-tab.interface-tab.is-active strong,
+body[data-theme="calm"] .nova-tab.interface-tab.is-active small,
+body[data-theme="calm"] .nova-tab.interface-tab.is-active > .ui-icon {
+  color: #ffffff !important;
+}
+
+body[data-theme="calm"] .panel,
+body[data-theme="calm"] .workspace-header,
+body[data-theme="calm"] .workspace-card,
+body[data-theme="calm"] .workspace-search,
+body[data-theme="calm"] .metric-card,
+body[data-theme="calm"] .precision-card,
+body[data-theme="calm"] .live-preview,
+body[data-theme="calm"] .realtime-card,
+body[data-theme="calm"] .context-panel,
+body[data-theme="calm"] .profile-summary,
+body[data-theme="calm"] .profile-details,
+body[data-theme="calm"] .risk-band,
+body[data-theme="calm"] .tab-agent-panel,
+body[data-theme="calm"] .tab-agent-cockpit,
+body[data-theme="calm"] .cockpit-card,
+body[data-theme="calm"] .model-tab-panel,
+body[data-theme="calm"] .model-hero-card,
+body[data-theme="calm"] .model-intelligence-card,
+body[data-theme="calm"] .model-route-card,
+body[data-theme="calm"] .agent-hero,
+body[data-theme="calm"] .autonomous-agent-card,
+body[data-theme="calm"] .access-hero,
+body[data-theme="calm"] .access-card,
+body[data-theme="calm"] .general-hero,
+body[data-theme="calm"] .general-question-card,
+body[data-theme="calm"] .general-assist-card {
+  border-color: rgba(143, 156, 136, 0.32) !important;
+  background: linear-gradient(145deg, rgba(251, 248, 240, 0.97), rgba(239, 243, 233, 0.95)) !important;
+}
+
+body[data-theme="calm"] .brand-ai,
+body[data-theme="calm"] .primary-action,
+body[data-theme="calm"] .header-download-button,
+body[data-theme="calm"] .workspace-search-submit,
+body[data-theme="calm"] .tab-agent-action.is-primary,
+body[data-theme="calm"] .ui-mode-button.is-active,
+body[data-theme="calm"] .mode-button.is-active,
+body[data-theme="calm"] .answer-mode-button.is-active,
+body[data-theme="calm"] .theme-button.is-active {
+  background: linear-gradient(135deg, #5e7f64 0%, #75906e 54%, #8c81ad 100%) !important;
+  border-color: rgba(116, 137, 113, 0.46) !important;
+  box-shadow: 0 12px 24px rgba(73, 94, 77, 0.16) !important;
+}
+
+body[data-theme="calm"] .theme-switcher,
+body[data-theme="calm"] .language-picker,
+body[data-theme="calm"] .server-pill,
+body[data-theme="calm"] .ui-mode-switcher,
+body[data-theme="calm"] .ui-mode-purpose {
+  background: rgba(250, 249, 243, 0.94) !important;
+  border-color: rgba(133, 149, 127, 0.34) !important;
+}
+
+body[data-theme="calm"] .mode-button:not(.is-active),
+body[data-theme="calm"] .answer-mode-button:not(.is-active),
+body[data-theme="calm"] .ui-mode-button:not(.is-active) {
+  background: rgba(249, 248, 242, 0.92) !important;
+  border-color: rgba(150, 164, 143, 0.28) !important;
+}
+
+body[data-theme="calm"] input,
+body[data-theme="calm"] select,
+body[data-theme="calm"] textarea {
+  background: rgba(255, 252, 246, 0.95) !important;
+}

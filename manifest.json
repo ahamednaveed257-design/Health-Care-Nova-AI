@@ -1,0 +1,33 @@
+{
+  "name": "Care Nova AI GitHub large assets",
+  "packageLimit": "5 MB per file",
+  "chunkBytes": 4194304,
+  "generatedAt": "2026-07-12T10:10:49.564Z",
+  "files": [
+    {
+      "originalPath": "public/media/care-nova-ai-usage-guide-v24.webm",
+      "bytes": 66863722,
+      "sha256": "5885b51bc2b9ac89ea71d3bc651ffa393329da4865c5e7eda495892e3e3a02bb",
+      "mimeType": "video/webm",
+      "chunkBytes": 4194304,
+      "parts": [
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-001",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-002",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-003",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-004",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-005",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-006",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-007",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-008",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-009",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-010",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-011",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-012",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-013",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-014",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-015",
+        "large-assets/public__media__care-nova-ai-usage-guide-v24.webm/care-nova-ai-usage-guide-v24.webm.part-016"
+      ]
+    }
+  ]
+}

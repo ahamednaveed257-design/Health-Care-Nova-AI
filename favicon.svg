@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Care Nova AI">
+  <rect width="64" height="64" rx="12" fill="#ffffff"/>
+  <rect x="4" y="4" width="56" height="56" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+  <path d="M13 34h8l4-12 7 24 5-15h14" fill="none" stroke="#0f766e" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M47 18a20 20 0 1 0 4 28" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M50 18v12H38" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M31 22v18M22 31h18" fill="none" stroke="#c2410c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>
