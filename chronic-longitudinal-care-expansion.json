@@ -1,0 +1,453 @@
+{
+  "id": "chronic-longitudinal-care-expansion",
+  "name": "Chronic and Longitudinal Care Expansion Pack",
+  "version": "1.0.0",
+  "sourceFamily": "clinical-reference-pack",
+  "description": "Expanded local offline records for chronic disease monitoring, home follow-up, specialist review, longitudinal safety boundaries, and day-to-day care preparation.",
+  "reviewStatus": "local pack requires clinician, pharmacy, and safety review before production medical use",
+  "updateCadence": "quarterly-or-when-approved-content-changes",
+  "records": [
+    {
+      "id": "pack-hypertension-home-trend-review",
+      "title": "Hypertension Home Trend and Symptom Review",
+      "category": "Cardiology",
+      "contentType": "specialist",
+      "keywords": ["hypertension", "blood pressure trend", "home bp log", "headache", "dizziness", "repeat reading", "morning reading", "night reading", "bp medicine"],
+      "summary": "Organizes hypertension follow-up using trend patterns, repeat home readings, symptom timing, medication adherence, salt intake, hydration, sleep, and exercise context before the next safe step.",
+      "safetyNotes": "Chest pain, severe headache, new weakness, breathing trouble, confusion, or very high readings with symptoms need urgent real-world medical review.",
+      "aliases": ["home bp trend guide", "hypertension follow-up organizer"],
+      "relatedTerms": ["bp log", "morning pressure", "evening pressure", "symptom correlation"],
+      "populationTags": ["longitudinal-care", "older-adult"],
+      "whatToTrack": [
+        "At least two or three seated home readings with time, symptoms, and medicine timing.",
+        "Salt intake, stress, caffeine, hydration, exercise, and sleep changes around higher readings.",
+        "Any headache, vision change, dizziness, chest discomfort, or breathlessness."
+      ],
+      "careQuestions": [
+        "Does the trend suggest a stable pattern, poor technique, or a need for sooner clinician review?",
+        "Which symptom and reading combinations should move this from routine monitoring to urgent assessment?"
+      ],
+      "precautions": [
+        "Do not change blood-pressure medicine doses from app guidance alone.",
+        "Do not rely on one isolated reading when symptoms or repeat values suggest a higher-risk pattern."
+      ],
+      "maintenanceTags": ["hypertension", "trend-review", "home-monitoring"]
+    },
+    {
+      "id": "pack-diabetes-low-sugar-safety-review",
+      "title": "Low Blood Sugar Symptom and Recovery Review",
+      "category": "Endocrinology",
+      "contentType": "specialist",
+      "keywords": ["low blood sugar", "hypoglycemia", "shaky", "sweating", "confusion", "insulin", "missed meal", "glucose tablet", "diabetes"],
+      "summary": "Builds a low-sugar review around symptoms, recent food intake, glucose readings, diabetes medicines, activity, alcohol, illness, and recovery pattern while keeping safety boundaries clear.",
+      "safetyNotes": "Confusion, inability to swallow, fainting, seizure, repeated low glucose, or no improvement after fast-acting carbohydrate needs urgent real-world care.",
+      "aliases": ["hypoglycemia review", "shaky sugar guide"],
+      "relatedTerms": ["missed meal", "recheck glucose", "sugar recovery", "insulin timing"],
+      "populationTags": ["longitudinal-care"],
+      "whatToTrack": [
+        "Exact glucose reading if available, symptoms, and whether the person can safely eat or drink.",
+        "Recent meals, insulin or diabetes medicine timing, activity, alcohol, vomiting, or infection.",
+        "How symptoms changed after treatment and whether the glucose improved on repeat check."
+      ],
+      "careQuestions": [
+        "What likely triggered the low reading pattern and what should be reviewed with the diabetes team?",
+        "Which recurrence or safety signals mean this should move out of routine self-monitoring?"
+      ],
+      "precautions": [
+        "Do not drive or stay alone if symptoms suggest severe low blood sugar.",
+        "Do not make insulin dose changes from this app without clinician guidance."
+      ],
+      "maintenanceTags": ["diabetes", "hypoglycemia", "safety"]
+    },
+    {
+      "id": "pack-diabetes-foot-wound-review",
+      "title": "Diabetes Foot, Wound, and Skin Check Review",
+      "category": "Endocrinology",
+      "contentType": "specialist",
+      "keywords": ["diabetes foot", "foot wound", "ulcer", "numbness", "redness", "swelling", "infection", "shoe pressure", "neuropathy"],
+      "summary": "Structures diabetic foot questions around numbness, skin change, wounds, swelling, drainage, glucose control, shoe pressure, and walking limits before clinician follow-up.",
+      "safetyNotes": "Spreading redness, pus, fever, worsening swelling, black skin, severe pain, or inability to bear weight needs urgent medical review.",
+      "aliases": ["diabetic foot check", "foot ulcer review"],
+      "relatedTerms": ["neuropathy", "shoe friction", "drainage", "skin breakdown"],
+      "populationTags": ["longitudinal-care"],
+      "whatToTrack": [
+        "Exact wound or skin location, redness, drainage, swelling, pain, and walking impact.",
+        "Any numbness, prior ulcers, glucose pattern, fever, or recent shoe or activity change.",
+        "How quickly the area is changing and whether daily checks are being done."
+      ],
+      "careQuestions": [
+        "Which findings suggest routine wound care discussion versus faster same-day review?",
+        "What daily monitoring details should be ready for the podiatry or diabetes visit?"
+      ],
+      "precautions": [
+        "Do not treat a worsening diabetic foot wound as a routine skin issue.",
+        "Do not ignore new numbness, drainage, or color change."
+      ],
+      "maintenanceTags": ["diabetes", "foot-care", "wound-review"]
+    },
+    {
+      "id": "pack-kidney-fluid-swelling-review",
+      "title": "Kidney Function, Swelling, and Urine Change Review",
+      "category": "Nephrology",
+      "contentType": "specialist",
+      "keywords": ["kidney function", "swelling", "creatinine", "egfr", "urine change", "foamy urine", "ankle swelling", "weight gain", "potassium"],
+      "summary": "Organizes kidney follow-up using swelling, urine change, weight trend, blood pressure, diabetes context, hydration, recent labs, and medicine questions for a nephrology discussion.",
+      "safetyNotes": "Breathing trouble, major swelling, confusion, very low urine output, chest symptoms, or rapidly worsening weakness needs prompt medical review.",
+      "aliases": ["kidney follow-up guide", "swelling urine review"],
+      "relatedTerms": ["fluid retention", "weight gain", "protein urine", "lab trend"],
+      "populationTags": ["longitudinal-care", "older-adult"],
+      "whatToTrack": [
+        "Recent creatinine, eGFR, potassium, urine protein wording, and weight change if available.",
+        "Blood pressure, swelling location, shortness of breath, and urine amount or color changes.",
+        "Hydration, vomiting, diarrhea, diabetes pattern, and recent medicine changes."
+      ],
+      "careQuestions": [
+        "Which swelling and lab combinations suggest stable chronic monitoring versus faster nephrology review?",
+        "What home observations should be shared before the next kidney follow-up?"
+      ],
+      "precautions": [
+        "Do not change kidney-related or blood-pressure medicines from app guidance alone.",
+        "Do not ignore rapid swelling or low urine output."
+      ],
+      "maintenanceTags": ["kidney", "fluid-balance", "urine-review"]
+    },
+    {
+      "id": "pack-asthma-controller-pattern-review",
+      "title": "Asthma Control, Night Waking, and Trigger Pattern Review",
+      "category": "Pulmonology",
+      "contentType": "specialist",
+      "keywords": ["asthma control", "night waking", "wheeze", "trigger", "rescue inhaler", "controller inhaler", "cough", "exercise symptoms", "peak flow"],
+      "summary": "Reviews asthma control using cough and wheeze timing, night waking, exercise limits, inhaler routine, triggers, peak-flow context, and rescue-relief pattern.",
+      "safetyNotes": "Severe breathing trouble, inability to speak full sentences, blue lips, confusion, or poor relief from rescue medicine needs urgent real-world care.",
+      "aliases": ["asthma control guide", "night wheeze review"],
+      "relatedTerms": ["rescue use", "controller routine", "trigger exposure", "exercise symptoms"],
+      "populationTags": ["longitudinal-care", "pediatric"],
+      "whatToTrack": [
+        "How often symptoms occur in the day, at night, or with exercise.",
+        "Trigger exposure, inhaler availability, spacer use, and how well rescue medicine works.",
+        "Any oxygen reading, cough severity, fever, chest tightness, or recent illness."
+      ],
+      "careQuestions": [
+        "Does this pattern suggest poor day-to-day control, a flare, or urgent review?",
+        "Which control details should be shared during the respiratory follow-up?"
+      ],
+      "precautions": [
+        "Do not delay urgent care when breathing work is increasing or rescue medicine is not helping.",
+        "Do not stop controller therapy based on symptom improvement alone."
+      ],
+      "maintenanceTags": ["asthma", "control-pattern", "respiratory"]
+    },
+    {
+      "id": "pack-chest-discomfort-exertion-review",
+      "title": "Chest Discomfort, Exertion, and Cardiac Safety Review",
+      "category": "Cardiology",
+      "contentType": "specialist",
+      "keywords": ["chest discomfort", "exertion", "pressure", "palpitations", "sweating", "jaw pain", "arm pain", "shortness of breath", "cardiac"],
+      "summary": "Structures chest discomfort around exertion, pressure quality, palpitations, radiation, sweating, shortness of breath, nausea, and recovery pattern before selecting the safe next step.",
+      "safetyNotes": "Chest pain with pressure, sweating, fainting, breathing trouble, arm or jaw pain, or sudden worsening should be treated as urgent medical care.",
+      "aliases": ["cardiac chest review", "exertional chest guide"],
+      "relatedTerms": ["pressure pattern", "radiation", "palpitation symptoms", "exertion recovery"],
+      "populationTags": ["older-adult", "longitudinal-care"],
+      "whatToTrack": [
+        "When the discomfort starts, how long it lasts, and whether exertion or rest changes it.",
+        "Any sweating, nausea, breathlessness, palpitations, dizziness, or radiation to the arm, jaw, or back.",
+        "Past cardiac history, BP readings if available, and current heart-related medicines."
+      ],
+      "careQuestions": [
+        "Which features suggest a routine follow-up topic and which suggest immediate medical review?",
+        "What should be documented for the cardiology visit if urgent signs are not present?"
+      ],
+      "precautions": [
+        "Do not use app guidance to explain away exertional chest symptoms.",
+        "Do not continue strenuous activity if symptoms are occurring."
+      ],
+      "maintenanceTags": ["cardiology", "chest-safety", "exertion"]
+    },
+    {
+      "id": "pack-migraine-red-flag-sorter",
+      "title": "Migraine Pattern versus Neurologic Red-Flag Review",
+      "category": "Neurology",
+      "contentType": "specialist",
+      "keywords": ["migraine", "aura", "light sensitivity", "nausea", "vision change", "worst headache", "weakness", "speech trouble", "neurologic red flag"],
+      "summary": "Helps separate a known migraine pattern from new neurologic warning signs using onset, aura, previous history, severity, vision change, weakness, speech, and recovery features.",
+      "safetyNotes": "Sudden worst headache, new weakness, speech trouble, fainting, seizure, new confusion, or persistent vision loss needs urgent real-world assessment.",
+      "aliases": ["migraine safety sorter", "headache red-flag review"],
+      "relatedTerms": ["aura change", "worst headache", "new neurologic change", "known migraine pattern"],
+      "populationTags": ["longitudinal-care"],
+      "whatToTrack": [
+        "Whether the headache matches prior migraine patterns or feels new in onset, location, or severity.",
+        "Any aura, nausea, light sensitivity, weakness, speech issues, fainting, or vision loss.",
+        "Trigger pattern, sleep loss, hydration, stress, menstrual timing, and medicine timing."
+      ],
+      "careQuestions": [
+        "What makes this headache pattern consistent with prior migraine versus requiring neurologic assessment?",
+        "Which symptom changes should be documented for specialist follow-up?"
+      ],
+      "precautions": [
+        "Do not label a new neurologic symptom as migraine without real-world evaluation.",
+        "Do not ignore a sudden severe headache because of a prior migraine history."
+      ],
+      "maintenanceTags": ["migraine", "neurology", "red-flags"]
+    },
+    {
+      "id": "pack-thyroid-medicine-lab-routine",
+      "title": "Thyroid Medicine Timing and Lab Follow-up Review",
+      "category": "Endocrinology",
+      "contentType": "specialist",
+      "keywords": ["thyroid medicine", "levothyroxine", "tsh", "t4", "palpitations", "fatigue", "weight change", "timing", "empty stomach"],
+      "summary": "Organizes thyroid follow-up using medicine timing, missed tablets, TSH or T4 trends, fatigue, weight change, palpitations, temperature sensitivity, and pregnancy context.",
+      "safetyNotes": "Chest pain, fainting, severe palpitations, major weakness, confusion, or pregnancy-related concern needs prompt clinician review.",
+      "aliases": ["thyroid timing guide", "tsh follow-up organizer"],
+      "relatedTerms": ["empty stomach timing", "lab trend", "symptom pattern", "hormone follow-up"],
+      "populationTags": ["maternal", "longitudinal-care"],
+      "whatToTrack": [
+        "Exact medicine timing, missed doses, food timing, calcium or iron timing, and refill consistency.",
+        "TSH and thyroid hormone trends if available, plus fatigue, palpitations, constipation, or weight change.",
+        "Pregnancy status, temperature sensitivity, sleep, and mood changes."
+      ],
+      "careQuestions": [
+        "Which timing or symptom issues should be reviewed before the next thyroid lab check?",
+        "What changes suggest this should move beyond routine follow-up?"
+      ],
+      "precautions": [
+        "Do not change thyroid medicine dose from this app.",
+        "Do not ignore palpitations, fainting, or major pregnancy-related questions."
+      ],
+      "maintenanceTags": ["thyroid", "medicine-timing", "lab-follow-up"]
+    },
+    {
+      "id": "pack-constipation-bleeding-boundary",
+      "title": "Constipation, Abdominal Pain, and Bleeding Boundary Review",
+      "category": "Gastrointestinal",
+      "contentType": "general",
+      "keywords": ["constipation", "abdominal pain", "bloating", "no bowel movement", "blood in stool", "vomiting", "weight loss", "digestive"],
+      "summary": "Structures constipation concerns around stool pattern, abdominal pain, hydration, vomiting, blood, weight loss, medicines, and prior bowel history before follow-up planning.",
+      "safetyNotes": "Severe abdominal pain, repeated vomiting, blood in stool, black stool, inability to pass gas, or major abdominal swelling needs prompt medical review.",
+      "aliases": ["constipation safety guide", "bowel pattern review"],
+      "relatedTerms": ["stool pattern", "bloating", "bowel obstruction concern", "digestive warning signs"],
+      "whatToTrack": [
+        "When the pattern started, last normal bowel movement, stool changes, and abdominal pain location.",
+        "Hydration, food pattern, new medicines, nausea, vomiting, blood, fever, and weight change.",
+        "Whether symptoms are improving, stable, or worsening over time."
+      ],
+      "careQuestions": [
+        "Which bowel symptoms fit routine follow-up and which need faster evaluation?",
+        "What history details should be ready for a digestive review?"
+      ],
+      "precautions": [
+        "Do not treat bleeding or severe pain as routine constipation.",
+        "Do not ignore vomiting or inability to pass gas with worsening pain."
+      ],
+      "maintenanceTags": ["digestive", "bowel-review", "warning-boundary"]
+    },
+    {
+      "id": "pack-sleep-apnea-snoring-daytime-review",
+      "title": "Snoring, Sleep Apnea, and Daytime Fatigue Review",
+      "category": "Sleep Medicine",
+      "contentType": "prevention",
+      "keywords": ["snoring", "sleep apnea", "daytime fatigue", "witnessed pauses", "morning headache", "sleep quality", "cpap", "weight"],
+      "summary": "Builds a sleep-breathing review using snoring pattern, witnessed pauses, morning headache, daytime sleepiness, weight, blood pressure, and sleep schedule context.",
+      "safetyNotes": "Severe daytime sleepiness affecting driving, new chest symptoms, fainting, or major breathing concern during sleep needs real-world review.",
+      "aliases": ["sleep breathing guide", "snoring fatigue review"],
+      "relatedTerms": ["witnessed pauses", "morning tiredness", "sleep quality", "cpap routine"],
+      "populationTags": ["older-adult", "longitudinal-care"],
+      "whatToTrack": [
+        "Snoring severity, witnessed breathing pauses, waking unrefreshed, and daytime sleepiness.",
+        "Morning headaches, blood pressure pattern, weight change, and sleep schedule.",
+        "Any CPAP use, mask issues, or reasons the sleep routine is breaking down."
+      ],
+      "careQuestions": [
+        "Which symptoms should prompt a sleep evaluation or CPAP follow-up discussion?",
+        "What home observations make the sleep review more useful?"
+      ],
+      "precautions": [
+        "Do not ignore severe daytime sleepiness that affects driving or work safety.",
+        "Do not rely on lifestyle guidance alone when breathing pauses are obvious."
+      ],
+      "maintenanceTags": ["sleep", "fatigue", "prevention"]
+    },
+    {
+      "id": "pack-pregnancy-swelling-headache-boundary",
+      "title": "Pregnancy Swelling, Headache, and Blood Pressure Boundary Review",
+      "category": "Gynecology",
+      "contentType": "specialist",
+      "keywords": ["pregnancy", "swelling", "headache", "blood pressure", "vision change", "upper abdominal pain", "baby movement", "preeclampsia concern"],
+      "summary": "Organizes pregnancy-related swelling or headache questions using blood pressure, vision changes, upper abdominal pain, baby movement, and timing while keeping urgent maternal safety boundaries clear.",
+      "safetyNotes": "Severe headache, vision change, very high blood pressure, heavy bleeding, reduced baby movement, chest pain, or breathing trouble needs urgent obstetric review.",
+      "aliases": ["pregnancy headache guide", "maternal swelling review"],
+      "relatedTerms": ["vision symptoms", "right upper pain", "fetal movement", "urgent obstetric signs"],
+      "populationTags": ["maternal"],
+      "whatToTrack": [
+        "Pregnancy or postpartum timing, BP readings if available, swelling pattern, and headache onset.",
+        "Any vision change, upper abdominal pain, heavy bleeding, reduced baby movement, or breathlessness.",
+        "Hydration, sleep, recent clinician advice, and how quickly symptoms are changing."
+      ],
+      "careQuestions": [
+        "Which maternal warning signs need immediate contact with the obstetric team or emergency care?",
+        "What details should be ready when asking for same-day pregnancy guidance?"
+      ],
+      "precautions": [
+        "Do not use routine headache guidance for pregnancy warning patterns.",
+        "Do not wait on app monitoring if fetal movement or severe symptoms change."
+      ],
+      "maintenanceTags": ["maternal", "pregnancy", "urgent-boundary"]
+    },
+    {
+      "id": "pack-anxiety-daily-function-review",
+      "title": "Anxiety, Sleep, and Daily Function Support Review",
+      "category": "Mental Wellness",
+      "contentType": "prevention",
+      "keywords": ["anxiety", "panic", "sleep", "daily function", "stress", "concentration", "palpitations", "worry", "support"],
+      "summary": "Builds a structured anxiety review using triggers, sleep disruption, concentration, body symptoms, support systems, coping routine, and safety boundaries for worsening distress.",
+      "safetyNotes": "Self-harm thoughts, inability to stay safe, severe confusion, chest pain, fainting, or rapidly worsening symptoms need urgent real-world help.",
+      "aliases": ["anxiety support guide", "stress function review"],
+      "relatedTerms": ["sleep disruption", "panic trigger", "daily impact", "support system"],
+      "populationTags": ["caregiver-support", "longitudinal-care"],
+      "whatToTrack": [
+        "Trigger pattern, body symptoms, sleep disruption, appetite, and concentration changes.",
+        "What support is available now, whether the person can function safely, and what coping steps help.",
+        "Any chest symptoms, fainting, suicidal thoughts, or rapidly worsening distress."
+      ],
+      "careQuestions": [
+        "What makes this a routine support conversation versus a same-day safety issue?",
+        "Which function and sleep details should be shared during follow-up?"
+      ],
+      "precautions": [
+        "Do not dismiss dangerous thoughts or major functional collapse as routine anxiety.",
+        "Do not let mental-wellness framing hide chest pain, fainting, or breathing warning signs."
+      ],
+      "maintenanceTags": ["anxiety", "wellness", "function-review"]
+    },
+    {
+      "id": "pack-anticoagulant-bleeding-review",
+      "title": "Blood Thinner, Bruising, and Bleeding Safety Review",
+      "category": "Medication Safety",
+      "contentType": "medicine",
+      "sourceFamily": "medicine-reference-pack",
+      "keywords": ["blood thinner", "anticoagulant", "warfarin", "apixaban", "rivaroxaban", "bleeding", "bruise", "black stool", "fall"],
+      "summary": "Organizes blood-thinner safety questions using bruising, bleeding, black stool, falls, missed doses, procedure timing, new medicines, and pharmacist or clinician follow-up needs.",
+      "safetyNotes": "Head injury, major bleeding, black stool, vomiting blood, fainting, severe weakness, or breathing trouble needs urgent real-world medical care.",
+      "aliases": ["anticoagulant safety guide", "bleeding medicine review"],
+      "relatedTerms": ["bruising pattern", "head injury", "procedure timing", "interaction review"],
+      "populationTags": ["older-adult", "longitudinal-care"],
+      "whatToTrack": [
+        "Exact medicine name, recent bruising or bleeding pattern, falls, and missed or late doses.",
+        "Any new medicines, pain relievers, alcohol changes, planned procedures, or black stool.",
+        "Head injury, dizziness, severe weakness, or shortness of breath."
+      ],
+      "careQuestions": [
+        "Which bleeding patterns can wait for a pharmacist or clinician call and which need urgent care?",
+        "What details should be ready before a blood-thinner follow-up or procedure discussion?"
+      ],
+      "precautions": [
+        "Do not decide blood-thinner dose changes from this app.",
+        "Do not ignore falls, head injury, or black stool."
+      ],
+      "maintenanceTags": ["anticoagulant", "bleeding-safety", "pharmacy"]
+    },
+    {
+      "id": "pack-hba1c-food-log-review",
+      "title": "HbA1c Trend, Meals, and Home Log Review",
+      "category": "Lab Explanation",
+      "contentType": "labs",
+      "sourceFamily": "lab-imaging-reference-pack",
+      "keywords": ["hba1c", "a1c", "meal log", "glucose trend", "diabetes follow-up", "fasting sugar", "post meal", "home log"],
+      "summary": "Connects HbA1c review with meal timing, fasting and post-meal readings, illness, activity, medicines, and follow-up planning for diabetes care.",
+      "safetyNotes": "Confusion, repeated vomiting, very high sugar symptoms, or very low sugar symptoms should be handled with prompt real-world review.",
+      "aliases": ["a1c trend guide", "meal and sugar review"],
+      "relatedTerms": ["food log", "glucose pattern", "diabetes follow-up", "trend comparison"],
+      "populationTags": ["longitudinal-care"],
+      "whatToTrack": [
+        "Current HbA1c, fasting readings, post-meal readings, and how they compare with older results.",
+        "Meal pattern, activity, hydration, illness, and medicine timing around higher readings.",
+        "Any weight change, foot issues, sleep changes, or glucose symptoms."
+      ],
+      "careQuestions": [
+        "Which log details make the diabetes follow-up more actionable than a single HbA1c value alone?",
+        "What additional home patterns should be reviewed before the next visit?"
+      ],
+      "precautions": [
+        "Do not use one HbA1c number alone to change medicines without clinician guidance.",
+        "Do not ignore symptoms just because the lab follow-up is already scheduled."
+      ],
+      "maintenanceTags": ["a1c", "diabetes", "lab-trend"]
+    },
+    {
+      "id": "pack-post-discharge-wound-fever-review",
+      "title": "Post-Discharge Wound, Fever, and Recovery Review",
+      "category": "Care Transitions",
+      "contentType": "records",
+      "keywords": ["post discharge", "wound", "fever", "recovery", "follow-up", "drainage", "redness", "pain control", "discharge instructions"],
+      "summary": "Builds a post-discharge check around wound change, fever, pain, drainage, new swelling, medicine changes, bowel or urine issues, and follow-up timing.",
+      "safetyNotes": "Spreading redness, pus, fever, severe pain, breathing trouble, fainting, confusion, or discharge instructions not matching the current symptoms needs prompt medical review.",
+      "aliases": ["recovery wound guide", "after discharge follow-up review"],
+      "relatedTerms": ["drainage pattern", "fever after discharge", "care transition", "follow-up timing"],
+      "populationTags": ["longitudinal-care", "caregiver-support"],
+      "whatToTrack": [
+        "Procedure or hospital date, wound appearance, fever pattern, and current pain level.",
+        "Medicine changes, bowel and urine status, swelling, drainage, and mobility changes.",
+        "What the discharge note said, when follow-up is booked, and what has changed since going home."
+      ],
+      "careQuestions": [
+        "Which recovery findings fit expected monitoring and which need same-day contact with the care team?",
+        "What details should be added to the follow-up packet for the next visit?"
+      ],
+      "precautions": [
+        "Do not rely on routine wound monitoring if fever or drainage is worsening.",
+        "Do not ignore discharge mismatches when symptoms are escalating."
+      ],
+      "maintenanceTags": ["discharge", "recovery", "records"]
+    },
+    {
+      "id": "pack-vaccine-reaction-home-review",
+      "title": "Vaccine Reaction, Fever, and Allergy Boundary Review",
+      "category": "Prevention",
+      "contentType": "prevention",
+      "keywords": ["vaccine reaction", "fever", "arm pain", "rash", "allergy", "swelling", "breathing trouble", "home monitoring"],
+      "summary": "Organizes common post-vaccine questions using timing, fever, soreness, rash, allergy history, breathing changes, hydration, and when to seek real-world review.",
+      "safetyNotes": "Breathing trouble, facial swelling, severe rash, fainting, persistent confusion, or rapidly worsening symptoms after a vaccine needs urgent medical review.",
+      "aliases": ["immunization reaction guide", "post vaccine review"],
+      "relatedTerms": ["timing after shot", "arm soreness", "fever pattern", "allergy history"],
+      "whatToTrack": [
+        "When the reaction started, which vaccine was given, and whether the symptoms are local or whole body.",
+        "Fever, rash, swelling, dizziness, breathing changes, hydration, and prior allergy history.",
+        "Whether symptoms are improving over hours, staying the same, or worsening."
+      ],
+      "careQuestions": [
+        "Which reactions fit expected follow-up and which should move to urgent review?",
+        "What allergy or timing details should be shared if help is needed?"
+      ],
+      "precautions": [
+        "Do not ignore breathing changes or facial swelling because the shot was recent.",
+        "Do not rely on routine home care if symptoms are rapidly worsening."
+      ],
+      "maintenanceTags": ["vaccine", "reaction", "prevention"]
+    },
+    {
+      "id": "pack-skin-infection-cellulitis-review",
+      "title": "Skin Infection, Redness, and Cellulitis Boundary Review",
+      "category": "Dermatology",
+      "contentType": "general",
+      "keywords": ["skin infection", "cellulitis", "redness", "warmth", "swelling", "fever", "drainage", "spreading rash", "painful skin"],
+      "summary": "Builds a skin-infection review using redness size, warmth, pain, swelling, drainage, fever, injury source, diabetes history, and change over time.",
+      "safetyNotes": "Rapid spreading redness, fever, severe pain, facial involvement, confusion, streaking, or drainage with worsening symptoms needs prompt medical care.",
+      "aliases": ["cellulitis review", "skin redness safety guide"],
+      "relatedTerms": ["warmth", "streaking", "drainage", "injury source"],
+      "populationTags": ["longitudinal-care"],
+      "whatToTrack": [
+        "How large the red area is, whether it is warm, painful, swollen, or draining.",
+        "Any fever, injury, insect bite, diabetes, foot wound, or immune-risk condition.",
+        "Whether the redness is stable, spreading, or becoming more painful."
+      ],
+      "careQuestions": [
+        "Which skin changes suggest routine review versus same-day or urgent assessment?",
+        "What timeline details should be documented for the clinician?"
+      ],
+      "precautions": [
+        "Do not minimize a spreading infection pattern.",
+        "Do not wait on routine follow-up when fever or rapidly increasing redness is present."
+      ],
+      "maintenanceTags": ["skin", "infection", "boundary-review"]
+    }
+  ]
+}

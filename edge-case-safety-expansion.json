@@ -1,0 +1,246 @@
+{
+  "id": "edge-case-safety-expansion",
+  "name": "Edge-Case Safety Expansion Pack",
+  "version": "1.0.0",
+  "sourceFamily": "clinical-reference-pack",
+  "description": "High-risk mixed-signal records for chest symptoms, low glucose, medicine reactions, child fever, stroke-like headache, palpitations, dehydration, and repeat blood-pressure checks.",
+  "reviewStatus": "local pack requires clinician, pharmacy, and safety review before production medical use",
+  "updateCadence": "quarterly-or-when-approved-content-changes",
+  "records": [
+    {
+      "id": "pack-chest-pressure-sweating-breathing-review",
+      "title": "Chest Pressure, Sweating, and Breathing Warning Review",
+      "category": "Urgent Safety",
+      "contentType": "safety",
+      "keywords": ["chest pressure", "chest pain", "sweating", "shortness of breath", "jaw pain", "left arm pain", "cardiac warning", "urgent review"],
+      "summary": "Separates urgent chest-pressure patterns from routine discomfort by focusing on sweating, breathlessness, exertion, jaw or arm radiation, collapse, and the need for immediate real-world assessment.",
+      "safetyNotes": "Active chest pressure with sweating, breathing trouble, fainting, jaw or arm pain, or fast worsening symptoms needs urgent medical care now.",
+      "aliases": ["heart warning chest review", "urgent chest symptom guide"],
+      "relatedTerms": ["cardiac warning", "radiating pain", "emergency chest symptom"],
+      "routeTags": ["Urgent Safety", "Cardiology", "General"],
+      "clinicalDomains": ["cardiology"],
+      "whatToTrack": [
+        "Whether the pressure started at rest or with activity and whether it is spreading to the jaw, arm, or back.",
+        "Sweating, breathlessness, nausea, faintness, collapse, and any prior heart or blood-pressure history.",
+        "Time of onset, repeat episodes, and whether symptoms are worsening over minutes."
+      ],
+      "careQuestions": [
+        "Which features make this a time-critical chest warning rather than routine discomfort?",
+        "What history, medicines, and symptom timing should be ready for urgent review?"
+      ],
+      "precautions": [
+        "Do not stay in routine monitoring mode for active chest pressure with sweating or breathing trouble.",
+        "Do not drive yourself if symptoms feel severe, unstable, or rapidly worsening."
+      ],
+      "sourceReferences": ["Edge-Case Safety Expansion Pack", "Clinical Reference Pack"],
+      "maintenanceTags": ["urgent-safety", "cardiology", "edge-case"],
+      "qualityScore": 97
+    },
+    {
+      "id": "pack-low-sugar-shaking-confusion-review",
+      "title": "Low Sugar, Shaking, Sweating, and Confusion Review",
+      "category": "Medication Safety",
+      "contentType": "medicine",
+      "sourceFamily": "medicine-reference-pack",
+      "keywords": ["low sugar", "hypoglycemia", "shaking", "sweating", "confusion", "glucose", "insulin", "sulfonylurea", "diabetes medicine"],
+      "summary": "Organizes possible low-sugar episodes around shakiness, sweating, confusion, faintness, food timing, insulin or diabetes medicines, and urgent escalation when the person cannot recover safely.",
+      "safetyNotes": "Confusion, seizure, unconsciousness, repeated vomiting, or inability to take sugar safely needs urgent real-world help.",
+      "aliases": ["hypoglycemia warning review", "shaky sweating sugar guide"],
+      "relatedTerms": ["glucose rescue", "insulin timing", "missed meal"],
+      "routeTags": ["Medication", "Urgent Safety", "Vitals"],
+      "clinicalDomains": ["endocrinology"],
+      "whatToTrack": [
+        "Glucose reading if available, last meal, last diabetes medicine timing, and whether symptoms improved after sugar intake.",
+        "Shaking, sweating, confusion, faintness, seizure, or trouble swallowing safely.",
+        "Recent illness, vomiting, heavy activity, alcohol use, and whether another person is present."
+      ],
+      "careQuestions": [
+        "Which symptoms suggest a routine low-sugar recovery versus an urgent emergency response?",
+        "Which medicine, meal, or illness details matter most for the next diabetes follow-up?"
+      ],
+      "precautions": [
+        "Do not keep self-managing if the person is confused, fainting, or cannot safely swallow.",
+        "Do not guess future diabetes-dose changes from this app."
+      ],
+      "sourceReferences": ["Edge-Case Safety Expansion Pack", "Medicine Reference Pack"],
+      "maintenanceTags": ["medicine", "hypoglycemia", "edge-case"],
+      "qualityScore": 97
+    },
+    {
+      "id": "pack-antibiotic-rash-breathing-review",
+      "title": "Medicine Rash, Swelling, and Breathing-Reaction Review",
+      "category": "Medication Safety",
+      "contentType": "medicine",
+      "sourceFamily": "medicine-reference-pack",
+      "keywords": ["medicine rash", "swelling", "hives", "breathing trouble", "antibiotic reaction", "allergy", "throat tightness", "lip swelling"],
+      "summary": "Separates mild medicine-skin questions from urgent allergy patterns by focusing on swelling, hives, breathing change, throat tightness, fever, blistering, and timing after a new medicine.",
+      "safetyNotes": "Breathing trouble, face or throat swelling, faintness, or rapidly worsening rash needs urgent care now.",
+      "aliases": ["drug allergy warning guide", "new medicine rash review"],
+      "relatedTerms": ["hives", "anaphylaxis concern", "swollen lips"],
+      "routeTags": ["Medication", "Urgent Safety", "General"],
+      "clinicalDomains": ["dermatology", "pulmonology"],
+      "whatToTrack": [
+        "The medicine name, first dose time, rash start time, spread pattern, and whether any other new product was used.",
+        "Any hives, lip or tongue swelling, throat tightness, wheeze, dizziness, or faintness.",
+        "Fever, blistering, mouth sores, or skin pain that could change urgency."
+      ],
+      "careQuestions": [
+        "Which rash patterns suggest mild follow-up and which need urgent allergy review now?",
+        "What medicine-label, allergy-history, and photo details would help the next clinician or pharmacist review?"
+      ],
+      "precautions": [
+        "Do not treat breathing trouble or facial swelling like a simple side effect.",
+        "Do not restart a suspect medicine without pharmacist or clinician direction."
+      ],
+      "sourceReferences": ["Edge-Case Safety Expansion Pack", "Medicine Reference Pack"],
+      "maintenanceTags": ["medicine", "allergy", "edge-case"],
+      "qualityScore": 97
+    },
+    {
+      "id": "pack-child-fever-drinking-breathing-review",
+      "title": "Child Fever, Poor Drinking, and Breathing Review",
+      "category": "Pediatrics",
+      "contentType": "general",
+      "keywords": ["child fever", "poor drinking", "breathing fast", "lethargy", "wet diapers", "pediatric warning", "dehydration", "rash"],
+      "summary": "Builds a pediatric safety review around fever, drinking, urine output, breathing effort, lethargy, rash, vomiting, and caregiver concern so higher-risk child patterns surface early.",
+      "safetyNotes": "Breathing trouble, blue lips, dehydration, unusual sleepiness, seizure, stiff neck, or a child who cannot drink should be reviewed urgently.",
+      "aliases": ["pediatric fever warning review", "child not drinking guide"],
+      "relatedTerms": ["wet diaper count", "fast breathing", "pediatric dehydration"],
+      "routeTags": ["Specialist", "Urgent Safety", "General"],
+      "clinicalDomains": ["pediatrics"],
+      "whatToTrack": [
+        "Temperature pattern, age, drinking, urine output, tears, activity level, and whether the child is waking normally.",
+        "Fast breathing, chest pulling, blue color, rash, vomiting, seizure, or stiff neck.",
+        "When symptoms started, whether they are worsening, and any sick contacts or new medicines."
+      ],
+      "careQuestions": [
+        "Which child-fever features move this from home observation to same-day or urgent evaluation?",
+        "What hydration and breathing details matter most for pediatric follow-up?"
+      ],
+      "precautions": [
+        "Do not rely on routine monitoring if the child is hard to wake, breathing poorly, or not drinking.",
+        "Use urgent review sooner when caregiver concern is rising quickly or the pattern feels unusual."
+      ],
+      "sourceReferences": ["Edge-Case Safety Expansion Pack", "Clinical Reference Pack"],
+      "maintenanceTags": ["pediatrics", "fever", "edge-case"],
+      "qualityScore": 97
+    },
+    {
+      "id": "pack-sudden-severe-headache-stroke-review",
+      "title": "Sudden Severe Headache and Stroke-Warning Review",
+      "category": "Neurology",
+      "contentType": "general",
+      "keywords": ["sudden severe headache", "worst headache", "stroke warning", "vision change", "weakness", "speech trouble", "confusion", "neurologic change"],
+      "summary": "Keeps severe sudden headache on a neurologic safety path by combining thunderclap onset, weakness, speech or vision change, confusion, neck stiffness, and blood-pressure context.",
+      "safetyNotes": "A sudden severe headache with weakness, speech trouble, confusion, seizure, fainting, or vision change needs urgent assessment now.",
+      "aliases": ["worst headache warning", "stroke headache guide"],
+      "relatedTerms": ["thunderclap headache", "new neurologic symptom", "severe sudden onset"],
+      "routeTags": ["Urgent Safety", "Specialist", "General"],
+      "clinicalDomains": ["neurology"],
+      "whatToTrack": [
+        "Exact onset, whether it peaked suddenly, and any trigger such as exertion, injury, or blood-pressure spike.",
+        "Weakness, numbness, speech trouble, confusion, vision change, seizure, or fainting.",
+        "Neck stiffness, vomiting, fever, and whether this feels different from prior headaches."
+      ],
+      "careQuestions": [
+        "Which severe-headache features point to urgent neurologic review instead of routine migraine-style follow-up?",
+        "What timing and symptom details matter most for emergency or same-day review?"
+      ],
+      "precautions": [
+        "Do not label a sudden severe headache as routine if new neurologic symptoms are present.",
+        "Do not keep waiting for home readings if the headache is escalating or the person seems altered."
+      ],
+      "sourceReferences": ["Edge-Case Safety Expansion Pack", "Clinical Reference Pack"],
+      "maintenanceTags": ["neurology", "headache", "edge-case"],
+      "qualityScore": 97
+    },
+    {
+      "id": "pack-palpitations-caffeine-dizziness-review",
+      "title": "Palpitations, Caffeine, and Dizziness Review",
+      "category": "Cardiology",
+      "contentType": "general",
+      "keywords": ["palpitations", "heart racing", "caffeine", "dizziness", "fainting", "irregular pulse", "anxiety", "dehydration"],
+      "summary": "Organizes racing-heart and palpitation questions around caffeine, dehydration, anxiety, illness, pulse pattern, chest symptoms, and fainting risk while keeping urgent cardiac warning signs visible.",
+      "safetyNotes": "Palpitations with fainting, chest pain, severe breathlessness, or collapse need prompt medical review.",
+      "aliases": ["heart racing review", "palpitation dizziness guide"],
+      "relatedTerms": ["irregular pulse", "near fainting", "energy drink trigger"],
+      "routeTags": ["Specialist", "Vitals", "General"],
+      "clinicalDomains": ["cardiology"],
+      "whatToTrack": [
+        "Whether the rhythm feels fast, irregular, or skipped and whether it happens at rest, after caffeine, with illness, or during stress.",
+        "Pulse or heart-rate readings if available, along with chest discomfort, breathlessness, fainting, or severe dizziness.",
+        "Hydration, alcohol, stimulant use, poor sleep, and any recent medicine changes."
+      ],
+      "careQuestions": [
+        "Which palpitation patterns suggest routine follow-up and which need same-day or urgent review?",
+        "What trigger, pulse, and symptom details would make the next cardiology discussion more precise?"
+      ],
+      "precautions": [
+        "Do not dismiss palpitations that come with fainting, chest symptoms, or severe breathlessness.",
+        "Avoid stacking caffeine or stimulant triggers when the pattern is still unclear."
+      ],
+      "sourceReferences": ["Edge-Case Safety Expansion Pack", "Clinical Reference Pack"],
+      "maintenanceTags": ["cardiology", "palpitations", "edge-case"],
+      "qualityScore": 96
+    },
+    {
+      "id": "pack-vomiting-kidney-medicine-dehydration-review",
+      "title": "Vomiting, Diarrhea, Dehydration, and Kidney-Medicine Review",
+      "category": "Medication Safety",
+      "contentType": "medicine",
+      "sourceFamily": "medicine-reference-pack",
+      "keywords": ["vomiting", "diarrhea", "dehydration", "kidney medicine", "losartan", "metformin", "reduced urine", "dizziness", "sick day"],
+      "summary": "Connects vomiting or diarrhea with dehydration, urine output, dizziness, blood-pressure or diabetes medicines, and the need for pharmacist or clinician review when the person cannot keep up with fluids.",
+      "safetyNotes": "Repeated vomiting, confusion, fainting, reduced urine, severe weakness, or worsening illness needs prompt medical review.",
+      "aliases": ["sick day dehydration medicine review", "vomiting with chronic medicine guide"],
+      "relatedTerms": ["reduced urine", "poor intake", "medicine hold question"],
+      "routeTags": ["Medication", "Urgent Safety", "General"],
+      "clinicalDomains": ["nephrology", "endocrinology"],
+      "whatToTrack": [
+        "Vomiting or diarrhea frequency, ability to drink, urine output, dizziness, and any blood-pressure or glucose readings.",
+        "Which medicines were taken recently, especially kidney-, blood-pressure-, or diabetes-related medicines.",
+        "Weakness, confusion, fainting, fever, and whether the illness is improving or worsening."
+      ],
+      "careQuestions": [
+        "Which dehydration signs mean medicine questions should move from routine review to prompt clinician or pharmacist review?",
+        "What urine, fluid, and medicine-timing details matter most for the next follow-up?"
+      ],
+      "precautions": [
+        "Do not keep relying on home monitoring if fluid loss is continuing and urine output is dropping.",
+        "Do not guess which chronic medicines to stop or restart without pharmacist or clinician review."
+      ],
+      "sourceReferences": ["Edge-Case Safety Expansion Pack", "Medicine Reference Pack"],
+      "maintenanceTags": ["medicine", "dehydration", "edge-case"],
+      "qualityScore": 97
+    },
+    {
+      "id": "pack-repeat-bp-technique-headache-review",
+      "title": "Repeat Blood Pressure, Technique, and Headache Review",
+      "category": "Vitals",
+      "contentType": "vitals",
+      "keywords": ["repeat blood pressure", "bp technique", "headache", "dizziness", "cuff size", "rest first", "home monitor", "repeat reading"],
+      "summary": "Focuses on repeat blood-pressure checks by combining seated rest, cuff technique, headache or dizziness symptoms, baseline comparison, and when a high reading should move beyond home monitoring.",
+      "safetyNotes": "Very high repeated readings with neurologic, chest, breathing, or fainting symptoms need urgent real-world care.",
+      "aliases": ["bp repeat check guide", "home bp technique review"],
+      "relatedTerms": ["cuff position", "rest before reading", "repeat high blood pressure"],
+      "routeTags": ["Vitals", "General", "Urgent Safety"],
+      "clinicalDomains": ["cardiology"],
+      "whatToTrack": [
+        "Two repeat readings after seated rest, cuff position, cuff size, arm level, and whether the device is working normally.",
+        "Headache, dizziness, vision change, weakness, chest symptoms, breathing trouble, and comparison with usual baseline.",
+        "Recent caffeine, pain, stress, missed medicines, activity, and whether readings stay elevated."
+      ],
+      "careQuestions": [
+        "Which repeat-reading pattern is reasonable to track and which pattern needs same-day or urgent review?",
+        "What technique issues or symptom combinations should change how the next BP result is interpreted?"
+      ],
+      "precautions": [
+        "Do not rely on one rushed home reading when symptoms are active and technique may be off.",
+        "Do not ignore repeat high readings when headache, dizziness, weakness, chest discomfort, or breathlessness are present."
+      ],
+      "sourceReferences": ["Edge-Case Safety Expansion Pack", "Clinical Reference Pack"],
+      "maintenanceTags": ["vitals", "blood-pressure", "edge-case"],
+      "qualityScore": 97
+    }
+  ]
+}

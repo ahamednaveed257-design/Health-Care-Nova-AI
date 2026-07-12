@@ -1,0 +1,397 @@
+{
+  "name": "Care Nova Offline Repository Manifest",
+  "version": "2.3.0",
+  "generatedAt": "2026-07-11T18:50:12.484Z",
+  "databaseFiles": [
+    "data/offline-medical-db.json",
+    "data/offline-clinical-repository.json",
+    "data/offline-knowledge-index.json",
+    "data/offline-source-packs/*.json"
+  ],
+  "sourceRegistry": [
+    {
+      "id": "public-health-guidelines",
+      "name": "Public Health Guideline Pack",
+      "sourceTypes": [
+        "WHO/CDC/NIH-style public-health guidance",
+        "government patient education",
+        "public-domain safety guidance"
+      ],
+      "contentTypes": [
+        "prevention",
+        "warning signs",
+        "home-care boundaries",
+        "screening questions"
+      ],
+      "updateCadence": "quarterly-or-when-source-changes",
+      "licensePolicy": "Use only open, public-domain, or organization-approved licensed content.",
+      "verificationGate": "source approval + clinician review + safety red-team before production use"
+    },
+    {
+      "id": "clinical-reference-pack",
+      "name": "Clinical Reference Pack",
+      "sourceTypes": [
+        "licensed medical textbooks",
+        "specialty society guidelines",
+        "hospital protocols"
+      ],
+      "contentTypes": [
+        "disease overview",
+        "diagnostic workflow",
+        "care pathway",
+        "follow-up planning"
+      ],
+      "updateCadence": "source-versioned-release-cycle",
+      "licensePolicy": "Do not commit copyrighted full text. Store approved abstracts, metadata, and clinician-reviewed summaries only.",
+      "verificationGate": "license review + specialty review + rollback-ready release"
+    },
+    {
+      "id": "medicine-reference-pack",
+      "name": "Medicine Reference Pack",
+      "sourceTypes": [
+        "RxNorm/RxNav",
+        "openFDA labels",
+        "formulary or pharmacy-approved references"
+      ],
+      "contentTypes": [
+        "drug identity",
+        "side-effect questions",
+        "interaction questions",
+        "storage and missed-dose safety boundaries"
+      ],
+      "updateCadence": "monthly-or-label-change",
+      "licensePolicy": "Store normalized medicine-name metadata and safety summaries, not prescribing decisions.",
+      "verificationGate": "pharmacy review + no-dose-calculation guardrail"
+    },
+    {
+      "id": "lab-imaging-reference-pack",
+      "name": "Lab and Imaging Reference Pack",
+      "sourceTypes": [
+        "LOINC",
+        "radiology report terminology references",
+        "lab handbook summaries"
+      ],
+      "contentTypes": [
+        "lab meaning",
+        "trend questions",
+        "imaging terminology",
+        "procedure preparation"
+      ],
+      "updateCadence": "semiannual-or-local-lab-change",
+      "licensePolicy": "Store plain-language explanation and code metadata; do not interpret raw images as diagnosis.",
+      "verificationGate": "lab/radiology review + abnormal-critical-result escalation test"
+    },
+    {
+      "id": "operations-care-pack",
+      "name": "Healthcare Operations Pack",
+      "sourceTypes": [
+        "FHIR implementation guides",
+        "payer document workflows",
+        "care-transition best practices"
+      ],
+      "contentTypes": [
+        "records",
+        "claims",
+        "prior authorization",
+        "visit preparation",
+        "doctor-ready summary"
+      ],
+      "updateCadence": "semiannual-or-workflow-change",
+      "licensePolicy": "Store workflow checklists and non-PHI templates only.",
+      "verificationGate": "privacy review + document redaction + audit logging"
+    }
+  ],
+  "sourcePacks": [
+    {
+      "id": "chronic-longitudinal-care-expansion",
+      "name": "Chronic and Longitudinal Care Expansion Pack",
+      "version": "1.0.0",
+      "sourceFamily": "clinical-reference-pack",
+      "recordCount": 17,
+      "warningCount": 0,
+      "contentTypeDistribution": {
+        "specialist": 9,
+        "prevention": 3,
+        "general": 2,
+        "labs": 1,
+        "medicine": 1,
+        "records": 1
+      },
+      "categoryDistribution": {
+        "Endocrinology": 3,
+        "Cardiology": 2,
+        "Care Transitions": 1,
+        "Dermatology": 1,
+        "Gastrointestinal": 1,
+        "Gynecology": 1,
+        "Lab Explanation": 1,
+        "Medication Safety": 1,
+        "Mental Wellness": 1,
+        "Nephrology": 1,
+        "Neurology": 1,
+        "Prevention": 1,
+        "Pulmonology": 1,
+        "Sleep Medicine": 1
+      },
+      "description": "Expanded local offline records for chronic disease monitoring, home follow-up, specialist review, longitudinal safety boundaries, and day-to-day care preparation.",
+      "reviewStatus": "local pack requires clinician, pharmacy, and safety review before production medical use",
+      "updateCadence": "quarterly-or-when-approved-content-changes"
+    },
+    {
+      "id": "clinical-guidance-expansion",
+      "name": "Clinical Guidance Expansion Pack",
+      "version": "1.0.0",
+      "sourceFamily": "clinical-reference-pack",
+      "recordCount": 8,
+      "warningCount": 0,
+      "contentTypeDistribution": {
+        "general": 2,
+        "safety": 2,
+        "specialist": 2,
+        "medicine": 1,
+        "procedures": 1
+      },
+      "categoryDistribution": {
+        "Cardiology": 1,
+        "Endocrinology": 1,
+        "General": 1,
+        "Maternal Health": 1,
+        "Nephrology": 1,
+        "Procedures": 1,
+        "Sleep Medicine": 1,
+        "Urgent Safety": 1
+      },
+      "description": "Supplemental local clinical guidance topics for common specialist, safety, and symptom-review pathways.",
+      "reviewStatus": "local pack requires clinician review before production medical use",
+      "updateCadence": "quarterly-or-when-approved-content-changes"
+    },
+    {
+      "id": "comprehensive-local-care-expansion",
+      "name": "Comprehensive Local Care Expansion Pack",
+      "version": "1.0.0",
+      "sourceFamily": "clinical-reference-pack",
+      "recordCount": 18,
+      "warningCount": 0,
+      "contentTypeDistribution": {
+        "medicine": 3,
+        "vitals": 3,
+        "labs": 2,
+        "prevention": 2,
+        "records": 2,
+        "specialist": 2,
+        "imaging": 1,
+        "insurance": 1,
+        "procedures": 1,
+        "safety": 1
+      },
+      "categoryDistribution": {
+        "Medication Safety": 3,
+        "Vitals": 3,
+        "Lab Explanation": 2,
+        "Prevention": 2,
+        "Records": 2,
+        "Cardiology": 1,
+        "Imaging Knowledge": 1,
+        "Insurance": 1,
+        "Procedures": 1,
+        "Pulmonology": 1,
+        "Urgent Safety": 1
+      },
+      "description": "Supplemental local coverage for home vitals, specialist follow-up, medication safety, lab interpretation, wellness planning, records, insurance readiness, and procedures.",
+      "reviewStatus": "local pack requires clinician, pharmacy, and workflow review before production medical use",
+      "updateCadence": "quarterly-or-when-approved-content-changes"
+    },
+    {
+      "id": "edge-case-safety-expansion",
+      "name": "Edge-Case Safety Expansion Pack",
+      "version": "1.0.0",
+      "sourceFamily": "clinical-reference-pack",
+      "recordCount": 8,
+      "warningCount": 0,
+      "contentTypeDistribution": {
+        "general": 3,
+        "medicine": 3,
+        "safety": 1,
+        "vitals": 1
+      },
+      "categoryDistribution": {
+        "Medication Safety": 3,
+        "Cardiology": 1,
+        "Neurology": 1,
+        "Pediatrics": 1,
+        "Urgent Safety": 1,
+        "Vitals": 1
+      },
+      "description": "High-risk mixed-signal records for chest symptoms, low glucose, medicine reactions, child fever, stroke-like headache, palpitations, dehydration, and repeat blood-pressure checks.",
+      "reviewStatus": "local pack requires clinician, pharmacy, and safety review before production medical use",
+      "updateCadence": "quarterly-or-when-approved-content-changes"
+    },
+    {
+      "id": "high-frequency-rag-expansion",
+      "name": "High-Frequency Offline RAG Expansion Pack",
+      "version": "1.0.0",
+      "sourceFamily": "clinical-reference-pack",
+      "recordCount": 16,
+      "warningCount": 0,
+      "contentTypeDistribution": {
+        "general": 11,
+        "medicine": 4,
+        "specialist": 1
+      },
+      "categoryDistribution": {
+        "General": 4,
+        "Medication Safety": 4,
+        "Gastrointestinal": 3,
+        "Respiratory": 3,
+        "Endocrinology": 1,
+        "Musculoskeletal": 1
+      },
+      "description": "High-frequency symptom, medicine, hydration, respiratory, digestive, urinary, pain, and home-monitoring records tuned for stronger offline general and medicine retrieval.",
+      "reviewStatus": "local pack requires clinician, pharmacy, and safety review before production medical use",
+      "updateCadence": "quarterly-or-when-approved-content-changes"
+    },
+    {
+      "id": "operations-prevention-expansion",
+      "name": "Operations and Prevention Expansion Pack",
+      "version": "1.0.0",
+      "sourceFamily": "operations-care-pack",
+      "recordCount": 10,
+      "warningCount": 0,
+      "contentTypeDistribution": {
+        "records": 4,
+        "prevention": 3,
+        "insurance": 2,
+        "medicine": 1
+      },
+      "categoryDistribution": {
+        "Care Transitions": 2,
+        "Insurance": 2,
+        "Prevention": 2,
+        "Bone Health": 1,
+        "Caregiver Support": 1,
+        "Records": 1,
+        "Travel Health": 1
+      },
+      "description": "Supplemental local records, insurance, visit, prevention, and follow-up workflow knowledge.",
+      "reviewStatus": "local pack requires workflow and privacy review before production deployment",
+      "updateCadence": "semiannual-or-workflow-change"
+    }
+  ],
+  "validation": {
+    "issueCount": 0,
+    "issues": []
+  },
+  "summary": {
+    "baseRecordCount": 92,
+    "repositoryRecordCount": 62,
+    "packRecordCount": 77,
+    "totalRetrievalRecords": 231,
+    "tokenCount": 507,
+    "categoryCount": 44,
+    "contentTypeCount": 12,
+    "populationSegmentCount": 7,
+    "structuredRecordCount": 231,
+    "sourceReferenceCount": 963,
+    "maintenanceTagCount": 1346,
+    "averageQualityScore": 95,
+    "validationIssueCount": 0,
+    "sourcePackCount": 6,
+    "sourceFamilyCount": 5,
+    "contentTypeDistribution": {
+      "medicine": 41,
+      "safety": 41,
+      "specialist": 27,
+      "general": 26,
+      "labs": 20,
+      "prevention": 20,
+      "records": 15,
+      "vitals": 14,
+      "imaging": 9,
+      "procedures": 8,
+      "insurance": 7,
+      "research": 3
+    },
+    "categoryDistribution": {
+      "Medication Safety": 20,
+      "Urgent Safety": 17,
+      "General": 15,
+      "Medical Atlas": 14,
+      "Vitals": 14,
+      "Medication": 12,
+      "Prevention": 12,
+      "Lab Explanation": 10,
+      "Care Transitions": 8,
+      "Cardiology": 7,
+      "Endocrinology": 7,
+      "Insurance": 7,
+      "Gastrointestinal": 6,
+      "Records": 6,
+      "Respiratory": 6,
+      "Imaging Knowledge": 5,
+      "Neurology": 5,
+      "Infection and Fever": 4,
+      "Labs": 4,
+      "Procedures": 4,
+      "Maternal Health": 3,
+      "Mental Wellness": 3,
+      "Nephrology": 3,
+      "Pulmonology": 3,
+      "Research Publications": 3,
+      "Sleep Medicine": 3,
+      "Travel Health": 3,
+      "Bone Health": 2,
+      "Caregiver Support": 2,
+      "Dermatology": 2,
+      "Diabetes and Endocrine": 2,
+      "First Aid": 2,
+      "Gynecology": 2,
+      "Kidney and Hydration": 2,
+      "Musculoskeletal": 2,
+      "Pediatric Guidance": 2,
+      "Pediatrics": 2,
+      "Cardiovascular": 1,
+      "Digestive Health": 1,
+      "Geriatric Care": 1,
+      "GxP Quality": 1,
+      "Hepatology": 1,
+      "Lifestyle": 1,
+      "Skin and Allergy": 1
+    },
+    "sourceFamilyDistribution": {
+      "clinical-reference-pack": 129,
+      "medicine-reference-pack": 32,
+      "public-health-guidelines": 30,
+      "operations-care-pack": 21,
+      "lab-imaging-reference-pack": 19
+    },
+    "populationDistribution": {
+      "longitudinal-care": 53,
+      "maternal": 30,
+      "older-adult": 20,
+      "pediatric": 14,
+      "travel-health": 12,
+      "caregiver-support": 11,
+      "oncology": 7
+    },
+    "packDistribution": {
+      "chronic-longitudinal-care-expansion": 17,
+      "clinical-guidance-expansion": 8,
+      "comprehensive-local-care-expansion": 18,
+      "edge-case-safety-expansion": 8,
+      "high-frequency-rag-expansion": 16,
+      "operations-prevention-expansion": 10
+    },
+    "runsWithoutInternet": true,
+    "dependencyFree": true
+  },
+  "maintenanceWorkflow": [
+    "Collect source metadata and license status.",
+    "Store modular local source packs in data/offline-source-packs with versioned record groups.",
+    "Import only approved extracts, abstracts, tables, or clinician-authored summaries.",
+    "Strip identifiers and reject patient PHI.",
+    "Chunk into disease, medicine, lab, imaging, procedure, safety, operations, and research records.",
+    "Generate lexical/vector-style index with term, category, source, and safety mappings.",
+    "Run safety, retrieval, regression, and rollback checks before release.",
+    "Version source manifests so old offline packs can be restored."
+  ]
+}

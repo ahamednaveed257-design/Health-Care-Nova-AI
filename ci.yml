@@ -1,0 +1,59 @@
+name: Care Nova CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  release-and-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run release verification
+        run: pnpm run release:check
+
+      - name: Rebuild GitHub-ready bundle
+        run: node scripts/build-github-standalone.js
+
+      - name: Recheck GitHub-ready bundle
+        run: node scripts/github-package-check.js
+
+      - name: Install Playwright runtime
+        run: npm install --no-save playwright
+
+      - name: Install Chromium for UI smoke
+        run: npx playwright install --with-deps chromium
+
+      - name: Run UI smoke
+        env:
+          CARE_NOVA_UI_SMOKE_ARTIFACT_DIR: test-results/ui-smoke
+        run: node scripts/ui-smoke-test.js
+
+      - name: Upload UI smoke artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: care-nova-ui-smoke
+          path: test-results/ui-smoke
+          if-no-files-found: ignore

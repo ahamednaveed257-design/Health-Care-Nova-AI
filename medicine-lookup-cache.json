@@ -1,0 +1,384 @@
+{
+  "version": 1,
+  "createdAt": "2026-06-27T10:06:05.144Z",
+  "updatedAt": "2026-07-07T20:50:05.324Z",
+  "entries": [
+    {
+      "id": "aba1054d29473b2023cbe91606cfa557b18f22314d5b4f42401cf7dd692ae120",
+      "query": "Amlodipine",
+      "queryTokens": [
+        "amlodipine"
+      ],
+      "evidence": {
+        "query": "Amlodipine",
+        "rxNorm": {
+          "found": true,
+          "rxcui": "17767",
+          "name": "amlodipine",
+          "synonym": "",
+          "tty": "IN",
+          "products": [
+            {
+              "rxcui": "1000000",
+              "name": "amlodipine 5 MG / hydrochlorothiazide 12.5 MG / olmesartan medoxomil 40 MG Oral Tablet [Tribenzor]",
+              "synonym": "Amlodipine 5 MG / HCTZ 12.5 MG / Olmesartan medoxomil 40 MG Oral Tablet [Tribenzor]",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1000005",
+              "name": "amlodipine 5 MG / hydrochlorothiazide 25 MG / olmesartan medoxomil 40 MG Oral Tablet [Tribenzor]",
+              "synonym": "Amlodipine 5 MG / HCTZ 25 MG / Olmesartan medoxomil 40 MG Oral Tablet [Tribenzor]",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1600722",
+              "name": "amlodipine 10 MG / perindopril arginine 14 MG Oral Tablet [Prestalia]",
+              "synonym": "Prestalia 14 MG / 10 MG Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1600726",
+              "name": "amlodipine 2.5 MG / perindopril arginine 3.5 MG Oral Tablet [Prestalia]",
+              "synonym": "Prestalia 3.5 MG / 2.5 MG Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1600730",
+              "name": "amlodipine 5 MG / perindopril arginine 7 MG Oral Tablet [Prestalia]",
+              "synonym": "Prestalia 7 MG / 5 MG Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "2049593",
+              "name": "amlodipine 2.5 MG / celecoxib 200 MG Oral Tablet [Consensi]",
+              "synonym": "Consensi 2.5 MG / 200 MG Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "212542",
+              "name": "amlodipine 2.5 MG Oral Tablet [Norvasc]",
+              "synonym": "Norvasc 2.5 MG Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "212549",
+              "name": "amlodipine 5 MG Oral Tablet [Norvasc]",
+              "synonym": "Norvasc 5 MG Oral Tablet",
+              "tty": "SBD"
+            }
+          ],
+          "source": "RxNorm/RxNav"
+        },
+        "openFda": {
+          "found": true,
+          "brandNames": [
+            "Amlodipine Besylate"
+          ],
+          "genericNames": [
+            "AMLODIPINE BESYLATE"
+          ],
+          "activeIngredients": [
+            "AMLODIPINE BESYLATE"
+          ],
+          "productTypes": [
+            "HUMAN PRESCRIPTION DRUG"
+          ],
+          "manufacturer": [
+            "Lupin Pharmaceuticals, Inc."
+          ],
+          "route": [
+            "ORAL"
+          ],
+          "sections": [
+            {
+              "key": "indications_and_usage",
+              "label": "Uses / indications",
+              "text": "1 INDICATIONS AND USAGE Amlodipine besylate tablets are calcium channel blocker and may be used alone or in combination with other antihypertensive and antianginal agents for the treatment of: •Hypertension ( 1.1 ) о Amlodipine besylate tablets are indicated for the treatment of hypertension, to lower blood pressure. Lowering blood pressure reduces the risk of fatal and nonfatal cardiovascular events, primarily strokes and myocardial infarctions. •Coron..."
+            },
+            {
+              "key": "dosage_and_administration",
+              "label": "Label directions",
+              "text": "2 DOSAGE AND ADMINISTRATION •Adult recommended starting dose: 5 mg once daily with maximum dose 10 mg once daily. ( 2.1 ) о Small, fragile, or elderly patients, or patients with hepatic insufficiency may be started on 2.5 mg once daily. ( 2.1 ) •Pediatric starting dose: 2.5 mg to 5 mg once daily. ( 2.2 ) Important Limitation : Doses in excess of 5 mg daily have not been studied in pediatric patients. ( 2.2 ) 2.1 Adults The usual initial antihypertensive..."
+            },
+            {
+              "key": "contraindications",
+              "label": "Contraindications",
+              "text": "4 CONTRAINDICATIONS Known sensitivity to amlodipine ( 4 ) Amlodipine besylate tablets are contraindicated in patients with known sensitivity to amlodipine."
+            },
+            {
+              "key": "adverse_reactions",
+              "label": "Adverse reactions",
+              "text": "6 ADVERSE REACTIONS Most common adverse reaction to amlodipine is edema which occurred in a dose related manner. Other adverse experiences not dose related but reported with an incidence >1.0% are fatigue, nausea, abdominal pain, and somnolence. ( 6 ) To report SUSPECTED ADVERSE REACTIONS, contact Lupin Pharmaceuticals, Inc. at 1-800-399-2561 or www.lupinpharmaceuticals.com or FDA at 1-800-FDA-1088 or www.fda.gov/medwatch. 6.1 Clinical Trials Experience..."
+            },
+            {
+              "key": "drug_interactions",
+              "label": "Drug interactions",
+              "text": "7 DRUG INTERACTIONS Do not exceed doses greater than 20 mg daily of simvastatin. ( 7.2 ) 7.1 Impact of Other Drugs on Amlodipine CYP3A Inhibitors Co-administration with CYP3A inhibitors (moderate and strong) results in increased systemic exposure to amlodipine and may require dose reduction. Monitor for symptoms of hypotension and edema when amlodipine is co-administered with CYP3A inhibitors to determine the need for dose adjustment [see CLINICAL PHARM..."
+            }
+          ],
+          "source": "openFDA drug labeling",
+          "labelId": "cc27c9a5-dd2e-4a79-af00-28f51408362a",
+          "query": "Amlodipine"
+        },
+        "fetchedAt": "2026-07-07T20:50:05.324Z"
+      },
+      "createdAt": "2026-07-07T20:50:05.324Z",
+      "updatedAt": "2026-07-07T20:50:05.324Z"
+    },
+    {
+      "id": "e5eac43e2df2946f206c5193af86a14aad7a081c1c62694a08bda870b5fe2742",
+      "query": "Losartan",
+      "queryTokens": [
+        "losartan"
+      ],
+      "evidence": {
+        "query": "Losartan",
+        "rxNorm": {
+          "found": true,
+          "rxcui": "52175",
+          "name": "losartan",
+          "synonym": "",
+          "tty": "IN",
+          "products": [
+            {
+              "rxcui": "2709046",
+              "name": "losartan potassium 10 MG/ML Oral Suspension [Arbli]",
+              "synonym": "losartan K+ 10 MG/ML Oral Suspension [Arbli]",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "979466",
+              "name": "hydrochlorothiazide 12.5 MG / losartan potassium 100 MG Oral Tablet [Hyzaar]",
+              "synonym": "Hyzaar 100/12.5 Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "979470",
+              "name": "hydrochlorothiazide 12.5 MG / losartan potassium 50 MG Oral Tablet [Hyzaar]",
+              "synonym": "Hyzaar 50/12.5 Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "979473",
+              "name": "hydrochlorothiazide 25 MG / losartan potassium 100 MG Oral Tablet [Hyzaar]",
+              "synonym": "Hyzaar 100/25 Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "979482",
+              "name": "losartan potassium 100 MG Oral Tablet [Cozaar]",
+              "synonym": "Cozaar 100 MG Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "979487",
+              "name": "losartan potassium 25 MG Oral Tablet [Cozaar]",
+              "synonym": "Cozaar 25 MG Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "979494",
+              "name": "losartan potassium 50 MG Oral Tablet [Cozaar]",
+              "synonym": "Cozaar 50 MG Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "2709039",
+              "name": "losartan potassium 10 MG/ML Oral Suspension",
+              "synonym": "losartan K+ 10 MG/ML Oral Suspension",
+              "tty": "SCD"
+            }
+          ],
+          "source": "RxNorm/RxNav"
+        },
+        "openFda": {
+          "found": true,
+          "brandNames": [
+            "Losartan Potassium"
+          ],
+          "genericNames": [
+            "LOSARTAN POTASSIUM"
+          ],
+          "activeIngredients": [
+            "LOSARTAN POTASSIUM"
+          ],
+          "productTypes": [
+            "HUMAN PRESCRIPTION DRUG"
+          ],
+          "manufacturer": [
+            "Cardinal Health 107, LLC"
+          ],
+          "route": [
+            "ORAL"
+          ],
+          "sections": [
+            {
+              "key": "indications_and_usage",
+              "label": "Uses / indications",
+              "text": "1 INDICATIONS AND USAGE Losartan potassium tablets are an angiotensin II receptor blocker (ARB) indicated for: • Treatment of hypertension, to lower blood pressure in adults and children greater than 6 years old. Lowering blood pressure reduces the risk of fatal and nonfatal cardiovascular events, primarily strokes and myocardial infarctions. (1.1) • Reduction of the risk of stroke in patients with hypertension and left ventricular hypertrophy. There is..."
+            },
+            {
+              "key": "dosage_and_administration",
+              "label": "Label directions",
+              "text": "2 DOSAGE AND ADMINISTRATION Hypertension • Usual adult dose: 50 mg once daily. (2.1) • Usual pediatric starting dose: 0.7 mg per kg once daily (up to 50 mg). (2.1) Hypertensive Patients with Left Ventricular Hypertrophy • Usual starting dose: 50 mg once daily. (2.2) • Add hydrochlorothiazide 12.5 mg and/or increase losartan potassium to 100 mg followed by an increase to hydrochlorothiazide 25 mg if further blood pressure response is needed. (2.2 , 14.2)..."
+            },
+            {
+              "key": "boxed_warning",
+              "label": "Boxed warning",
+              "text": "WARNING: FETAL TOXICITY When pregnancy is detected, discontinue losartan potassium as soon as possible. Drugs that act directly on the renin-angiotensin system can cause injury and death to the developing fetus [see Warnings and Precautions (5.1) ]. WARNING: FETAL TOXICITY See full prescribing information for complete boxed warning. When pregnancy is detected, discontinue losartan potassium as soon as possible. Drugs that act directly on the renin-angio..."
+            },
+            {
+              "key": "contraindications",
+              "label": "Contraindications",
+              "text": "4 CONTRAINDICATIONS Losartan potassium is contraindicated: • In patients who are hypersensitive to any component of this product. • For coadministration with aliskiren in patients with diabetes. • Hypersensitivity to any component. (4) • Coadministration with aliskiren in patients with diabetes. (4)"
+            },
+            {
+              "key": "adverse_reactions",
+              "label": "Adverse reactions",
+              "text": "6 ADVERSE REACTIONS Most common adverse reactions (incidence ≥2% and greater than placebo) are: dizziness, upper respiratory infection, nasal congestion, and back pain. (6.1) To report SUSPECTED ADVERSE REACTIONS, contact Zydus Pharmaceuticals USA Inc. at 1-877-993-8779 or FDA at 1-800-FDA-1088 or www.fda.gov/medwatch. 6.1 Clinical Trials Experience Because clinical trials are conducted under widely varying conditions, adverse reaction rates observed in..."
+            },
+            {
+              "key": "drug_interactions",
+              "label": "Drug interactions",
+              "text": "7 DRUG INTERACTIONS • Agents Increasing Serum Potassium: Risk of hyperkalemia. (7.1) • Lithium: Risk of lithium toxicity. (7.2) • NSAIDs: Increased risk of renal impairment and reduced diuretic, natriuretic, and antihypertensive effects. (7.3) • Dual Inhibition of the Renin-Angiotensin System: Increased risk of renal impairment, hypotension, syncope, and hyperkalemia. (7.4) 7.1 Agents Increasing Serum Potassium Coadministration of losartan with other dr..."
+            }
+          ],
+          "source": "openFDA drug labeling",
+          "labelId": "016461a7-40a7-4ebc-9342-66ea16cdb6fc",
+          "query": "Losartan"
+        },
+        "fetchedAt": "2026-07-05T04:15:02.284Z"
+      },
+      "createdAt": "2026-07-05T04:15:02.284Z",
+      "updatedAt": "2026-07-05T04:15:02.284Z"
+    },
+    {
+      "id": "c18f8cceb7aa87dad5554c146cd5069be3ecf99c66ffc808a81255e4ac7bfed4",
+      "query": "Metformin",
+      "queryTokens": [
+        "metformin"
+      ],
+      "evidence": {
+        "query": "Metformin",
+        "rxNorm": {
+          "found": true,
+          "rxcui": "6809",
+          "name": "metformin",
+          "synonym": "",
+          "tty": "IN",
+          "products": [
+            {
+              "rxcui": "1043567",
+              "name": "24 HR metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet [Kombiglyze]",
+              "synonym": "Kombiglyze 2.5/1000 24 HR Extended Release Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1043574",
+              "name": "24 HR metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet [Kombiglyze]",
+              "synonym": "Kombiglyze 5/1000 24 HR Extended Release Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1043582",
+              "name": "24 HR metformin hydrochloride 500 MG / saxagliptin 5 MG Extended Release Oral Tablet [Kombiglyze]",
+              "synonym": "Kombiglyze 5/500 24 HR Extended Release Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1243026",
+              "name": "linagliptin 2.5 MG / metformin hydrochloride 1000 MG Oral Tablet [Jentadueto]",
+              "synonym": "Jentadueto 2.5/1000 Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1243033",
+              "name": "linagliptin 2.5 MG / metformin hydrochloride 500 MG Oral Tablet [Jentadueto]",
+              "synonym": "Jentadueto 2.5/500 Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1243040",
+              "name": "linagliptin 2.5 MG / metformin hydrochloride 850 MG Oral Tablet [Jentadueto]",
+              "synonym": "Jentadueto 2.5/850 Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1243833",
+              "name": "24 HR metformin hydrochloride 1000 MG / sitagliptin phosphate 100 MG Extended Release Oral Tablet [Janumet]",
+              "synonym": "Janumet XR 100/1000 24 HR Extended Release Oral Tablet",
+              "tty": "SBD"
+            },
+            {
+              "rxcui": "1243843",
+              "name": "24 HR metformin hydrochloride 1000 MG / sitagliptin phosphate 50 MG Extended Release Oral Tablet [Janumet]",
+              "synonym": "Janumet XR 50/1000 24 HR Extended Release Oral Tablet",
+              "tty": "SBD"
+            }
+          ],
+          "source": "RxNorm/RxNav"
+        },
+        "openFda": {
+          "found": true,
+          "brandNames": [
+            "ZITUVIMET"
+          ],
+          "genericNames": [
+            "SITAGLIPTIN AND METFORMIN HYDROCHLORIDE"
+          ],
+          "activeIngredients": [
+            "METFORMIN HYDROCHLORIDE",
+            "SITAGLIPTIN"
+          ],
+          "productTypes": [
+            "HUMAN PRESCRIPTION DRUG"
+          ],
+          "manufacturer": [
+            "Zydus Lifesciences Limited"
+          ],
+          "route": [
+            "ORAL"
+          ],
+          "sections": [
+            {
+              "key": "indications_and_usage",
+              "label": "Uses / indications",
+              "text": "1 INDICATIONS AND USAGE ZITUVIMET is a combination of sitagliptin, a dipeptidyl peptidase-4 (DPP-4) inhibitor, and metformin hydrochloride (HCl), a biguanide, indicated as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus. ( 1 ) Limitations of Use: ZITUVIMET is not recommended in patients with type 1 diabetes mellitus. ( 1 ) ZITUVIMET has not been studied in patients with a history of pancreatitis. ( 1 )..."
+            },
+            {
+              "key": "dosage_and_administration",
+              "label": "Label directions",
+              "text": "2 DOSAGE AND ADMINISTRATION Take ZITUVIMET orally twice daily with meals. ( 2.1 ) Individualize the dosage of ZITUVIMET on the basis of the patient's current regimen, effectiveness, and tolerability. ( 2.1 ) The maximum recommended daily dose is 100 mg of sitagliptin and 2,000 mg of metformin HCl. ( 2.1 ) The recommended starting dose in patients not currently treated with metformin is 50 mg sitagliptin and 500 mg metformin HCl twice daily, with gradual..."
+            },
+            {
+              "key": "boxed_warning",
+              "label": "Boxed warning",
+              "text": "WARNING: LACTIC ACIDOSIS WARNING: LACTIC ACIDOSIS See full prescribing information for complete boxed warning . Postmarketing cases of metformin-associated lactic acidosis have resulted in death, hypothermia, hypotension, and resistant bradyarrhythmias. Symptoms included malaise, myalgias, respiratory distress, somnolence, and abdominal pain. Laboratory abnormalities included elevated blood lactate levels, anion gap acidosis, increased lactate/pyruvate..."
+            },
+            {
+              "key": "contraindications",
+              "label": "Contraindications",
+              "text": "4 CONTRAINDICATIONS Severe renal impairment: (eGFR below 30 mL/min/1.73 m 2 ) ( 4) Metabolic acidosis, including diabetic ketoacidosis. ( 4 ) History of a serious hypersensitivity reaction to ZITUVIMET, sitagliptin, or metformin, such as anaphylaxis or angioedema. (4) ZITUVIMET is contraindicated in patients with: Severe renal impairment (eGFR below 30 mL/min/1.73 m 2 ) [see Warnings and Precautions ( 5.1 )]. Acute or chronic metabolic acidosis, includi..."
+            },
+            {
+              "key": "adverse_reactions",
+              "label": "Adverse reactions",
+              "text": "6 ADVERSE REACTIONS The following adverse reactions are also discussed elsewhere in the prescribing information: Lactic Acidosis [see Warnings and Precautions ( 5.1 )] Pancreatitis [see Warnings and Precautions ( 5.2 )] Heart Failure [see Warnings and Precautions ( 5.3 )] Acute Renal Failure [see Warnings and Precautions ( 5.4 )] Vitamin B12 Deficiency [see Warnings and Precautions ( 5.5 )] Hypoglycemia with Concomitant Use with Insulin or Insulin Secre..."
+            },
+            {
+              "key": "drug_interactions",
+              "label": "Drug interactions",
+              "text": "7 DRUG INTERACTIONS Table 4 presents clinically significant drug interactions with ZITUVIMET: Table 4: Clinically Significant Drug Interactions with ZITUVIMET Carbonic Anhydrase Inhibitors Clinical Impact: Carbonic anhydrase inhibitors frequently cause a decrease in serum bicarbonate and induce non-anion gap, hyperchloremic metabolic acidosis. Concomitant use of these drugs with ZITUVIMET may increase the risk for lactic acidosis. Intervention: Consider..."
+            }
+          ],
+          "source": "openFDA drug labeling",
+          "labelId": "3bf9383a-afe0-4989-b952-50c995bd3fa5",
+          "query": "Metformin"
+        },
+        "fetchedAt": "2026-06-27T10:06:22.651Z"
+      },
+      "createdAt": "2026-06-27T10:06:22.651Z",
+      "updatedAt": "2026-06-27T10:06:22.651Z"
+    }
+  ]
+}

@@ -1,0 +1,883 @@
+{
+  "name": "Care Nova Offline Medical Knowledge Database",
+  "version": "1.6.0",
+  "mode": "offline-seeded-governed",
+  "storage": "local-json-database",
+  "trainingStatus": "not-foundation-model-training",
+  "scaleTarget": "trillion-token governed medical corpus readiness",
+  "currentBoundary": "Seeded local references only. Approved clinical corpora can be ingested later after licensing, de-identification, clinician review, validation, and rollback controls.",
+  "governance": {
+    "requiresApprovedSources": true,
+    "requiresPhiRemoval": true,
+    "requiresClinicalReview": true,
+    "allowsPatientConversationTraining": false,
+    "allowsDiagnosisOrPrescribing": false,
+    "retrievalMode": "deterministic keyword and evidence scoring"
+  },
+  "domains": [
+    "urgent safety",
+    "cardiovascular",
+    "respiratory",
+    "neurology",
+    "diabetes and endocrine",
+    "kidney and hydration",
+    "infection and fever",
+    "medication safety",
+    "lab explanation",
+    "mental wellness",
+    "maternal health",
+    "pediatric guidance",
+    "geriatric care",
+    "sleep medicine",
+    "bone health",
+    "wound care",
+    "travel health",
+    "oncology warning signs",
+    "care transitions",
+    "patient records",
+    "insurance operations",
+    "quality and compliance"
+  ],
+  "validationGates": [
+    "source approval",
+    "license review",
+    "PHI removal",
+    "specialty tagging",
+    "duplicate removal",
+    "evidence chunking",
+    "clinician review",
+    "safety red-team testing",
+    "bias and drift monitoring",
+    "versioned rollback"
+  ],
+  "records": [
+    {
+      "id": "offline-cardiovascular-risk",
+      "title": "Cardiovascular Symptom Safety",
+      "category": "Vitals",
+      "keywords": ["heart", "cardiac", "chest", "bp", "blood pressure", "palpitation", "sweating", "jaw pain", "left arm", "shortness of breath"],
+      "summary": "Cardiovascular review combines symptoms, blood pressure, pulse, medication timing, baseline risk, and red flags before giving patient-friendly next steps.",
+      "safetyNotes": "Chest pain, breathlessness, fainting, sweating, or one-sided weakness should trigger urgent real-world care guidance.",
+      "source": "Offline governed cardiovascular safety seed"
+    },
+    {
+      "id": "offline-respiratory-safety",
+      "title": "Respiratory and Breathing Safety",
+      "category": "Urgent Safety",
+      "keywords": ["breathing", "shortness of breath", "wheezing", "asthma", "oxygen", "cough", "blue lips", "choking"],
+      "summary": "Breathing concerns are reviewed for severity, oxygen-related wording, chest symptoms, fever, wheezing, and ability to speak normally.",
+      "safetyNotes": "Severe breathing difficulty, blue lips, confusion, or inability to speak needs immediate real-world emergency care.",
+      "source": "Offline governed respiratory safety seed"
+    },
+    {
+      "id": "offline-neurology-red-flags",
+      "title": "Neurology Red Flags",
+      "category": "Urgent Safety",
+      "keywords": ["stroke", "face droop", "slurred", "weakness", "one side", "seizure", "confusion", "sudden headache", "vision loss"],
+      "summary": "Neurologic warning review looks for sudden weakness, speech trouble, facial droop, seizures, confusion, severe headache, and vision changes.",
+      "safetyNotes": "Stroke-like symptoms, seizure, sudden confusion, or sudden severe headache should be escalated immediately.",
+      "source": "Offline governed neurology safety seed"
+    },
+    {
+      "id": "offline-endocrine-diabetes",
+      "title": "Diabetes and Endocrine Safety",
+      "category": "Vitals",
+      "keywords": ["diabetes", "glucose", "blood sugar", "insulin", "metformin", "hypoglycemia", "hyperglycemia", "thirst", "frequent urination"],
+      "summary": "Diabetes support reviews glucose readings, symptoms, medicine timing, hydration, meals, and high or low reading warning paths.",
+      "safetyNotes": "Confusion, fainting, very low sugar, very high sugar with illness, or dehydration needs prompt clinical help.",
+      "source": "Offline governed endocrine safety seed"
+    },
+    {
+      "id": "offline-medication-interaction-safety",
+      "title": "Medication Interaction and Side-Effect Safety",
+      "category": "Medication",
+      "keywords": ["medicine", "medication", "drug", "side effect", "interaction", "allergy", "rash", "swelling", "missed dose", "double dose"],
+      "summary": "Medication support checks missed-dose wording, side effects, allergy signals, duplicate dosing, and pharmacist or clinician follow-up needs.",
+      "safetyNotes": "The app must not prescribe, calculate doses, stop medicines, start medicines, or advise double dosing.",
+      "source": "Offline governed medication safety seed"
+    },
+    {
+      "id": "offline-lab-cbc-cmp",
+      "title": "CBC and Metabolic Lab Explanation",
+      "category": "Labs",
+      "keywords": ["cbc", "hemoglobin", "wbc", "platelet", "creatinine", "sodium", "potassium", "liver", "kidney", "cmp"],
+      "summary": "Lab explanation converts CBC and metabolic panel wording into plain language and prepares questions for clinician review.",
+      "safetyNotes": "Lab values are context-dependent. The app should not diagnose or change treatment based on labs alone.",
+      "source": "Offline governed lab explanation seed"
+    },
+    {
+      "id": "offline-infection-fever",
+      "title": "Fever and Infection Triage",
+      "category": "General",
+      "keywords": ["fever", "infection", "chills", "temperature", "cough", "urine infection", "wound", "pus", "sepsis"],
+      "summary": "Fever support checks temperature, duration, hydration, breathing, confusion, immune risk, worsening symptoms, and need for timely care.",
+      "safetyNotes": "Confusion, breathing trouble, severe weakness, stiff neck, or rapidly worsening illness should trigger urgent care guidance.",
+      "source": "Offline governed fever safety seed"
+    },
+    {
+      "id": "offline-kidney-hydration",
+      "title": "Kidney and Hydration Safety",
+      "category": "General",
+      "keywords": ["kidney", "creatinine", "urine", "dehydration", "swelling", "fluid", "vomiting", "diarrhea", "electrolyte"],
+      "summary": "Kidney and hydration review considers urine changes, swelling, vomiting or diarrhea, diabetes, blood pressure, and abnormal kidney labs.",
+      "safetyNotes": "Severe dehydration, no urination, confusion, or major swelling needs real-world medical review.",
+      "source": "Offline governed kidney safety seed"
+    },
+    {
+      "id": "offline-mental-health-crisis",
+      "title": "Mental Health and Crisis Safety",
+      "category": "Mental Wellness",
+      "keywords": ["anxiety", "panic", "depression", "stress", "suicide", "self harm", "hopeless", "sleep", "crisis"],
+      "summary": "Mental wellness support distinguishes general stress or sleep concerns from self-harm, danger, or crisis language.",
+      "safetyNotes": "Self-harm, suicide, danger to others, or inability to stay safe should point to immediate local crisis or emergency support.",
+      "source": "Offline governed mental wellness safety seed"
+    },
+    {
+      "id": "offline-maternal-warning",
+      "title": "Pregnancy and Maternal Warning Signs",
+      "category": "Urgent Safety",
+      "keywords": ["pregnant", "pregnancy", "postpartum", "bleeding", "severe headache", "swelling", "baby movement", "abdominal pain"],
+      "summary": "Maternal health review checks pregnancy or postpartum context, bleeding, severe headache, swelling, abdominal pain, and reduced fetal movement wording.",
+      "safetyNotes": "Pregnancy bleeding, severe headache, seizure, severe abdominal pain, or reduced fetal movement requires urgent real-world care.",
+      "source": "Offline governed maternal safety seed"
+    },
+    {
+      "id": "offline-pediatric-care",
+      "title": "Pediatric Safety Signals",
+      "category": "General",
+      "keywords": ["child", "baby", "infant", "pediatric", "fever child", "rash child", "not feeding", "dehydrated", "sleepy"],
+      "summary": "Pediatric support reviews age, feeding, hydration, breathing, fever, rash, alertness, and caregiver concern.",
+      "safetyNotes": "Infants, breathing difficulty, dehydration, unusual sleepiness, seizure, or caregiver alarm should be escalated promptly.",
+      "source": "Offline governed pediatric safety seed"
+    },
+    {
+      "id": "offline-geriatric-fall-risk",
+      "title": "Older Adult Fall and Frailty Review",
+      "category": "General",
+      "keywords": ["elderly", "older", "fall", "frail", "dizzy", "confused", "weak", "walker", "balance"],
+      "summary": "Older adult review considers falls, dizziness, confusion, weakness, medications, hydration, mobility, and support at home.",
+      "safetyNotes": "Head injury, confusion, inability to walk, or repeated falls needs real-world medical assessment.",
+      "source": "Offline governed geriatric safety seed"
+    },
+    {
+      "id": "offline-oncology-warning",
+      "title": "Cancer Care Warning Support",
+      "category": "Urgent Safety",
+      "keywords": ["cancer", "chemotherapy", "chemo", "neutropenia", "fever", "radiation", "oncology", "immune"],
+      "summary": "Cancer-care support treats fever, infection signs, severe weakness, dehydration, or treatment side effects as higher-priority signals.",
+      "safetyNotes": "Fever or infection signs during chemotherapy or immune suppression needs urgent clinician guidance.",
+      "source": "Offline governed oncology safety seed"
+    },
+    {
+      "id": "offline-stroke-fast-signs",
+      "title": "Stroke FAST and Neurology Warning Signs",
+      "category": "Urgent Safety",
+      "keywords": ["stroke", "fast", "face droop", "arm weakness", "speech trouble", "last known well", "vision", "confusion", "one-sided weakness"],
+      "summary": "Stroke education checks face droop, arm weakness, speech trouble, sudden vision or balance changes, confusion, and exact onset or last-known-well time.",
+      "safetyNotes": "Stroke-like symptoms require immediate real-world emergency evaluation. The app cannot rule out stroke or decide that symptoms are safe to watch.",
+      "source": "Offline governed stroke warning seed"
+    },
+    {
+      "id": "offline-heart-failure-fluid",
+      "title": "Heart Failure, Swelling, and Fluid Pattern Review",
+      "category": "Vitals",
+      "keywords": ["heart failure", "swelling", "ankle swelling", "fluid", "weight gain", "breathlessness", "shortness of breath", "pillow", "fatigue"],
+      "summary": "Heart failure education organizes breathlessness, swelling, sudden weight gain, reduced activity tolerance, sleep position, BP, pulse, and medicine timing questions.",
+      "safetyNotes": "Severe breathlessness, chest pain, fainting, blue lips, confusion, or rapid worsening needs urgent real-world care. The app must not change heart medicines.",
+      "source": "Offline governed heart failure seed"
+    },
+    {
+      "id": "offline-copd-lung-health",
+      "title": "COPD and Chronic Lung Health",
+      "category": "General",
+      "keywords": ["copd", "chronic cough", "lung", "smoking", "sputum", "wheeze", "oxygen", "inhaler", "flare", "breathlessness"],
+      "summary": "COPD and chronic lung support checks cough, sputum change, breathlessness, oxygen reading, smoke exposure, infection signs, inhaler plan, and flare patterns.",
+      "safetyNotes": "Severe breathing trouble, blue lips, confusion, chest pain, fainting, or very low oxygen needs urgent medical care.",
+      "source": "Offline governed chronic lung seed"
+    },
+    {
+      "id": "offline-skin-rash-infection",
+      "title": "Skin Rash, Allergy, and Infection Review",
+      "category": "General",
+      "keywords": ["rash", "skin", "hives", "itching", "swelling", "redness", "pus", "fever", "blister", "eczema", "medicine reaction"],
+      "summary": "Skin review considers rash spread, pain, itching, warmth, swelling, fever, pus, new medicines, foods, bites, products, and trigger timing.",
+      "safetyNotes": "Breathing trouble, face or throat swelling, fainting, fever with painful rash, purple rash, or rapidly spreading redness needs urgent real-world care.",
+      "source": "Offline governed skin safety seed"
+    },
+    {
+      "id": "offline-back-joint-pain",
+      "title": "Back, Joint, Injury, and Movement Safety",
+      "category": "General",
+      "keywords": ["back pain", "joint pain", "knee", "shoulder", "neck", "injury", "fall", "swelling", "numbness", "weakness", "arthritis", "sprain"],
+      "summary": "Back and joint support organizes injury timing, pain location, swelling, movement limits, fever, numbness, weakness, walking ability, and daily function.",
+      "safetyNotes": "Major injury, deformity, new weakness or numbness, fever with severe pain, inability to walk, or bladder or bowel changes needs urgent care.",
+      "source": "Offline governed musculoskeletal seed"
+    },
+    {
+      "id": "offline-child-fever-safety",
+      "title": "Child Fever and Pediatric Warning Signals",
+      "category": "General",
+      "keywords": ["child fever", "baby", "infant", "pediatric", "not feeding", "dehydration", "wet diapers", "sleepy", "rash", "breathing", "seizure"],
+      "summary": "Child fever support reviews age, temperature, duration, feeding, fluids, urine output, breathing, rash, alertness, seizure, vomiting, and caregiver concern.",
+      "safetyNotes": "Infant fever, seizure, breathing trouble, dehydration, blue lips, unusual sleepiness, stiff neck, or purple rash needs urgent real-world care.",
+      "source": "Offline governed pediatric fever seed"
+    },
+    {
+      "id": "offline-womens-health-warning",
+      "title": "Women's Health, Pregnancy, and Postpartum Basics",
+      "category": "Urgent Safety",
+      "keywords": ["women", "period", "heavy bleeding", "pelvic pain", "pregnancy", "postpartum", "breast lump", "reduced fetal movement", "severe headache", "swelling"],
+      "summary": "Women's health education organizes period changes, pelvic pain, heavy bleeding, breast symptoms, pregnancy symptoms, and postpartum warning signs.",
+      "safetyNotes": "Pregnancy bleeding, severe abdominal pain, fainting, severe headache with vision changes, seizure, heavy bleeding, or reduced fetal movement needs urgent care.",
+      "source": "Offline governed women's health seed"
+    },
+    {
+      "id": "offline-ecg-report-basics",
+      "title": "ECG or EKG Report Basics",
+      "category": "Labs",
+      "keywords": ["ecg", "ekg", "heart rhythm", "palpitation", "arrhythmia", "rate", "interval", "st changes", "atrial fibrillation", "chest pain"],
+      "summary": "ECG education explains that rhythm, rate, intervals, comparison, and symptoms require clinician interpretation and should be reviewed with timing and prior ECGs.",
+      "safetyNotes": "The app does not interpret ECG images or rule out heart emergencies. Chest pain, fainting, severe breathlessness, or stroke-like symptoms needs urgent care.",
+      "source": "Offline governed ECG education seed"
+    },
+    {
+      "id": "offline-medical-imaging-basics",
+      "title": "Medical Imaging Report Basics",
+      "category": "Labs",
+      "keywords": ["xray", "x-ray", "ct", "mri", "ultrasound", "scan", "radiology", "findings", "impression", "comparison", "fracture", "pneumonia"],
+      "summary": "Imaging education explains report sections such as indication, technique, findings, impression, comparison, and recommendations while preparing clinician-review questions.",
+      "safetyNotes": "The app does not interpret diagnostic images or replace radiology reports. Urgent symptoms should be handled through real-world care.",
+      "source": "Offline governed imaging education seed"
+    },
+    {
+      "id": "offline-blood-thinner-safety",
+      "title": "Blood Thinner, Bleeding, and Clot Safety",
+      "category": "Medication",
+      "keywords": ["blood thinner", "anticoagulant", "warfarin", "apixaban", "rivaroxaban", "aspirin", "bleeding", "bruise", "black stool", "head injury", "clot"],
+      "summary": "Blood thinner education organizes medicine name, timing, bleeding, bruising, falls, procedures, interactions, kidney or liver context, and clot warning symptoms.",
+      "safetyNotes": "Heavy bleeding, head injury, black stools, vomiting blood, fainting, severe headache, or stroke-like symptoms needs urgent care. The app must not change blood thinner dosing.",
+      "source": "Offline governed anticoagulant safety seed"
+    },
+    {
+      "id": "offline-care-transition-pack",
+      "title": "Discharge and Care Transition Pack",
+      "category": "Care Transitions",
+      "keywords": ["discharge", "care plan", "transition", "readmission", "follow-up", "medication reconciliation", "instructions"],
+      "summary": "Care transitions support discharge summaries, patient instructions, medication reconciliation prompts, follow-up questions, and readmission signals.",
+      "safetyNotes": "Care-transition drafts require clinician review and should not be treated as final medical orders.",
+      "source": "Offline governed care transition seed"
+    },
+    {
+      "id": "offline-health-record-timeline",
+      "title": "Patient Record Timeline",
+      "category": "Records",
+      "keywords": ["record", "history", "timeline", "prescription", "report", "doctor note", "medical summary", "documents"],
+      "summary": "Record support organizes symptoms, vitals, medicines, allergies, labs, reports, and questions into a timeline for review.",
+      "safetyNotes": "Generated records are draft summaries and must not replace official clinical documentation.",
+      "source": "Offline governed health records seed"
+    },
+    {
+      "id": "offline-insurance-policy-explain",
+      "title": "Insurance and Policy Explanation",
+      "category": "Insurance",
+      "keywords": ["insurance", "claim", "coverage", "prior authorization", "appeal", "eob", "benefits", "policy"],
+      "summary": "Insurance support structures claim, EOB, coverage, authorization, and appeal questions with human-review boundaries.",
+      "safetyNotes": "The app does not decide coverage, payment, benefits, authorization, or medical necessity.",
+      "source": "Offline governed payer operations seed"
+    },
+    {
+      "id": "offline-quality-compliance-review",
+      "title": "Healthcare Quality and Compliance Review",
+      "category": "GxP Quality",
+      "keywords": ["quality", "compliance", "audit", "deviation", "capa", "qms", "sop", "regulatory", "documentation"],
+      "summary": "Quality support organizes documentation review, exception narratives, traceability, SOP/QMS questions, and audit-ready notes.",
+      "safetyNotes": "Quality drafts require authorized human review and cannot approve releases, deviations, CAPA, or regulatory submissions.",
+      "source": "Offline governed quality compliance seed"
+    },
+    {
+      "id": "offline-migraine-headache-diary",
+      "title": "Migraine and Headache Diary",
+      "category": "Medical Atlas",
+      "keywords": ["migraine", "headache diary", "aura", "trigger", "nausea", "light sensitivity", "caffeine", "sleep", "medicine overuse"],
+      "summary": "Migraine and headache education organizes onset, duration, severity, triggers, sleep, caffeine, medicines, aura, nausea, and neurologic warning signs.",
+      "safetyNotes": "Sudden worst headache, stroke-like symptoms, seizure, fever with stiff neck, head injury, or confusion needs urgent real-world care. The app does not diagnose migraine or dose headache medicines.",
+      "source": "Offline governed atlas headache seed"
+    },
+    {
+      "id": "offline-seizure-safety",
+      "title": "Seizure Safety and Recovery Review",
+      "category": "Urgent Safety",
+      "keywords": ["seizure", "fits", "convulsion", "epilepsy", "recovery", "first aid", "injury", "breathing", "diabetes", "pregnancy"],
+      "summary": "Seizure safety education focuses on event timing, breathing, injury, recovery, first event versus known history, recurrence, diabetes, pregnancy, and follow-up questions.",
+      "safetyNotes": "First seizure, prolonged seizure, repeated seizures, injury, pregnancy, diabetes emergency, breathing trouble, or not waking normally needs urgent real-world care.",
+      "source": "Offline governed seizure safety seed"
+    },
+    {
+      "id": "offline-sleep-apnea-review",
+      "title": "Sleep Apnea and Snoring Review",
+      "category": "Medical Atlas",
+      "keywords": ["sleep apnea", "snoring", "breathing pauses", "daytime sleepiness", "morning headache", "fatigue", "blood pressure", "cpap"],
+      "summary": "Sleep apnea education organizes snoring, witnessed breathing pauses, gasping, morning headaches, daytime sleepiness, BP, weight trend, and sleep-study questions.",
+      "safetyNotes": "Falling asleep while driving, severe breathlessness, chest pain, fainting, or confusion needs prompt real-world care. The app does not diagnose sleep apnea or prescribe CPAP settings.",
+      "source": "Offline governed sleep medicine seed"
+    },
+    {
+      "id": "offline-depression-anxiety-support",
+      "title": "Depression, Anxiety, and Crisis Safety",
+      "category": "Mental Wellness",
+      "keywords": ["depression", "anxiety", "panic", "mood", "sleep", "appetite", "self harm", "suicidal", "hopeless", "crisis"],
+      "summary": "Mental-health support organizes mood, anxiety, panic, sleep, appetite, concentration, triggers, support contacts, and crisis language.",
+      "safetyNotes": "Self-harm thoughts, suicidal thoughts, feeling unsafe, danger to others, confusion, or inability to stay safe needs immediate local crisis or emergency support.",
+      "source": "Offline governed mental health atlas seed"
+    },
+    {
+      "id": "offline-heat-illness-safety",
+      "title": "Heat Illness and Dehydration Safety",
+      "category": "Urgent Safety",
+      "keywords": ["heat illness", "heat exhaustion", "heat stroke", "dehydration", "confusion", "fainting", "cramps", "sweating", "high temperature"],
+      "summary": "Heat illness support reviews heat exposure, activity, fluids, sweating, urination, temperature, dizziness, cramps, confusion, medicines, and chronic-risk context.",
+      "safetyNotes": "Confusion, fainting, seizure, very high temperature, chest pain, severe weakness, or rapid worsening during heat exposure needs emergency care.",
+      "source": "Offline governed heat safety seed"
+    },
+    {
+      "id": "offline-sepsis-warning-signs",
+      "title": "Sepsis Warning Signs and Severe Infection Review",
+      "category": "Urgent Safety",
+      "keywords": ["sepsis", "severe infection", "fever", "low temperature", "confusion", "fast breathing", "low blood pressure", "wound", "pneumonia", "urine infection"],
+      "summary": "Sepsis warning support prioritizes confusion, severe weakness, fast breathing, fainting, very low urine, fever or low temperature, infection source, and rapid worsening.",
+      "safetyNotes": "Sepsis concern with confusion, severe weakness, fast breathing, fainting, blue lips, very low urine, or rapid worsening needs urgent real-world care. The app does not diagnose sepsis or prescribe antibiotics.",
+      "source": "Offline governed sepsis safety seed"
+    },
+    {
+      "id": "offline-pneumonia-chest-infection",
+      "title": "Pneumonia and Chest Infection Education",
+      "category": "Medical Atlas",
+      "keywords": ["pneumonia", "chest infection", "cough", "fever", "phlegm", "sputum", "oxygen", "breathless", "chest pain", "elderly"],
+      "summary": "Pneumonia education organizes cough duration, fever, phlegm, breathlessness, chest pain, oxygen reading, age, immune risk, and clinician-review questions.",
+      "safetyNotes": "Severe breathlessness, blue lips, confusion, chest pain, low oxygen, dehydration, or rapid worsening needs urgent care. The app does not diagnose pneumonia or prescribe antibiotics.",
+      "source": "Offline governed respiratory infection seed"
+    },
+    {
+      "id": "offline-tb-cough-guide",
+      "title": "Tuberculosis Cough Education",
+      "category": "Medical Atlas",
+      "keywords": ["tuberculosis", "tb", "long cough", "night sweats", "weight loss", "blood in sputum", "exposure", "chest xray"],
+      "summary": "TB cough education organizes long cough, night sweats, weight loss, fever, exposure history, immune status, blood in sputum, and testing questions.",
+      "safetyNotes": "Coughing blood, severe breathlessness, chest pain, confusion, or severe weakness needs prompt real-world care. The app does not diagnose TB or decide isolation or treatment.",
+      "source": "Offline governed TB education seed"
+    },
+    {
+      "id": "offline-gerd-ulcer-questions",
+      "title": "GERD, Reflux, and Ulcer Questions",
+      "category": "Medical Atlas",
+      "keywords": ["gerd", "reflux", "acidity", "ulcer", "heartburn", "black stool", "vomiting blood", "nsaid", "ibuprofen", "aspirin"],
+      "summary": "GERD and ulcer education reviews burning, meal timing, sour taste, vomiting, stool color, pain reliever use, blood thinner context, and urgent stomach warning signs.",
+      "safetyNotes": "Vomiting blood, black stools, fainting, severe abdominal pain, chest pressure, breathlessness, sweating, or persistent vomiting needs urgent care.",
+      "source": "Offline governed digestive safety seed"
+    },
+    {
+      "id": "offline-constipation-bowel-health",
+      "title": "Constipation and Bowel Health",
+      "category": "Medical Atlas",
+      "keywords": ["constipation", "bowel", "stool", "blood", "bloating", "fiber", "water", "abdominal pain", "laxative", "thyroid"],
+      "summary": "Constipation support organizes stool frequency, stool form, pain, bloating, diet, hydration, activity, medicines, thyroid context, and new or worsening bowel changes.",
+      "safetyNotes": "Severe abdominal pain, vomiting, swollen rigid abdomen, blood in stool, black stool, fainting, or unexplained weight loss needs real-world care.",
+      "source": "Offline governed bowel health seed"
+    },
+    {
+      "id": "offline-liver-jaundice-health",
+      "title": "Liver Health and Jaundice Review",
+      "category": "Labs",
+      "keywords": ["liver", "jaundice", "yellow eyes", "bilirubin", "ast", "alt", "hepatitis", "alcohol", "fatty liver", "dark urine", "pale stool"],
+      "summary": "Liver education organizes bilirubin, AST, ALT, jaundice clues, dark urine, pale stool, itching, medicines, supplements, alcohol, hepatitis exposure, and follow-up questions.",
+      "safetyNotes": "Confusion, vomiting blood, black stools, severe abdominal pain, fainting, severe weakness, or rapidly worsening jaundice needs urgent care.",
+      "source": "Offline governed liver atlas seed"
+    },
+    {
+      "id": "offline-osteoporosis-bone-health",
+      "title": "Osteoporosis and Bone Health",
+      "category": "Medical Atlas",
+      "keywords": ["osteoporosis", "bone health", "fracture", "calcium", "vitamin d", "menopause", "fall", "dexa", "steroid", "elderly"],
+      "summary": "Bone health education reviews fracture risk, menopause, prior fracture, falls, steroid use, vitamin D, calcium, bone density testing, strength, balance, and fall prevention.",
+      "safetyNotes": "Fall with hip pain, deformity, head injury, inability to bear weight, new weakness, or severe back pain needs real-world care.",
+      "source": "Offline governed bone health seed"
+    },
+    {
+      "id": "offline-menopause-midlife-health",
+      "title": "Menopause and Midlife Health",
+      "category": "Medical Atlas",
+      "keywords": ["menopause", "perimenopause", "hot flashes", "period changes", "sleep", "mood", "bone", "cholesterol", "bleeding after menopause"],
+      "summary": "Menopause education organizes hot flashes, sleep, mood, period changes, bone health, cholesterol, BP, weight, family history, and clinician-review questions.",
+      "safetyNotes": "Bleeding after menopause, very heavy bleeding, fainting, chest pain, stroke-like symptoms, or self-harm thoughts needs prompt real-world care.",
+      "source": "Offline governed midlife health seed"
+    },
+    {
+      "id": "offline-wound-care-tetanus",
+      "title": "Wound Care and Tetanus Questions",
+      "category": "First Aid",
+      "keywords": ["wound", "cut", "bite", "burn", "tetanus", "vaccine", "infection", "redness", "swelling", "pus", "fever", "diabetes"],
+      "summary": "Wound care education organizes wound type, depth, contamination, bite exposure, burn severity, diabetes, immune status, tetanus history, and infection signs.",
+      "safetyNotes": "Severe bleeding, deep puncture, face or eye wound, animal or human bite, fever, spreading redness, numbness, or inability to move a part needs real-world care.",
+      "source": "Offline governed wound care seed"
+    },
+    {
+      "id": "offline-travel-health-vaccines",
+      "title": "Travel Health and Vaccines Preparation",
+      "category": "Prevention",
+      "keywords": ["travel health", "vaccines", "malaria", "diarrhea", "altitude", "motion sickness", "jet lag", "pregnancy", "destination", "records"],
+      "summary": "Travel health support organizes destination, trip dates, activities, vaccine records, pregnancy, immune status, chronic conditions, medicines, food and water safety, and insect precautions.",
+      "safetyNotes": "Fever after travel, severe diarrhea, dehydration, confusion, breathing trouble, chest pain, or severe allergic reaction needs prompt medical care.",
+      "source": "Offline governed travel health seed"
+    },
+    {
+      "id": "offline-medication-list-review",
+      "title": "Medication List Review and Polypharmacy Safety",
+      "category": "Medication",
+      "keywords": ["medication list", "polypharmacy", "prescription", "otc", "supplement", "allergy", "kidney", "liver", "side effects", "duplicate medicine"],
+      "summary": "Medication-list review organizes prescriptions, OTC products, supplements, allergies, timing, reason, prescriber, side effects, duplicate therapy, and pharmacist questions.",
+      "safetyNotes": "The app does not start, stop, substitute, or calculate doses for medicines. Severe allergy, heavy bleeding, overdose concern, fainting, or confusion needs urgent care.",
+      "source": "Offline governed medication organization seed"
+    },
+    {
+      "id": "offline-prescription-label-safety",
+      "title": "Prescription Label and Medicine Use Safety",
+      "category": "Medication",
+      "keywords": ["prescription label", "medicine strength", "route", "timing", "duration", "storage", "expiry", "refill", "with food", "empty stomach"],
+      "summary": "Prescription-label review organizes medicine name, generic or brand, strength, route, timing, duration, storage, expiry, refill instructions, food timing, and what to ask if label instructions are unclear.",
+      "safetyNotes": "The app can organize label information but does not create new dose instructions. Conflicting labels, unreadable labels, expired medicine, or cold-chain uncertainty should be checked with a pharmacist.",
+      "source": "Offline governed medication label seed"
+    },
+    {
+      "id": "offline-missed-dose-high-risk-medicines",
+      "title": "Missed Dose and High-Risk Medicine Review",
+      "category": "Medication",
+      "keywords": ["missed dose", "late dose", "forgot medicine", "double dose", "insulin", "blood thinner", "seizure medicine", "steroid", "antibiotic", "heart medicine"],
+      "summary": "Missed-dose review separates routine label questions from higher-risk medicines such as insulin, anticoagulants, seizure medicines, steroids, antibiotics, and selected heart medicines.",
+      "safetyNotes": "Do not double a dose based on the app. High-risk missed-dose questions should be confirmed with the prescription label, pharmacist, clinician, poison center, or urgent care depending on symptoms.",
+      "source": "Offline governed missed-dose seed"
+    },
+    {
+      "id": "offline-otc-pain-fever-medicine-safety",
+      "title": "OTC Pain and Fever Medicine Safety",
+      "category": "Medication",
+      "keywords": ["acetaminophen", "paracetamol", "ibuprofen", "naproxen", "diclofenac", "nsaid", "fever medicine", "cold flu product", "duplicate ingredient", "alcohol"],
+      "summary": "OTC pain and fever review checks active ingredients, duplicate cold or flu products, alcohol use, liver risk, stomach bleeding risk, kidney context, blood pressure, blood thinners, and persistent fever or pain.",
+      "safetyNotes": "Severe pain, persistent fever, chest pain, stiff neck, confusion, trouble breathing, black stool, vomiting blood, or overdose concern requires real-world medical help.",
+      "source": "Offline governed OTC safety seed"
+    },
+    {
+      "id": "offline-blood-thinner-medication-safety",
+      "title": "Blood Thinner and Bleeding Risk Safety",
+      "category": "Medication",
+      "keywords": ["blood thinner", "warfarin", "apixaban", "rivaroxaban", "clopidogrel", "aspirin", "bleeding", "black stool", "fall", "head injury", "INR"],
+      "summary": "Blood-thinner review organizes medicine identity, indication, missed-dose questions, bleeding warning signs, falls, head injury, NSAID pain relievers, supplements, procedures, and monitoring questions.",
+      "safetyNotes": "Major bleeding, black stool, vomiting blood, severe headache, fall with head injury, one-sided weakness, speech trouble, or chest pain needs urgent care.",
+      "source": "Offline governed anticoagulant safety seed"
+    },
+    {
+      "id": "offline-diabetes-medicine-sick-day-safety",
+      "title": "Diabetes Medicine and Sick-Day Safety",
+      "category": "Medication",
+      "keywords": ["diabetes medicine", "insulin", "metformin", "sglt2", "semaglutide", "liraglutide", "low sugar", "high sugar", "vomiting", "dehydration", "sick day"],
+      "summary": "Diabetes-medicine safety organizes meal timing, glucose trend, missed doses, low-sugar symptoms, dehydration, vomiting, kidney function, sick-day rules, steroid use, and written clinician action plans.",
+      "safetyNotes": "Confusion, seizure, severe low sugar symptoms, vomiting with dehydration, fruity breath, severe weakness, or very high sugar symptoms require prompt real-world care.",
+      "source": "Offline governed diabetes medication seed"
+    },
+    {
+      "id": "offline-antibiotic-allergy-and-interaction-safety",
+      "title": "Antibiotic Allergy and Interaction Review",
+      "category": "Medication",
+      "keywords": ["antibiotic", "amoxicillin", "azithromycin", "doxycycline", "ciprofloxacin", "levofloxacin", "rash", "severe diarrhea", "allergy", "blood thinner", "calcium", "iron"],
+      "summary": "Antibiotic review organizes infection reason, prescription duration, allergy history, rash timing, severe diarrhea, blood-thinner interaction questions, mineral or antacid spacing, and worsening infection symptoms.",
+      "safetyNotes": "Breathing trouble, face or throat swelling, severe rash, fainting, severe diarrhea, high fever, or worsening infection signs need clinician or urgent care review.",
+      "source": "Offline governed antibiotic safety seed"
+    },
+    {
+      "id": "offline-sedating-medicine-fall-risk",
+      "title": "Sedating Medicine and Fall-Risk Review",
+      "category": "Medication",
+      "keywords": ["sleepy medicine", "sedating", "drowsy", "gabapentin", "pregabalin", "alprazolam", "clonazepam", "opioid", "alcohol", "driving", "fall risk"],
+      "summary": "Sedating-medicine review organizes sleepiness, driving safety, falls, breathing risk, alcohol, opioid pain medicines, sleep aids, kidney context, dose timing, and withdrawal or tapering questions.",
+      "safetyNotes": "Extreme sleepiness, breathing trouble, confusion, fall with injury, or unsafe mixing with alcohol or opioids needs urgent professional review.",
+      "source": "Offline governed sedation safety seed"
+    },
+    {
+      "id": "offline-supplement-and-herbal-interaction-safety",
+      "title": "Supplement, Vitamin, and Herbal Interaction Safety",
+      "category": "Medication",
+      "keywords": ["supplement", "vitamin", "herbal", "st johns wort", "ginkgo", "garlic", "fish oil", "calcium", "iron", "vitamin d", "thyroid medicine", "blood thinner"],
+      "summary": "Supplement review organizes vitamins, herbs, minerals, duplicate ingredients, blood-thinner concerns, thyroid medicine spacing, antibiotic spacing, kidney stone history, liver risk, and pregnancy or breastfeeding context.",
+      "safetyNotes": "Supplements can still interact with medicines. Bleeding, severe allergy, confusion, liver warning symptoms, or pregnancy/breastfeeding concerns should be reviewed with a clinician or pharmacist.",
+      "source": "Offline governed supplement safety seed"
+    },
+    {
+      "id": "offline-medicine-storage-expiry-safety",
+      "title": "Medicine Storage, Expiry, and Cold-Chain Safety",
+      "category": "Medication",
+      "keywords": ["medicine storage", "expired medicine", "expiry date", "heat", "sunlight", "moisture", "fridge", "cold chain", "insulin", "inhaler", "drops"],
+      "summary": "Storage review organizes expiry date, heat, sunlight, moisture, refrigerator needs, cold-chain uncertainty, opened-date tracking, travel storage, and pharmacist confirmation before use.",
+      "safetyNotes": "Do not rely on medicine that may be expired, heat damaged, moisture damaged, contaminated, or cold-chain uncertain until a pharmacist confirms safety.",
+      "source": "Offline governed storage safety seed"
+    },
+    {
+      "id": "offline-home-care-after-surgery",
+      "title": "Home Care After Surgery",
+      "category": "Care Transitions",
+      "keywords": ["surgery", "recovery", "discharge", "wound", "fever", "pain", "swelling", "bleeding", "shortness of breath", "clot", "follow-up"],
+      "summary": "Surgery recovery support organizes discharge instructions, wound changes, temperature, pain trend, swelling, bleeding, medicines, bowel or urine status, mobility, and follow-up timing.",
+      "safetyNotes": "Chest pain, severe breathlessness, heavy bleeding, fever with worsening wound, confusion, fainting, one-leg swelling, or severe pain needs urgent real-world care.",
+      "source": "Offline governed surgical recovery seed"
+    },
+    {
+      "id": "offline-home-monitoring-basics",
+      "title": "Home Monitoring Basics",
+      "category": "Vitals",
+      "keywords": ["home monitoring", "bp", "blood pressure", "blood sugar", "oxygen saturation", "pulse", "temperature", "weight", "log", "trend", "device"],
+      "summary": "Home monitoring education organizes BP, pulse, oxygen saturation, temperature, blood sugar, weight, device technique, symptoms, medicine timing, meals, and trend logs.",
+      "safetyNotes": "Chest pain, severe breathlessness, fainting, confusion, stroke-like symptoms, severe weakness, or rapidly worsening readings need real-world care.",
+      "source": "Offline governed home monitoring seed"
+    },
+    {
+      "id": "offline-pregnancy-warning-signs",
+      "title": "Pregnancy Warning Signs",
+      "category": "Maternal Health",
+      "keywords": ["pregnancy", "pregnant", "bleeding", "severe headache", "vision changes", "swelling", "abdominal pain", "baby movement", "blood pressure", "preeclampsia"],
+      "summary": "Pregnancy safety support organizes gestational age, bleeding, pain, fever, BP, swelling, headache, vision symptoms, baby movement, urine symptoms, prenatal medicines, and maternity-care contact questions.",
+      "safetyNotes": "Heavy bleeding, severe abdominal pain, severe headache, vision changes, fainting, seizures, chest pain, breathing trouble, high BP symptoms, fever with weakness, or reduced baby movement needs urgent maternity care.",
+      "source": "Offline governed maternal warning-sign seed"
+    },
+    {
+      "id": "offline-newborn-infant-care-signals",
+      "title": "Newborn and Infant Care Signals",
+      "category": "Pediatric Guidance",
+      "keywords": ["newborn", "infant", "baby", "fever", "feeding", "wet diapers", "breathing", "dehydration", "jaundice", "vomiting", "lethargy"],
+      "summary": "Infant safety support organizes age, temperature, feeding, wet diapers, stool changes, breathing effort, skin color, rash, jaundice, sleepiness, crying pattern, prematurity, vaccine status, and pediatric contact questions.",
+      "safetyNotes": "Fever in a very young infant, breathing trouble, blue lips, poor responsiveness, dehydration signs, persistent vomiting, seizure, or rapidly worsening symptoms needs urgent pediatric care.",
+      "source": "Offline governed infant safety seed"
+    },
+    {
+      "id": "offline-child-cough-breathing",
+      "title": "Child Cough and Breathing Review",
+      "category": "Pediatric Guidance",
+      "keywords": ["child cough", "child breathing", "wheeze", "asthma", "croup", "fever", "chest retractions", "fast breathing", "inhaler", "blue lips"],
+      "summary": "Child respiratory support organizes age, cough duration, fever, breathing rate, chest pulling, wheeze, stridor, hydration, asthma plan, medicine use, triggers, and pediatric review questions.",
+      "safetyNotes": "Blue lips, severe breathing trouble, chest pulling, grunting, fainting, confusion, dehydration, or inability to drink or speak normally needs urgent pediatric care.",
+      "source": "Offline governed pediatric respiratory seed"
+    },
+    {
+      "id": "offline-dengue-mosquito-fever",
+      "title": "Dengue and Mosquito Fever Safety",
+      "category": "Infection and Fever",
+      "keywords": ["dengue", "mosquito fever", "body pain", "rash", "bleeding", "platelet", "abdominal pain", "vomiting", "hydration", "tropical fever"],
+      "summary": "Mosquito-fever support organizes fever days, body pain, rash, bleeding, vomiting, abdominal pain, dizziness, urine output, fluids, travel, exposure, lab trends, and safe testing questions.",
+      "safetyNotes": "Bleeding, black stools, severe abdominal pain, persistent vomiting, fainting, confusion, cold clammy skin, breathing trouble, or very low urine needs urgent care.",
+      "source": "Offline governed mosquito-fever safety seed"
+    },
+    {
+      "id": "offline-malaria-travel-fever",
+      "title": "Malaria and Travel Fever Questions",
+      "category": "Travel Health",
+      "keywords": ["malaria", "travel fever", "chills", "sweating", "headache", "vomiting", "mosquito", "tropical", "antimalarial", "return from trip"],
+      "summary": "Travel-fever support organizes destination, return date, rural exposure, mosquito bites, fever pattern, chills, sweating, vomiting, diarrhea, rash, jaundice, confusion, vaccines, and prevention medicines.",
+      "safetyNotes": "Confusion, fainting, severe weakness, breathing trouble, jaundice, seizure, severe dehydration, or fever after travel to a malaria-risk area needs prompt real-world care.",
+      "source": "Offline governed travel-fever seed"
+    },
+    {
+      "id": "offline-eye-redness-vision-change",
+      "title": "Eye Redness and Vision Change Safety",
+      "category": "Medical Atlas",
+      "keywords": ["eye redness", "vision change", "eye pain", "blurry vision", "light sensitivity", "contact lens", "eye injury", "chemical exposure", "flashes", "floaters"],
+      "summary": "Eye-symptom support organizes pain, vision change, light sensitivity, injury, chemical exposure, contact lens use, discharge, redness pattern, headache, flashes, floaters, and eye-care questions.",
+      "safetyNotes": "Sudden vision loss, severe eye pain, chemical exposure, eye injury, new flashes or curtain shadow, double vision with weakness, or severe headache needs urgent eye or emergency care.",
+      "source": "Offline governed eye safety seed"
+    },
+    {
+      "id": "offline-dental-pain-gum-infection",
+      "title": "Dental Pain and Gum Infection Questions",
+      "category": "Medical Atlas",
+      "keywords": ["dental pain", "tooth pain", "gum swelling", "abscess", "fever", "face swelling", "bleeding", "jaw pain", "mouth ulcer", "wisdom tooth"],
+      "summary": "Dental support organizes pain location, swelling, fever, bleeding, pus, bad taste, injury, chewing pain, hot or cold sensitivity, ulcers, dental procedures, diabetes, immune risk, and dental-care questions.",
+      "safetyNotes": "Face or neck swelling, trouble breathing or swallowing, fever with severe dental pain, eye swelling, confusion, or severe weakness needs urgent care.",
+      "source": "Offline governed dental safety seed"
+    },
+    {
+      "id": "offline-ear-vertigo-hearing",
+      "title": "Ear Pain, Vertigo, and Hearing Review",
+      "category": "Medical Atlas",
+      "keywords": ["ear pain", "vertigo", "dizziness", "hearing loss", "ringing", "ear discharge", "balance", "nausea", "facial weakness", "head injury"],
+      "summary": "Ear and balance support organizes pain, hearing change, ringing, discharge, vertigo pattern, nausea, recent infection, injury, medicines, dizziness type, and neurologic warning signs.",
+      "safetyNotes": "Sudden hearing loss, facial droop, one-sided weakness, slurred speech, severe headache, fainting, chest pain, or head injury needs urgent real-world care.",
+      "source": "Offline governed ear and balance seed"
+    },
+    {
+      "id": "offline-eczema-skin-allergy",
+      "title": "Eczema and Skin Allergy Review",
+      "category": "Skin and Allergy",
+      "keywords": ["eczema", "dermatitis", "skin allergy", "itch", "rash", "dry skin", "hives", "trigger", "moisturizer", "infection"],
+      "summary": "Skin-allergy support organizes rash location, appearance, itch, pain, fever, swelling, blisters, drainage, medicines, foods, soaps, cosmetics, work exposure, photos, and trigger tracking.",
+      "safetyNotes": "Breathing trouble, face or throat swelling, fainting, severe blistering, fever with rapidly spreading rash, or skin pain with severe illness needs urgent care.",
+      "source": "Offline governed skin allergy seed"
+    },
+    {
+      "id": "offline-breast-lump-screening",
+      "title": "Breast Lump and Screening Questions",
+      "category": "Medical Atlas",
+      "keywords": ["breast lump", "breast pain", "nipple discharge", "skin dimpling", "mammogram", "screening", "family history", "breast cancer", "breastfeeding"],
+      "summary": "Breast-health support organizes lump features, pain, skin changes, nipple discharge, menstrual cycle, breastfeeding, family history, screening history, and imaging-report questions.",
+      "safetyNotes": "Fever with breast redness and severe pain, rapidly worsening swelling, bloody nipple discharge, new skin dimpling, or a new persistent lump needs real-world clinical review.",
+      "source": "Offline governed breast health seed"
+    },
+    {
+      "id": "offline-senior-fall-risk-frailty",
+      "title": "Senior Fall Risk and Frailty",
+      "category": "Geriatric Care",
+      "keywords": ["senior", "elderly", "fall", "frailty", "dizziness", "balance", "walker", "cane", "memory", "medicines", "osteoporosis", "home safety"],
+      "summary": "Geriatric fall-risk support organizes previous falls, dizziness, medicines, BP changes, vision, footwear, home hazards, strength, memory, continence, bone health, caregiver support, and near-fall patterns.",
+      "safetyNotes": "Fall with head injury, blood thinner use, hip pain, inability to walk, confusion, fainting, severe headache, one-sided weakness, or severe back pain needs urgent care.",
+      "source": "Offline governed geriatric fall-risk seed"
+    },
+    {
+      "id": "offline-smoking-cessation-lung-protection",
+      "title": "Smoking Cessation and Lung Protection",
+      "category": "Prevention",
+      "keywords": ["smoking", "quit smoking", "tobacco", "nicotine", "vaping", "copd", "lung cancer", "cough", "breathless", "heart disease", "secondhand smoke"],
+      "summary": "Smoking-cessation support organizes tobacco or vaping type, daily amount, triggers, past quit attempts, withdrawal, cough, breathlessness, heart risk, pregnancy, household exposure, support options, and follow-up questions.",
+      "safetyNotes": "Chest pain, severe breathlessness, coughing blood, fainting, confusion, or unexplained weight loss needs real-world medical care.",
+      "source": "Offline governed tobacco and lung-protection seed"
+    },
+    {
+      "id": "offline-kidney-stones-flank-pain",
+      "title": "Kidney Stones and Flank Pain",
+      "category": "Kidney and Hydration",
+      "keywords": ["kidney stone", "kidney stones", "flank pain", "back pain", "groin pain", "blood in urine", "fever", "chills", "vomiting", "cloudy urine", "burning urination"],
+      "summary": "Kidney-stone support organizes flank or groin pain, urine color, fever, chills, vomiting, hydration, prior stone history, kidney reports, urine tests, imaging questions, and prevention follow-up topics.",
+      "safetyNotes": "Fever or chills with flank pain, persistent vomiting, severe uncontrolled pain, confusion, pregnancy, one kidney, or very low urine output needs urgent care.",
+      "source": "Offline governed kidney-stone safety seed"
+    },
+    {
+      "id": "offline-appendicitis-like-belly-pain",
+      "title": "Appendicitis-Like Belly Pain",
+      "category": "Urgent Safety",
+      "keywords": ["appendicitis", "appendix", "right lower abdominal pain", "belly button pain", "nausea", "vomiting", "loss of appetite", "fever", "cannot pass gas", "pregnancy"],
+      "summary": "Appendicitis-like belly-pain support organizes pain start, location, movement, appetite loss, nausea, vomiting, fever, bowel changes, pregnancy possibility, and urgent assessment questions.",
+      "safetyNotes": "Severe or worsening abdominal pain, rigid abdomen, fever with vomiting, fainting, pregnancy with pain, blood in stool, or inability to keep fluids down needs urgent care.",
+      "source": "Offline governed abdominal-pain safety seed"
+    },
+    {
+      "id": "offline-gallbladder-upper-right-pain",
+      "title": "Gallbladder and Upper Right Belly Pain",
+      "category": "Digestive Health",
+      "keywords": ["gallbladder", "gallstones", "upper right abdominal pain", "fatty meal", "nausea", "vomiting", "fever", "jaundice", "right shoulder pain", "bilirubin"],
+      "summary": "Gallbladder-style pain support organizes upper-right or upper-middle pain, meal timing, nausea, vomiting, fever, jaundice, dark urine, pale stool, right shoulder pain, liver tests, and ultrasound questions.",
+      "safetyNotes": "Severe persistent upper belly pain, fever, yellow eyes, confusion, fainting, chest pressure, breathing trouble, or persistent vomiting needs urgent care.",
+      "source": "Offline governed upper-abdominal-pain seed"
+    },
+    {
+      "id": "offline-hepatitis-testing-prevention",
+      "title": "Hepatitis Testing and Prevention",
+      "category": "Infection and Fever",
+      "keywords": ["hepatitis", "hepatitis b", "hepatitis c", "liver infection", "jaundice", "testing", "vaccine", "exposure", "blood", "body fluids", "dark urine", "pregnancy"],
+      "summary": "Hepatitis education organizes exposure history, vaccination, testing, pregnancy status, jaundice, dark urine, pale stool, fever, fatigue, abdominal pain, AST, ALT, bilirubin, and hepatitis-panel questions.",
+      "safetyNotes": "Confusion, vomiting blood, black stools, severe abdominal pain, fainting, severe weakness, or rapidly worsening jaundice needs urgent care.",
+      "source": "Offline governed hepatitis testing seed"
+    },
+    {
+      "id": "offline-diabetes-foot-care",
+      "title": "Diabetes Foot Care and Warning Signs",
+      "category": "Diabetes and Endocrine",
+      "keywords": ["diabetes foot", "foot ulcer", "blister", "sore", "numbness", "tingling", "burning", "color change", "temperature change", "cracked skin", "toenail", "foot infection"],
+      "summary": "Diabetes foot-care support organizes daily checks, cuts, blisters, ulcers, redness, swelling, drainage, odor, numbness, burning, color or temperature changes, shoe pressure, glucose pattern, and podiatry questions.",
+      "safetyNotes": "Foot ulcer, spreading redness, pus, fever, black or blue skin, severe pain, new numbness, or diabetes with a worsening foot wound needs prompt real-world care.",
+      "source": "Offline governed diabetes foot-care seed"
+    },
+    {
+      "id": "offline-prostate-urinary-flow",
+      "title": "Prostate and Urinary Flow Questions",
+      "category": "Medical Atlas",
+      "keywords": ["prostate", "urinary flow", "weak stream", "frequent urination", "night urination", "urinary retention", "blood in urine", "psa", "older men", "urine test"],
+      "summary": "Prostate and urinary-flow support organizes weak stream, starting trouble, dribbling, night urination, urgency, pain, fever, blood in urine, back pain, medicines, caffeine timing, PSA discussion, and urine-test questions.",
+      "safetyNotes": "Inability to urinate, fever with urinary symptoms, severe back or lower belly pain, blood in urine, confusion, or severe weakness needs urgent care.",
+      "source": "Offline governed urinary-flow seed"
+    },
+    {
+      "id": "offline-heavy-periods-anemia-risk",
+      "title": "Heavy Periods and Anemia Risk",
+      "category": "Maternal Health",
+      "keywords": ["heavy periods", "menstrual bleeding", "anemia", "fatigue", "dizziness", "clots", "pregnancy", "pelvic pain", "hemoglobin", "iron", "ferritin"],
+      "summary": "Heavy-period support organizes bleeding days, pad or tampon frequency, clots, dizziness, fatigue, breathlessness, pelvic pain, pregnancy possibility, medicines, hemoglobin, ferritin, and gynecology questions.",
+      "safetyNotes": "Soaking pads very quickly, fainting, chest pain, severe weakness, pregnancy with bleeding, severe pelvic pain, or bleeding after menopause needs prompt care.",
+      "source": "Offline governed heavy-bleeding seed"
+    },
+    {
+      "id": "offline-pcos-irregular-periods",
+      "title": "PCOS and Irregular Period Questions",
+      "category": "Diabetes and Endocrine",
+      "keywords": ["pcos", "irregular periods", "acne", "hair growth", "weight", "insulin resistance", "fertility", "diabetes", "cholesterol", "thyroid", "hormones"],
+      "summary": "PCOS-style review organizes cycle dates, missed periods, pregnancy possibility, acne, hair growth, weight trend, mood, sleep, HbA1c, cholesterol, thyroid reports, medicines, ultrasound history, and metabolic screening questions.",
+      "safetyNotes": "Severe pelvic pain, heavy bleeding, fainting, pregnancy with pain or bleeding, or bleeding after menopause needs prompt care.",
+      "source": "Offline governed irregular-period seed"
+    },
+    {
+      "id": "offline-diarrhea-dehydration",
+      "title": "Diarrhea and Dehydration Safety",
+      "category": "Infection and Fever",
+      "keywords": ["diarrhea", "loose stool", "dehydration", "vomiting", "blood in stool", "fever", "travel", "food poisoning", "dry mouth", "low urine"],
+      "summary": "Diarrhea support organizes duration, stool frequency, blood, fever, vomiting, hydration, urine output, food exposure, travel, antibiotics, sick contacts, age, pregnancy, and immune-risk context.",
+      "safetyNotes": "Blood in stool, black stool, severe dehydration, confusion, fainting, severe abdominal pain, persistent vomiting, high fever, infant or older adult dehydration, or pregnancy with severe diarrhea needs urgent care.",
+      "source": "Offline governed diarrhea dehydration seed"
+    },
+    {
+      "id": "offline-burn-care-basics",
+      "title": "Burn Care Basics",
+      "category": "First Aid",
+      "keywords": ["burn", "scald", "chemical burn", "electrical burn", "blister", "face burn", "hand burn", "genital burn", "large burn", "smoke inhalation", "tetanus"],
+      "summary": "Burn-safety support organizes burn time, cause, body location, size, blisters, skin color, pain, first aid, chemical or electrical exposure, smoke inhalation, tetanus status, diabetes, and infection signs.",
+      "safetyNotes": "Large, deep, chemical, electrical, face, hand, genital, joint-area burns, smoke inhalation, breathing trouble, severe pain, or infection signs need urgent care.",
+      "source": "Offline governed burn safety seed"
+    },
+    {
+      "id": "offline-poisoning-overdose-safety",
+      "title": "Poisoning and Overdose Safety",
+      "category": "Urgent Safety",
+      "keywords": ["poisoning", "overdose", "swallowed medicine", "too much medicine", "chemical exposure", "alcohol", "opioid", "child poisoning", "unconscious", "confusion", "breathing trouble"],
+      "summary": "Poisoning and overdose support prioritizes real-world poison-control or emergency guidance while organizing substance name, amount, timing, route, symptoms, age, weight, labels, other medicines, and current location.",
+      "safetyNotes": "Unconsciousness, breathing trouble, seizure, severe sleepiness, chest pain, self-harm concern, child ingestion, chemical exposure, or unknown overdose needs immediate real-world help.",
+      "source": "Offline governed poisoning overdose seed"
+    },
+    {
+      "id": "offline-asthma-action-plan-questions",
+      "title": "Asthma Action Plan and Peak Flow Questions",
+      "category": "Respiratory",
+      "keywords": ["asthma action plan", "peak flow", "inhaler", "wheeze", "trigger", "night symptoms", "rescue inhaler", "spacer", "oxygen", "breathing"],
+      "summary": "Asthma action-plan support organizes symptoms, triggers, nighttime waking, activity limits, inhaler technique, spacer use, peak-flow zones, rescue-medicine questions, oxygen readings, and clinician follow-up prompts.",
+      "safetyNotes": "Severe breathing trouble, blue lips, confusion, fainting, inability to speak normally, or rapidly worsening breathing needs urgent real-world care.",
+      "source": "Offline governed asthma action-plan seed"
+    },
+    {
+      "id": "offline-stroke-prevention-recovery",
+      "title": "Stroke Prevention and Recovery Questions",
+      "category": "Neurology",
+      "keywords": ["stroke", "fast", "face droop", "arm weakness", "speech trouble", "last known well", "rehab", "recovery", "blood pressure", "cholesterol", "diabetes"],
+      "summary": "Stroke atlas support organizes FAST warning signs, last-known-well time, sudden neurologic symptoms, risk-factor questions, rehabilitation topics, caregiver needs, and recurrence-prevention discussion points.",
+      "safetyNotes": "Sudden face droop, arm weakness, speech trouble, vision change, confusion, severe dizziness, or sudden severe headache needs urgent real-world care.",
+      "source": "Offline governed stroke atlas seed"
+    },
+    {
+      "id": "offline-heart-attack-recovery",
+      "title": "Heart Attack Recovery Questions",
+      "category": "Cardiovascular",
+      "keywords": ["heart attack", "myocardial infarction", "cardiac rehab", "stent", "bypass", "chest pain", "shortness of breath", "aspirin", "statin", "follow up"],
+      "summary": "Heart recovery support organizes discharge instructions, cardiac rehabilitation, activity questions, medicine safety, BP, cholesterol, diabetes, symptoms, and cardiology follow-up needs.",
+      "safetyNotes": "Chest pressure, pain spreading to arm or jaw, severe breathlessness, fainting, sweating, or sudden weakness needs urgent real-world care.",
+      "source": "Offline governed cardiac recovery seed"
+    },
+    {
+      "id": "offline-chronic-kidney-disease-basics",
+      "title": "Chronic Kidney Disease Basics",
+      "category": "Kidney and Hydration",
+      "keywords": ["chronic kidney disease", "ckd", "egfr", "creatinine", "urine albumin", "urine protein", "potassium", "blood pressure", "diabetes", "nsaid"],
+      "summary": "Kidney atlas support explains eGFR, creatinine, urine protein, potassium, BP, diabetes, hydration, medicine-safety questions, and why trends need clinician review.",
+      "safetyNotes": "No urination, confusion, severe swelling, chest pain, severe breathlessness, very high potassium wording, or severe dehydration needs urgent care.",
+      "source": "Offline governed CKD atlas seed"
+    },
+    {
+      "id": "offline-adult-uti-questions",
+      "title": "Adult UTI and Urine Symptom Questions",
+      "category": "Infection and Fever",
+      "keywords": ["uti", "urinary tract infection", "burning urine", "frequency", "urgency", "fever", "flank pain", "blood in urine", "pregnancy", "kidney", "diabetes"],
+      "summary": "Adult UTI support organizes urine symptoms, fever, flank pain, pregnancy, diabetes, kidney history, urine report wording, allergy history, and clinician-review questions.",
+      "safetyNotes": "Fever with flank pain, confusion, severe weakness, pregnancy with urinary symptoms, vomiting, blood in urine with severe pain, or very low urine needs prompt care.",
+      "source": "Offline governed adult UTI atlas seed"
+    },
+    {
+      "id": "offline-vaccine-immunization-planner",
+      "title": "Vaccine and Immunization Planner",
+      "category": "Prevention",
+      "keywords": ["vaccine", "vaccination", "immunization", "adult vaccine", "child vaccine", "senior", "pregnancy", "travel vaccine", "tetanus", "flu", "hepatitis", "hpv"],
+      "summary": "Vaccine planning support organizes age, pregnancy, travel, chronic disease, immune status, work exposure, prior reactions, vaccine dates, and clinician confirmation questions.",
+      "safetyNotes": "Severe allergic reaction symptoms after a vaccine need urgent real-world care. Eligibility and contraindication decisions require a licensed care team.",
+      "source": "Offline governed immunization planner seed"
+    },
+    {
+      "id": "offline-adult-screening-checklist",
+      "title": "Adult Screening Checklist",
+      "category": "Prevention",
+      "keywords": ["screening", "preventive care", "blood pressure", "diabetes", "cholesterol", "cancer screening", "colon", "breast", "cervical", "prostate", "lung", "skin", "dental", "eye"],
+      "summary": "Adult screening support organizes preventive checks by age, sex, family history, smoking, pregnancy, chronic disease, vaccine status, last-test dates, and doctor-visit questions.",
+      "safetyNotes": "New symptoms, unexplained bleeding, lumps, chest pain, severe breathlessness, or neurologic symptoms should not wait for routine screening.",
+      "source": "Offline governed preventive screening seed"
+    },
+    {
+      "id": "offline-vitamin-deficiency-guide",
+      "title": "Vitamin D, B12, Iron, and Fatigue Guide",
+      "category": "Lab Explanation",
+      "keywords": ["vitamin d", "b12", "iron", "ferritin", "anemia", "fatigue", "numbness", "tingling", "bone pain", "vegan diet", "heavy periods"],
+      "summary": "Vitamin and deficiency support organizes fatigue, dizziness, numbness, diet pattern, heavy bleeding, pregnancy, gut symptoms, hemoglobin, ferritin, B12, vitamin D, and trend questions.",
+      "safetyNotes": "Chest pain, fainting, severe breathlessness, black stools, heavy bleeding, or neurologic weakness needs real-world care. Supplement dosing requires clinician guidance.",
+      "source": "Offline governed vitamin deficiency seed"
+    },
+    {
+      "id": "offline-generic-brand-medicine-guide",
+      "title": "Generic and Brand Medicine Guide",
+      "category": "Medication Safety",
+      "keywords": ["generic", "brand", "active ingredient", "medicine label", "duplicate medicine", "substitution", "pharmacy", "side effect", "interaction"],
+      "summary": "Generic and brand medicine support explains active ingredients, duplicate-product checks, label details, OTC and supplement inclusion, and pharmacist-ready safety questions.",
+      "safetyNotes": "The app must not stop, substitute, double, combine, prescribe, or dose medicines. Severe allergy signs or severe side effects need urgent care.",
+      "source": "Offline governed medicine naming seed"
+    },
+    {
+      "id": "offline-medicine-storage-travel",
+      "title": "Medicine Storage and Travel Kit",
+      "category": "Medication Safety",
+      "keywords": ["medicine storage", "travel medicine", "refrigeration", "insulin", "inhaler", "time zone", "lost medicine", "heat", "humidity", "refill"],
+      "summary": "Medicine travel support organizes label instructions, storage needs, supply, refills, time zones, heat exposure, travel dates, refrigeration access, and pharmacist questions.",
+      "safetyNotes": "Dose timing, substitution, skipped-dose, or replacement decisions require pharmacist or clinician guidance. Lost critical medicine or severe symptoms need real-world care.",
+      "source": "Offline governed medicine travel seed"
+    },
+    {
+      "id": "offline-home-monitoring-caregiver-log",
+      "title": "Home Monitoring and Caregiver Log",
+      "category": "Caregiver Support",
+      "keywords": ["caregiver", "home monitoring", "blood pressure", "blood sugar", "pulse", "oxygen", "temperature", "weight", "medicines", "falls", "discharge", "records"],
+      "summary": "Caregiver log support pairs readings with symptoms, time, medicines, hydration, food, sleep, falls, discharge instructions, upcoming visits, and doctor-ready questions.",
+      "safetyNotes": "Chest pain, severe breathlessness, confusion, fainting, stroke signs, severe dehydration, or rapidly worsening symptoms needs urgent care.",
+      "source": "Offline governed caregiver monitoring seed"
+    },
+    {
+      "id": "offline-allergy-sinus-rhinitis",
+      "title": "Allergy, Sinus, and Rhinitis Questions",
+      "category": "Respiratory",
+      "keywords": ["allergy", "sinus", "rhinitis", "sneezing", "runny nose", "blocked nose", "pollen", "dust", "facial pain", "antihistamine", "nasal spray", "asthma"],
+      "summary": "Allergy and sinus support organizes nasal symptoms, eye symptoms, fever, face pain, triggers, asthma context, seasonality, medicine-safety questions, and red flags.",
+      "safetyNotes": "Trouble breathing, face or throat swelling, severe headache, confusion, stiff neck, eye swelling, or vision change needs urgent care.",
+      "source": "Offline governed allergy sinus seed"
+    },
+    {
+      "id": "offline-bmi-metabolic-health",
+      "title": "BMI and Metabolic Health",
+      "category": "Lifestyle",
+      "keywords": ["bmi", "weight", "waist", "obesity", "metabolic health", "diabetes", "cholesterol", "blood pressure", "fatty liver", "sleep apnea", "nutrition", "activity"],
+      "summary": "BMI and metabolic support explains BMI as a screening measure and connects weight trends with BP, glucose, cholesterol, sleep, liver, joints, medicines, activity, and clinician-review questions.",
+      "safetyNotes": "Rapid unexplained weight loss, chest pain, severe breathlessness, fainting, eating-disorder concerns, or severe depression needs real-world care.",
+      "source": "Offline governed metabolic health seed"
+    },
+    {
+      "id": "offline-post-discharge-recovery",
+      "title": "Post-Discharge Recovery Checklist",
+      "category": "Care Transitions",
+      "keywords": ["discharge", "post discharge", "hospital recovery", "medicine changes", "wound care", "follow up", "readmission", "caregiver", "records", "symptoms"],
+      "summary": "Post-discharge support organizes discharge date, diagnosis wording, new and stopped medicines, wound instructions, activity limits, diet, follow-up appointments, symptoms, and caregiver questions.",
+      "safetyNotes": "Chest pain, severe breathlessness, confusion, fainting, uncontrolled bleeding, worsening wound infection, or rapid decline needs urgent care.",
+      "source": "Offline governed post-discharge recovery seed"
+    },
+    {
+      "id": "offline-medical-terms-decoder",
+      "title": "Medical Terms Decoder",
+      "category": "Medical Atlas",
+      "keywords": ["medical terms", "glossary", "impression", "findings", "abnormal", "benign", "acute", "chronic", "differential diagnosis", "follow up", "rule out", "report"],
+      "summary": "Medical terms support converts common report wording into plain language and doctor-ready questions while preserving official report meaning and safety boundaries.",
+      "safetyNotes": "Critical report wording or severe symptoms should be reviewed with the care team promptly. The app does not interpret images or diagnose.",
+      "source": "Offline governed medical glossary seed"
+    }
+  ]
+}

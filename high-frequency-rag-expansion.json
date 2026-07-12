@@ -1,0 +1,420 @@
+{
+  "id": "high-frequency-rag-expansion",
+  "name": "High-Frequency Offline RAG Expansion Pack",
+  "version": "1.0.0",
+  "sourceFamily": "clinical-reference-pack",
+  "description": "High-frequency symptom, medicine, hydration, respiratory, digestive, urinary, pain, and home-monitoring records tuned for stronger offline general and medicine retrieval.",
+  "reviewStatus": "local pack requires clinician, pharmacy, and safety review before production medical use",
+  "updateCadence": "quarterly-or-when-approved-content-changes",
+  "records": [
+    {
+      "id": "pack-headache-bp-neuro-review",
+      "title": "Headache with Blood Pressure and Neurologic Warning Review",
+      "category": "General",
+      "contentType": "general",
+      "keywords": ["headache", "high blood pressure", "bp", "vision change", "nausea", "sudden headache", "dizziness", "stress", "migraine", "neurologic warning"],
+      "summary": "Organizes headache using onset, location, blood pressure, hydration, sleep, medicine timing, vision change, nausea, and sudden neurologic symptoms before choosing the next safe step.",
+      "safetyNotes": "Sudden severe headache, weakness, speech trouble, fainting, seizure, severe high blood pressure symptoms, or new confusion needs urgent real-world assessment.",
+      "aliases": ["headache safety organizer", "bp headache review"],
+      "relatedTerms": ["repeat bp", "worst headache", "vision symptoms", "neurologic change"],
+      "whatToTrack": [
+        "When the headache started, whether it was sudden or gradual, where it is located, and whether it is improving or worsening.",
+        "Repeat BP if available, recent sleep, hydration, stress, caffeine, food intake, and medicine timing.",
+        "Associated symptoms such as nausea, light sensitivity, vision change, numbness, weakness, speech change, or neck stiffness."
+      ],
+      "careQuestions": [
+        "Which headache features suggest routine review versus same-day or urgent care?",
+        "How should blood pressure, dehydration, missed food, or medicine timing change the follow-up threshold?"
+      ],
+      "precautions": [
+        "Do not treat a sudden severe headache or new neurologic symptom as a routine stress headache.",
+        "Do not make blood-pressure dose changes from one headache episode without clinician direction."
+      ],
+      "maintenanceTags": ["general", "headache", "blood-pressure"]
+    },
+    {
+      "id": "pack-dizziness-bp-glucose-medicine-review",
+      "title": "Dizziness with Blood Pressure, Glucose, and Medicine Timing Review",
+      "category": "General",
+      "contentType": "general",
+      "keywords": ["dizziness", "lightheaded", "standing", "blood pressure", "glucose", "dehydration", "amlodipine", "losartan", "missed meal", "fainting"],
+      "summary": "Builds a dizziness review around standing position, hydration, blood pressure, glucose, missed meals, heat, infection, recent medicines, and fall risk.",
+      "safetyNotes": "Fainting, chest pain, severe breathing trouble, new weakness, black stool, repeated vomiting, or confusion needs urgent medical review.",
+      "aliases": ["lightheaded review", "dizzy when standing guide"],
+      "relatedTerms": ["positional dizziness", "missed meal", "blood sugar change", "fall risk"],
+      "populationTags": ["older-adult", "longitudinal-care"],
+      "whatToTrack": [
+        "Whether dizziness happens at rest, after standing, after medicines, after missed food, or during illness.",
+        "Fluid intake, BP or glucose readings if available, recent fever, diarrhea, vomiting, and temperature exposure.",
+        "Any fall, near-fall, fainting, chest pressure, palpitations, or neurologic changes."
+      ],
+      "careQuestions": [
+        "Could dehydration, low food intake, medicine timing, or BP change explain this pattern?",
+        "Which symptoms or readings mean this should move out of routine monitoring?"
+      ],
+      "precautions": [
+        "Avoid driving, ladders, and risky activity until the dizziness pattern is clearer and you feel steady.",
+        "Do not ignore dizziness when it comes with fainting, chest symptoms, or new neurologic change."
+      ],
+      "maintenanceTags": ["general", "dizziness", "fall-risk"]
+    },
+    {
+      "id": "pack-viral-cough-fever-home-review",
+      "title": "Cough, Fever, and Home Respiratory Review",
+      "category": "Respiratory",
+      "contentType": "general",
+      "keywords": ["cough", "fever", "viral illness", "sputum", "breathing", "oxygen", "chills", "body aches", "respiratory infection", "shortness of breath"],
+      "summary": "Structures cough and fever using breathing effort, sputum change, oxygen wording, hydration, fever trend, sick contacts, and home monitoring before follow-up planning.",
+      "safetyNotes": "Breathing trouble, low oxygen, blue lips, chest pain, confusion, dehydration, or fast worsening illness needs prompt medical care.",
+      "aliases": ["fever cough home guide", "respiratory illness organizer"],
+      "relatedTerms": ["fever trend", "breathing effort", "sputum color", "oxygen check"],
+      "whatToTrack": [
+        "Temperature pattern, cough frequency, sputum color or amount, hydration, and sleep disruption.",
+        "Any oxygen reading if available, breathing effort, wheeze, chest discomfort, and ability to speak normally.",
+        "Duration, exposure history, home medicines taken, and whether symptoms are improving or worsening."
+      ],
+      "careQuestions": [
+        "What warning signs separate routine viral review from same-day evaluation?",
+        "Which readings or symptoms matter most if cough and fever continue or worsen?"
+      ],
+      "precautions": [
+        "Do not rely on home monitoring alone when breathing is getting harder or oxygen is low.",
+        "Escalate sooner for chest pain, confusion, dehydration, or rapidly rising concern."
+      ],
+      "maintenanceTags": ["general", "respiratory", "fever"]
+    },
+    {
+      "id": "pack-sore-throat-hydration-redflag-review",
+      "title": "Sore Throat, Swallowing, and Hydration Review",
+      "category": "Respiratory",
+      "contentType": "general",
+      "keywords": ["sore throat", "swallowing pain", "fever", "voice change", "drooling", "tonsil", "cough", "hydration", "strep", "neck swelling"],
+      "summary": "Organizes sore-throat questions using fever, cough, swallowing difficulty, voice change, neck swelling, hydration, and exposure history while keeping airway warning signs visible.",
+      "safetyNotes": "Drooling, trouble breathing, inability to swallow fluids, severe neck swelling, dehydration, or rapidly worsening symptoms needs urgent assessment.",
+      "aliases": ["throat infection review", "swallowing symptom guide"],
+      "relatedTerms": ["voice change", "airway concern", "fluid intake", "neck gland swelling"],
+      "whatToTrack": [
+        "Fever, cough, runny nose, swallowing difficulty, and whether fluids are going down normally.",
+        "Voice changes, drooling, neck swelling, bad breath, or one-sided pain.",
+        "Hydration, urine output, home pain relief used, and illness duration."
+      ],
+      "careQuestions": [
+        "Which throat symptoms suggest routine follow-up versus a same-day airway check?",
+        "What should be tracked if the sore throat is not improving after hydration and rest?"
+      ],
+      "precautions": [
+        "Do not delay care when swallowing is failing or breathing feels affected.",
+        "Watch for dehydration if pain prevents normal fluid intake."
+      ],
+      "maintenanceTags": ["general", "sore-throat", "hydration"]
+    },
+    {
+      "id": "pack-urinary-burning-flank-review",
+      "title": "Urinary Burning, Frequency, and Flank-Pain Review",
+      "category": "General",
+      "contentType": "general",
+      "keywords": ["burning urine", "frequency", "urgency", "flank pain", "blood in urine", "fever", "urinary infection", "uti", "dehydration", "pregnancy"],
+      "summary": "Builds a urinary review around burning, urgency, frequency, fever, flank pain, blood in urine, hydration, pregnancy context, and prior UTI history.",
+      "safetyNotes": "Fever with flank pain, vomiting, pregnancy concerns, confusion, dehydration, or inability to pass urine needs prompt medical review.",
+      "aliases": ["uti symptom organizer", "urine burning review"],
+      "relatedTerms": ["kidney infection concern", "urine color", "hydration", "pelvic discomfort"],
+      "whatToTrack": [
+        "When the urinary symptoms started, whether there is fever, flank pain, or visible blood.",
+        "Fluid intake, urine amount, color, smell, and whether symptoms are getting worse.",
+        "Pregnancy context, prior stones or UTIs, vomiting, and whether pain is one-sided."
+      ],
+      "careQuestions": [
+        "Which urinary symptoms suggest simple follow-up versus same-day review for kidney involvement?",
+        "What details about fever, flank pain, pregnancy, or dehydration matter most for the next safe step?"
+      ],
+      "precautions": [
+        "Do not minimize urinary symptoms when fever, flank pain, or vomiting is also present.",
+        "Use urgent care sooner if urine flow drops sharply or confusion appears."
+      ],
+      "maintenanceTags": ["general", "urinary", "kidney"]
+    },
+    {
+      "id": "pack-acid-reflux-meal-pattern-review",
+      "title": "Acid Reflux, Meal Timing, and Chest-Burning Review",
+      "category": "Gastrointestinal",
+      "contentType": "general",
+      "keywords": ["acid reflux", "heartburn", "gerd", "sour taste", "meal timing", "chest burning", "regurgitation", "night symptoms", "bloating", "stomach acid"],
+      "summary": "Explains reflux-style symptoms using meal timing, trigger foods, lying down, cough, burping, chest-burning pattern, and medicine timing while separating emergency chest symptoms.",
+      "safetyNotes": "Crushing chest pain, breathing trouble, black stool, vomiting blood, trouble swallowing, or unplanned weight loss needs real-world medical review.",
+      "aliases": ["heartburn review", "reflux symptom organizer"],
+      "relatedTerms": ["meal trigger", "night reflux", "swallowing problem", "chest burning pattern"],
+      "whatToTrack": [
+        "Which foods, meal size, position, or late eating pattern trigger or worsen symptoms.",
+        "Whether symptoms are mainly throat, chest, upper stomach, or nighttime cough related.",
+        "Any black stool, vomiting, swallowing difficulty, weight loss, or chest pressure pattern."
+      ],
+      "careQuestions": [
+        "Which features fit reflux-style irritation and which need broader evaluation?",
+        "How should meal timing, weight, medicines, or nighttime symptoms affect follow-up?"
+      ],
+      "precautions": [
+        "Do not assume all chest burning is reflux if pressure, sweating, faintness, or breathlessness is present.",
+        "Escalate sooner for bleeding, swallowing trouble, or persistent worsening."
+      ],
+      "maintenanceTags": ["general", "reflux", "digestive"]
+    },
+    {
+      "id": "pack-vomiting-diarrhea-dehydration-review",
+      "title": "Vomiting, Diarrhea, and Dehydration Review",
+      "category": "Gastrointestinal",
+      "contentType": "general",
+      "keywords": ["vomiting", "diarrhea", "dehydration", "cannot keep fluids", "stomach bug", "fever", "blood in stool", "blood in vomit", "dizziness", "urine output"],
+      "summary": "Organizes stomach illness using fluid loss, vomiting frequency, diarrhea pattern, urine output, fever, blood, medicines, and glucose or blood-pressure context.",
+      "safetyNotes": "Blood in stool or vomit, severe weakness, confusion, fainting, no urine, major abdominal pain, or inability to keep fluids down needs urgent evaluation.",
+      "aliases": ["stomach bug hydration guide", "fluid loss review"],
+      "relatedTerms": ["oral fluids", "urine output", "dehydration dizziness", "medicine hold question"],
+      "whatToTrack": [
+        "Number of vomiting or diarrhea episodes, whether fluids stay down, and when urine was last passed normally.",
+        "Fever, severe pain, blood, sick contacts, food exposure, and whether symptoms are improving.",
+        "Glucose, blood pressure, dizziness, and current medicines when chronic conditions are present."
+      ],
+      "careQuestions": [
+        "What dehydration signals mean this should move beyond home monitoring?",
+        "Which chronic-condition or medicine issues should be raised early if vomiting or diarrhea continues?"
+      ],
+      "precautions": [
+        "Do not wait on routine advice if fluids are not staying down or urine output falls sharply.",
+        "Escalate for blood, confusion, fainting, or severe abdominal pain."
+      ],
+      "maintenanceTags": ["general", "dehydration", "digestive"]
+    },
+    {
+      "id": "pack-sinus-allergy-pressure-review",
+      "title": "Sinus Pressure, Congestion, and Allergy Review",
+      "category": "Respiratory",
+      "contentType": "general",
+      "keywords": ["sinus pressure", "congestion", "allergy", "runny nose", "face pressure", "ear pressure", "sneezing", "post nasal drip", "fever", "head pressure"],
+      "summary": "Structures sinus and allergy symptoms using congestion, facial pressure, fever, discharge, ear pressure, cough, trigger exposure, and home symptom pattern.",
+      "safetyNotes": "Eye swelling, severe headache, confusion, breathing trouble, facial swelling, or rapidly worsening symptoms needs urgent medical review.",
+      "aliases": ["sinus symptom organizer", "allergy congestion review"],
+      "relatedTerms": ["post nasal drip", "trigger exposure", "face pain", "ear fullness"],
+      "whatToTrack": [
+        "Whether symptoms follow allergy exposure, weather change, illness, or a longer congestion pattern.",
+        "Fever, facial pain, colored drainage, sleep disruption, ear pressure, and hydration.",
+        "Any vision issue, severe headache, swelling, or breathing change."
+      ],
+      "careQuestions": [
+        "Which details help separate likely irritation or allergy from a higher-risk infection review?",
+        "What warning signs matter most if face pressure or congestion is getting worse?"
+      ],
+      "precautions": [
+        "Do not dismiss severe headache, swelling, or eye symptoms as simple congestion.",
+        "Use a more urgent path if breathing trouble or confusion is present."
+      ],
+      "maintenanceTags": ["general", "sinus", "allergy"]
+    },
+    {
+      "id": "pack-back-strain-neuro-warning-review",
+      "title": "Back Strain, Sciatica, and Neurologic Warning Review",
+      "category": "Musculoskeletal",
+      "contentType": "general",
+      "keywords": ["back pain", "strain", "sciatica", "leg pain", "numbness", "weakness", "injury", "lifting", "fever", "bladder change"],
+      "summary": "Organizes back pain using injury timing, lifting, leg symptoms, numbness, weakness, fever, bladder or bowel change, and daily function impact.",
+      "safetyNotes": "Major injury, new weakness, numbness around the groin, bladder or bowel change, fever with severe pain, or inability to walk needs urgent assessment.",
+      "aliases": ["back pain red-flag guide", "sciatica review"],
+      "relatedTerms": ["lifting injury", "shooting leg pain", "walking limit", "bladder warning"],
+      "whatToTrack": [
+        "Where the pain is located, what movement worsens it, and whether it spreads to the leg or foot.",
+        "Any numbness, weakness, fall, fever, bladder change, bowel change, or walking difficulty.",
+        "Home measures used, sleep disruption, and whether pain is stable, improving, or worsening."
+      ],
+      "careQuestions": [
+        "Which symptoms fit a routine strain review and which require faster neurologic evaluation?",
+        "What function changes should be shared early if pain is not improving?"
+      ],
+      "precautions": [
+        "Do not ignore back pain when weakness, numbness, or bladder symptoms are present.",
+        "Use urgent care for severe injury, fever with pain, or inability to walk."
+      ],
+      "maintenanceTags": ["general", "back-pain", "neurologic-warning"]
+    },
+    {
+      "id": "pack-fatigue-anemia-thyroid-sleep-review",
+      "title": "Fatigue with Anemia, Thyroid, Sleep, and Illness Review",
+      "category": "General",
+      "contentType": "general",
+      "keywords": ["fatigue", "tired", "anemia", "thyroid", "sleep", "infection", "weight change", "breathless", "palpitations", "lab follow up"],
+      "summary": "Builds a fatigue review around sleep, stress, mood, fever, anemia language, thyroid language, weight change, medicines, and activity tolerance.",
+      "safetyNotes": "Chest pain, fainting, black stool, severe breathlessness, confusion, or rapidly worsening weakness needs real-world medical review.",
+      "aliases": ["fatigue organizer", "tiredness review"],
+      "relatedTerms": ["activity tolerance", "sleep debt", "lab trend", "weight change"],
+      "whatToTrack": [
+        "Sleep hours, snoring, stress, appetite, fever, and whether the fatigue is new or long standing.",
+        "Any palpitations, breathlessness, dizziness, bleeding history, weight change, or recent lab results.",
+        "Medicine changes, daily function impact, and whether rest improves symptoms."
+      ],
+      "careQuestions": [
+        "Which combinations of fatigue plus other symptoms suggest lab review, sleep review, or more urgent assessment?",
+        "What home readings, report values, or history details would sharpen the next safe step?"
+      ],
+      "precautions": [
+        "Do not treat severe weakness, bleeding signals, or breathlessness as routine tiredness.",
+        "Escalate sooner if the fatigue is rapidly worsening or paired with fainting or chest symptoms."
+      ],
+      "maintenanceTags": ["general", "fatigue", "lab-follow-up"]
+    },
+    {
+      "id": "pack-diabetes-foot-wound-check",
+      "title": "Diabetes Foot Wound, Redness, and Sensation Review",
+      "category": "Endocrinology",
+      "contentType": "specialist",
+      "keywords": ["diabetes foot", "wound", "redness", "drainage", "numbness", "ulcer", "swelling", "glucose", "infection", "healing"],
+      "summary": "Organizes diabetes foot concerns using wound timing, redness, warmth, drainage, glucose pattern, sensation loss, shoe pressure, and infection warning signs.",
+      "safetyNotes": "Rapidly spreading redness, foul drainage, fever, black tissue, severe swelling, or a new foot wound with diabetes needs prompt real-world evaluation.",
+      "aliases": ["diabetic foot check", "foot ulcer review"],
+      "relatedTerms": ["sensation loss", "drainage", "healing delay", "pressure area"],
+      "populationTags": ["longitudinal-care"],
+      "whatToTrack": [
+        "When the wound or redness was first seen, whether it is enlarging, and whether drainage or bad smell is present.",
+        "Glucose control pattern, walking pain, numbness, swelling, and shoe or pressure exposure.",
+        "Any fever, streaking redness, black tissue, or reduced ability to bear weight."
+      ],
+      "careQuestions": [
+        "Which wound features need same-day review rather than watchful home care?",
+        "What details about glucose, drainage, numbness, and pressure points matter for follow-up?"
+      ],
+      "precautions": [
+        "Do not keep a diabetes foot wound on a routine path if redness is spreading or drainage appears.",
+        "Use prompt in-person review for black tissue, fever, or fast worsening."
+      ],
+      "maintenanceTags": ["diabetes", "foot-care", "infection-watch"]
+    },
+    {
+      "id": "pack-metformin-gi-sickday-precautions",
+      "title": "Metformin Stomach Upset and Sick-Day Precaution Review",
+      "category": "Medication Safety",
+      "contentType": "medicine",
+      "sourceFamily": "medicine-reference-pack",
+      "keywords": ["metformin", "stomach upset", "diarrhea", "vomiting", "dehydration", "with food", "kidney", "sick day", "glucose", "medicine review"],
+      "summary": "Structures metformin questions around stomach upset, food timing, dehydration, vomiting, diarrhea, kidney context, and when pharmacist or clinician review is needed.",
+      "safetyNotes": "Severe vomiting, dehydration, confusion, fainting, or worsening illness should move beyond routine medicine review.",
+      "aliases": ["metformin food timing review", "metformin stomach guide"],
+      "relatedTerms": ["gi side effect", "sick-day question", "dehydration risk", "kidney context"],
+      "populationTags": ["longitudinal-care"],
+      "whatToTrack": [
+        "Whether the stomach symptoms happen after each dose, with specific meals, or mainly during illness.",
+        "Fluid intake, vomiting or diarrhea episodes, glucose readings, and kidney-related history.",
+        "Any inability to keep fluids down, worsening weakness, or major appetite drop."
+      ],
+      "careQuestions": [
+        "What label, food-timing, or pharmacist questions matter most for metformin stomach symptoms?",
+        "Which illness or dehydration signals mean the medicine question should be escalated sooner?"
+      ],
+      "precautions": [
+        "Do not make personal dose changes from app advice alone.",
+        "Escalate beyond routine review when vomiting, dehydration, confusion, or severe weakness is present."
+      ],
+      "maintenanceTags": ["pharmacy", "metformin", "sick-day"]
+    },
+    {
+      "id": "pack-amlodipine-swelling-dizziness-review",
+      "title": "Amlodipine Swelling and Dizziness Review",
+      "category": "Medication Safety",
+      "contentType": "medicine",
+      "sourceFamily": "medicine-reference-pack",
+      "keywords": ["amlodipine", "ankle swelling", "dizziness", "blood pressure medicine", "standing", "lightheaded", "edema", "bp reading", "medicine side effect", "fall risk"],
+      "summary": "Organizes amlodipine questions using ankle swelling, dizziness on standing, BP pattern, heat, hydration, salt intake, and fall-risk context.",
+      "safetyNotes": "Fainting, chest pain, severe breathing trouble, rapidly worsening swelling, or one-sided leg symptoms needs prompt medical review.",
+      "aliases": ["amlodipine side-effect guide", "swelling on bp medicine review"],
+      "relatedTerms": ["leg swelling", "postural dizziness", "bp medicine timing", "fall risk"],
+      "populationTags": ["older-adult", "longitudinal-care"],
+      "whatToTrack": [
+        "When swelling or dizziness happens in relation to the dose, heat, standing, travel, or salt-heavy meals.",
+        "BP readings, weight change, breathlessness, and whether swelling is both sides or one side.",
+        "Any fall, fainting, chest symptoms, or severe weakness."
+      ],
+      "careQuestions": [
+        "Which swelling or dizziness features are common discussion points and which need faster review?",
+        "What BP, weight, or symptom pattern should be shared with the next clinician or pharmacist discussion?"
+      ],
+      "precautions": [
+        "Do not stop the medicine on your own because of mild symptoms without pharmacist or clinician review.",
+        "Use urgent assessment for fainting, severe breathlessness, or rapidly worsening swelling."
+      ],
+      "maintenanceTags": ["pharmacy", "amlodipine", "blood-pressure-medicine"]
+    },
+    {
+      "id": "pack-losartan-missed-dose-nsaid-review",
+      "title": "Losartan Missed Dose and NSAID Kidney-Safety Review",
+      "category": "Medication Safety",
+      "contentType": "medicine",
+      "sourceFamily": "medicine-reference-pack",
+      "keywords": ["losartan", "missed dose", "ibuprofen", "nsaid", "kidney risk", "blood pressure", "urine", "dehydration", "double dose", "medicine interaction"],
+      "summary": "Builds losartan safety questions around missed-dose wording, ibuprofen or NSAID use, kidney context, BP follow-up, dehydration, and urine change.",
+      "safetyNotes": "Severe dizziness, fainting, very low urine, major swelling, or fast worsening illness needs real-world medical review.",
+      "aliases": ["losartan missed-dose guide", "bp medicine and ibuprofen review"],
+      "relatedTerms": ["double dose warning", "kidney-safe alternative question", "urine output", "bp follow-up"],
+      "populationTags": ["longitudinal-care"],
+      "whatToTrack": [
+        "When the dose was missed, whether the next scheduled dose is close, and what the label says.",
+        "Any ibuprofen or NSAID use, kidney history, urine amount, dizziness, and BP pattern.",
+        "Fluid intake, vomiting or diarrhea, and whether symptoms are new since the medicine timing issue."
+      ],
+      "careQuestions": [
+        "What label or pharmacist questions matter when a missed dose and NSAID use happen together?",
+        "Which urine, dizziness, or BP changes should raise the urgency of follow-up?"
+      ],
+      "precautions": [
+        "Do not double or catch up a dose from app guidance.",
+        "Escalate sooner if urine output falls, fainting occurs, or illness is causing dehydration."
+      ],
+      "maintenanceTags": ["pharmacy", "losartan", "kidney-safety"]
+    },
+    {
+      "id": "pack-ibuprofen-kidney-stomach-review",
+      "title": "Ibuprofen, Kidney, and Stomach-Protection Review",
+      "category": "Medication Safety",
+      "contentType": "medicine",
+      "sourceFamily": "medicine-reference-pack",
+      "keywords": ["ibuprofen", "nsaid", "stomach pain", "kidney", "black stool", "vomiting blood", "dehydration", "ulcer", "blood pressure", "pain medicine"],
+      "summary": "Organizes ibuprofen-style medicine questions using stomach irritation, kidney history, dehydration, bleeding signals, blood-pressure context, and safer follow-up questions.",
+      "safetyNotes": "Black stool, vomiting blood, severe abdominal pain, allergic swelling, very low urine, or confusion needs urgent medical review.",
+      "aliases": ["nsaid stomach and kidney review", "pain medicine caution guide"],
+      "relatedTerms": ["gi bleed warning", "kidney strain", "dehydration risk", "blood pressure effect"],
+      "whatToTrack": [
+        "How often the medicine was used, whether it was taken with illness or poor fluid intake, and any stomach pain or reflux change.",
+        "Urine output, swelling, BP pattern, and any history of kidney disease or ulcer problems.",
+        "Any black stool, vomiting blood, rash, face swelling, or severe weakness."
+      ],
+      "careQuestions": [
+        "Which stomach, kidney, or bleeding questions should be raised with a pharmacist or clinician?",
+        "What other patient-specific context makes NSAID use more concerning?"
+      ],
+      "precautions": [
+        "Do not keep using this pattern without review if bleeding or kidney-warning signals appear.",
+        "Escalate urgently for black stool, blood, very low urine, or confusion."
+      ],
+      "maintenanceTags": ["pharmacy", "ibuprofen", "nsaid"]
+    },
+    {
+      "id": "pack-constipation-fiber-fluid-review",
+      "title": "Constipation, Fiber, Fluid, and Red-Flag Review",
+      "category": "Gastrointestinal",
+      "contentType": "general",
+      "keywords": ["constipation", "bowel movement", "fiber", "fluids", "straining", "abdominal pain", "vomiting", "blood in stool", "medicine side effect", "bloating"],
+      "summary": "Structures constipation using bowel pattern, fiber and fluid intake, new medicines, bloating, abdominal pain, vomiting, and bleeding signals.",
+      "safetyNotes": "Severe abdominal pain, vomiting, black stool, blood, inability to pass stool or gas, or rapid worsening needs medical review.",
+      "aliases": ["bowel pattern review", "constipation warning guide"],
+      "relatedTerms": ["straining", "hydration", "medicine side effect", "abdominal bloating"],
+      "whatToTrack": [
+        "When the bowel pattern changed, how long it has been, and whether gas is also reduced.",
+        "Fiber, fluid intake, travel, activity, and any new medicines or iron use.",
+        "Any severe pain, vomiting, blood, black stool, or abdominal swelling."
+      ],
+      "careQuestions": [
+        "Which constipation features stay routine and which need a faster review?",
+        "What diet, fluid, medicine, and timing details would clarify the next safe step?"
+      ],
+      "precautions": [
+        "Do not minimize constipation when vomiting, severe pain, or bleeding is present.",
+        "Escalate sooner if stool and gas both stop or the abdomen becomes more distended."
+      ],
+      "maintenanceTags": ["general", "constipation", "hydration"]
+    }
+  ]
+}

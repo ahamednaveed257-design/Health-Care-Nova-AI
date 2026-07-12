@@ -1,0 +1,128 @@
+{
+  "id": "clinical-guidance-expansion",
+  "name": "Clinical Guidance Expansion Pack",
+  "version": "1.0.0",
+  "sourceFamily": "clinical-reference-pack",
+  "description": "Supplemental local clinical guidance topics for common specialist, safety, and symptom-review pathways.",
+  "reviewStatus": "local pack requires clinician review before production medical use",
+  "updateCadence": "quarterly-or-when-approved-content-changes",
+  "records": [
+    {
+      "id": "pack-heart-attack-angina-pattern",
+      "title": "Chest Pressure, Exertion, and Cardiac Warning Pattern",
+      "category": "Cardiology",
+      "contentType": "specialist",
+      "keywords": ["chest pressure", "angina", "heart attack", "jaw pain", "left arm", "sweating", "exertion", "rest pain"],
+      "summary": "Organizes chest pressure questions around exertion, rest symptoms, sweating, nausea, shortness of breath, radiation to jaw or arm, and symptom duration.",
+      "safetyNotes": "Active chest pressure, breathlessness, fainting, or sweating should be treated as urgent real-world care needs.",
+      "aliases": ["cardiac chest pain review", "angina question guide"],
+      "relatedTerms": ["cardiac risk", "exertion", "symptom onset", "rest pain", "emergency warning"],
+      "whatToTrack": [
+        "When the chest symptom started, whether it came on at rest or with exertion, and whether it spreads to jaw, arm, or back.",
+        "Associated symptoms such as sweating, nausea, shortness of breath, dizziness, or fainting.",
+        "Relevant BP, pulse, prior heart history, and medicines already taken."
+      ],
+      "careQuestions": [
+        "Which details make this chest symptom more concerning for urgent cardiac review?",
+        "What should be documented before speaking to a clinician or emergency team?",
+        "What recent readings or history should be kept ready?"
+      ],
+      "precautions": [
+        "Do not continue routine app review if active chest pressure or severe shortness of breath is happening now.",
+        "Do not self-diagnose angina versus heart attack from symptom education alone."
+      ],
+      "populationTags": ["older-adult", "longitudinal-care"],
+      "maintenanceTags": ["cardiology", "warning-pattern"]
+    },
+    {
+      "id": "pack-sepsis-deterioration-signs",
+      "title": "Infection Deterioration and Sepsis Warning Questions",
+      "category": "Urgent Safety",
+      "contentType": "safety",
+      "keywords": ["sepsis", "infection", "confusion", "fast breathing", "low blood pressure", "fever", "weakness", "dehydration"],
+      "summary": "Creates a structured warning-sign review for infection deterioration using fever or low temperature, confusion, weakness, breathing rate, hydration, and urine output context.",
+      "safetyNotes": "Confusion, severe weakness, blue lips, breathing trouble, very low blood pressure, or rapidly worsening illness needs urgent medical attention.",
+      "aliases": ["serious infection warning guide"],
+      "relatedTerms": ["rapid worsening", "mental status change", "low urine", "breathing effort", "immune risk"],
+      "populationTags": ["oncology", "older-adult"],
+      "maintenanceTags": ["infection", "urgent-safety"]
+    },
+    {
+      "id": "pack-sleep-apnea-snoring-review",
+      "title": "Sleep Apnea, Snoring, and Daytime Fatigue Review",
+      "category": "Sleep Medicine",
+      "contentType": "general",
+      "keywords": ["sleep apnea", "snoring", "fatigue", "daytime sleepiness", "witnessed pauses", "morning headache", "obesity"],
+      "summary": "Helps organize snoring, breathing pauses during sleep, unrefreshing sleep, morning headache, weight, and daytime fatigue before clinician follow-up.",
+      "safetyNotes": "Severe daytime sleepiness affecting driving, major breathing concern, or chest symptoms requires direct real-world review.",
+      "aliases": ["snoring review", "sleep breathing concern"],
+      "relatedTerms": ["sleep quality", "witnessed pauses", "morning fatigue", "sleep study question"],
+      "populationTags": ["longitudinal-care"],
+      "maintenanceTags": ["sleep", "fatigue"]
+    },
+    {
+      "id": "pack-thyroid-medicine-lab-review",
+      "title": "Thyroid Medication Timing and Lab Follow-up",
+      "category": "Endocrinology",
+      "contentType": "medicine",
+      "keywords": ["thyroid", "levothyroxine", "tsh", "t4", "empty stomach", "timing", "palpitation", "fatigue"],
+      "summary": "Organizes thyroid medicine and hormone-lab questions using dose timing, fasting routine, symptoms, pregnancy context, and repeat-test intervals.",
+      "safetyNotes": "Palpitations, fainting, severe weakness, or major swelling need direct clinician review instead of routine timing discussion.",
+      "aliases": ["thyroid tablet review", "hormone timing guide"],
+      "relatedTerms": ["lab trend", "empty stomach timing", "dose routine", "symptom review"],
+      "populationTags": ["maternal", "longitudinal-care"],
+      "maintenanceTags": ["thyroid", "medicine-routine"]
+    },
+    {
+      "id": "pack-ckd-monitoring-checklist",
+      "title": "Chronic Kidney Monitoring and Hydration Checklist",
+      "category": "Nephrology",
+      "contentType": "specialist",
+      "keywords": ["chronic kidney disease", "egfr", "creatinine", "protein urine", "swelling", "blood pressure", "hydration"],
+      "summary": "Creates a kidney-monitoring checklist using lab trend, swelling, urine changes, BP, diabetes, hydration, and medicine-safety context.",
+      "safetyNotes": "Severe swelling, no urine output, confusion, vomiting, or rapidly worsening symptoms should not wait for routine kidney review.",
+      "aliases": ["ckd follow-up guide"],
+      "relatedTerms": ["renal trend", "urine change", "bp goal question", "hydration risk"],
+      "populationTags": ["longitudinal-care", "older-adult"],
+      "maintenanceTags": ["kidney", "trend-monitoring"]
+    },
+    {
+      "id": "pack-wound-infection-check",
+      "title": "Wound, Dressing, and Infection Check",
+      "category": "Procedures",
+      "contentType": "procedures",
+      "keywords": ["wound", "dressing", "redness", "pus", "swelling", "fever", "after procedure", "stitches"],
+      "summary": "Structures wound and dressing questions around redness, discharge, swelling, pain, fever, dressing changes, and procedure date.",
+      "safetyNotes": "Rapidly spreading redness, heavy bleeding, severe pain, fever, or wound opening needs prompt real-world assessment.",
+      "aliases": ["post wound review"],
+      "relatedTerms": ["dressing change", "infection sign", "post procedure care"],
+      "maintenanceTags": ["wound-care", "procedure-recovery"]
+    },
+    {
+      "id": "pack-urinary-flank-pain-organizer",
+      "title": "Urinary Burning, Fever, and Flank Pain Organizer",
+      "category": "General",
+      "contentType": "general",
+      "keywords": ["urinary burning", "uti", "frequency", "flank pain", "fever", "blood in urine", "kidney infection"],
+      "summary": "Organizes urinary questions using burning, urgency, fever, flank pain, blood in urine, hydration, pregnancy context, and past infection history.",
+      "safetyNotes": "Fever with flank pain, vomiting, pregnancy, confusion, or severe weakness needs prompt medical review.",
+      "aliases": ["uti question guide"],
+      "relatedTerms": ["urine symptom review", "kidney infection warning", "hydration context"],
+      "populationTags": ["maternal"],
+      "maintenanceTags": ["urinary", "infection"]
+    },
+    {
+      "id": "pack-pregnancy-bp-swelling-warning",
+      "title": "Pregnancy Blood Pressure, Swelling, and Headache Warnings",
+      "category": "Maternal Health",
+      "contentType": "safety",
+      "keywords": ["pregnancy", "postpartum", "high blood pressure", "headache", "swelling", "vision change", "right upper pain"],
+      "summary": "Creates a maternal warning review for headache, swelling, BP, vision changes, reduced fetal movement, abdominal pain, and postpartum concerns.",
+      "safetyNotes": "Pregnancy or postpartum headache with high BP, seizure, heavy bleeding, severe pain, or reduced fetal movement needs urgent real-world care.",
+      "aliases": ["maternal bp warning guide"],
+      "relatedTerms": ["preeclampsia question", "fetal movement", "vision symptom"],
+      "populationTags": ["maternal"],
+      "maintenanceTags": ["pregnancy", "urgent-safety"]
+    }
+  ]
+}
