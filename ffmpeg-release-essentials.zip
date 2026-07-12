@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+    <!-- Note: It is strongly recommended that you do NOT make large changes to this file. Changing DOM structure or classes may prevent
+         the page from functioning correctly. Especially important pieces have been marked as such with comments
+         and should not be changed for any reason. -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="never" />
+    <title localize="[content_filter_denied.httpMessage]">Access Denied</title>
+
+
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        WARNING: DO NOT REMOVE!
+        THIS SECTION LOADS ALL PAGE FUNCTIONALITY
+        REMOVING THIS WILL PREVENT BLOCK PAGES FROM FUNCTIONING CORRECTLY
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <!-- START --- DO NOT REMOVE --- START -->
+        <script type="text/javascript">
+                window.onload = function() {
+        var externalLinks = function() {
+            if (!document.getElementsByTagName) return;
+            var anchors = document.getElementsByTagName("a");
+            for (var i=0; i<anchors.length; i++) {
+                var anchor = anchors[i];
+                var rel = anchor.getAttribute("rel") || '';
+                if (anchor.getAttribute("href") && rel === "external") {
+                    anchor.target = "_blank";
+                }
+                anchor.setAttribute("rel", rel + " noreferrer");
+            }
+        };
+
+        externalLinks();
+
+        const errorArray = typeof errors == 'undefined' ? [] : errors;
+
+        if (errorArray.length !== 0 ) {
+            var localize = function() {
+                var find = $("[localize]");
+
+                $(find).each(function(){
+                    var transTxtKey;
+                    var key=$(this).attr('localize').replace("[","").replace("]","");
+                    var keys=key.split(/\./);
+
+                    if (keys.length < 1) {
+                        return false;
+                    }
+
+                    var textObject = errorArray;
+                    while(keys.length > 0 && textObject) {
+                        textObject = textObject[keys.shift()];
+                    }
+                    transTxtKey = textObject;
+
+                    if(transTxtKey) {
+                        $(this).html(transTxtKey);
+                    }
+                });
+
+            };
+            localize();
+        }
+
+// once localized, replace the non-runtime evaluated variables with live content.
+    var fixprxevals = function() {
+
+        $("a#coach-continue-url").attr("href", $('#coach_continue_url_div').text());
+        $("#application-name").text('"' + $('#application_name').text() + '"');
+        $("#application-action-name").text('"' + $('#application_action_name').text() + '"');
+        $("#response-categories").text('"' + $('#response_categories').text() + '"');
+        $("#url-host").text('"' + $('#url_host').text() + '"');
+        $("#url-address").text('"' + $('#url_address').text() + '"');
+        $("#url-port").text('"' + $('#url_port').text() + '"');
+        $("#client_address").text('"' + $('#client_address').text() + '"');
+        $("#category-review-url").html('<a href="' + $('#category_review_url').text() + '">http://sitereview.bluecoat.com</a>');
+        $("#last-error").text('"' + $('#last_error').text() + '"');
+        $("#x-cs-auth-form-action-url").text('"' + $('#x_cs_auth_form_action_url').text() + '"');
+        $("#x-auth-challenge-string").text('"' + $('#x_auth_challenge_string').text() + '"');
+        $("#x-cs-auth-form-domain-field").text('"' + $('#x_cs_auth_form_domain_field').text() + '"');
+        $("#cs-username").text('"' + $('#cs_username').text() + '"');
+        $("#x-cs-auth-request-id").text('"' + $('#x_cs_auth_request_id').text() + '"');
+        $("#x-auth-private-challenge-state").text('"' + $('#x_auth_private_challenge_state').text() + '"');
+        $("#sc-auth-status").text('"' + $('#sc_auth_status').text() + '"');
+        $("#reason").text('"' + $('#reason').text() + '"');
+        $("#method").text('"' + $('#method').text() + '"');
+        $("#x-radius-splash-username").text('"' + $('#x_radius_splash_username').text() + '"');
+        $("#x-radius-splash-session-id").text('"' + $('#x_radius_splash_session_id').text() + '"');
+        $("#x-rs-ocsp-error").text('"' + $('#x_rs_ocsp_error').text() + '"');
+        $("#x-virus-id").text('"' + $('#x_virus_id').text() + '"');
+        $("#x-virus-details").text('"' + $('#x_virus_details  ').text() + '"');
+        $("#cpUsername").attr("value", $('#cs_username').text());
+        $("#ssl-failure-reason").text('"' + $('#ssl_failure_reason').text() + '"');
+        $("#server-connection-socket-errno").text('"' + $('#server_connection_socket_errno').text() + '"');
+        $("#icap-error-details").text('"' + $('#icap_error_details').text() + '"');
+        $("a#redirect-location").attr("href", $('#redirect_location').text());
+        $("a#site-review").attr("href", "http://sitereview.bluecoat.com/index.jsp?referrer=bccloud&url=" + $('#url_host').text());
+        $("#bcExceptionRationale").text($('#exception_rationale').text() || $('#exception_request_rationale').text() || "N/A");};
+    fixprxevals();
+
+        $("#pwinput").keypress(function(e) {
+            if(e.keyCode === 13) { return false; }
+        });
+
+        $("#pwinput").focus();
+        $("#sesame").click(function() {
+            var supplied = $("#pwinput").val();
+            var hashed = $.md5(supplied).toUpperCase();
+            if(supplied) {
+                valpw(hashed); return false;
+            } else {
+                $("#errorNotify").show("fast");
+                var trans = errors["validations"].password_override.notSupplied;
+                $("#errorNotify").html("<div localize='[validations.password_override.notSupplied]'>" + trans + "</div>");
+                $("#pwinput").addClass("error");
+                return false;
+            }
+        });
+
+        var detailsShowing = false;
+        $('.detFlip').click(function() {
+            if(!detailsShowing){
+                $("#detMore").hide();
+                $("#detLess").show();
+                $("#additionalInfo").show('fast');
+            } else {
+                $("#detMore").show();
+                $("#detLess").hide();
+                $("#additionalInfo").hide('fast');
+            }
+            detailsShowing = !detailsShowing;
+        });
+        $("#pwinput").click(function() {
+            $("#errorNotify").hide("fast");
+            $("#pwinput").removeClass("error");
+            this.value = "";
+        });
+
+        var goTo = function(url) {
+            var a = document.createElement("a");
+            if(!a.click) {
+                window.location=url;
+                return;
+            }
+            a.setAttribute("href", url);
+            a.style.display = "block";
+            $("body").append(a);
+            a.click();
+        };
+
+        function valpw(hashed) {
+            if(hashed === $('#hashedpw').text()) {
+                goTo($('#jumpto').text());
+            } else {
+                $("#errorNotify").show("fast");
+                var trans = errors.validations.password_override.incorrectPassword;
+                $("#errorNotify").html("<div localize='[validations.password_override.incorrectPassword]'>" + trans + "</div>");
+                $("#pwinput").addClass("error");
+                return false;
+            }
+        }
+
+        if($('#contactNameValue').text() === '') $('#contactName').hide();
+        if($('#contactPhoneValue').text() === '') $('#contactPhone').hide();
+        if($('#contactEmailValue').text() === '') $('#contactEmail').hide();
+
+        if (String.prototype.trim && ["unlicensed", "unavailable", "none", "invalid"].indexOf($("#addClientGeolocation .additional").text().trim().toLowerCase()) !== -1) {
+            $("#addClientGeolocation").hide();
+        }
+    };
+
+document.writeln('<script type="text/javascript" src="https://portal.threatpulse.com/ex/5.0/js/jquery-3.6.0.min.js"><\/script>');
+document.writeln('<script type="text/javascript" src="//notify.bluecoat.com/ex/5.0/js/lang/exceptions.js"><\/script>');
+document.writeln('<script type="text/javascript" src="https://portal.threatpulse.com/ex/5.0/js/jquery.md5.min.js"><\/script>');
+
+        </script>
+    <!-- END --- DO NOT REMOVE --- END -->
+
+
+
+    <!-- This loads default Symantec styling -->
+
+   <style type="text/css">
+   @keyframes blinker {
+  50% { opacity: 0; }
+}
+.blink-text {
+  animation: blinker 1s linear infinite;
+  color: #FF0000;
+  font-weight: bold;
+}
+   <!--
+       #logo a {
+    background-image: url("//portal.threatpulse.com/brandlogo?cid=bc1925c7d7d1378237345cec5cf967be&lfn=errorlogo.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+   -->
+   </style>
+    <!-- This will load the default Symantec error page styling, as configured in the Symantec portal -->
+    <link rel="stylesheet" type="text/css" href="https://portal.threatpulse.com/ex/5.0/css/style0204.css" />
+    <!-- This will load the Symantec favicon -->
+    <link rel="shortcut icon" href="https://portal.threatpulse.com/ex/5.0/img/favicon.ico" />
+</head>
+
+<body class="bodydrop">
+<div id="outer">
+    <div id="container" class="int curved" style="height:370px;width:800px;">
+        <div id="branding">
+            <div class="curved" id="logo">
+                <a rel="none" title="HCLTech">HCLTech</a>
+            </div>
+        </div>
+        <div id="content">
+            <div id="bodyCopy">
+                <div id="exceptionDetails" class="int">
+                    <h1 id="doctitle" localize="[content_filter_denied.httpMessage]">Access Denied</h1>
+
+
+
+                    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                         WARNING: DO NOT REMOVE!
+                         THIS SECTION IS USED TO INJECT KEY PAGE FUNCTIONALITY INCLUDING:
+                           - EXCEPTION DETAILS (DESCRIPTION)
+                           - INPUT TEXT FIELD FOR PASSWORD OVERRIDE
+                           - MESSAGE AND PROCEED BUTTON FOR COACHING
+                         REMOVING THIS WILL PREVENT BLOCK PAGES FROM WORKING
+                         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                    <!-- START --- DO NOT REMOVE --- START -->
+                   <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        <div id="message">
+                            <div localize="[content_filter_denied.message]">
+                                <p>Your request was denied because of its content categorization:</p><p><span id='categories'>"Technology&#x2F;Internet"</span></p><span class="displayNone">&#160;</span>
+                            </div>
+                        </div>
+                  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+                    <!-- END --- DO NOT REMOVE --- END -->
+
+             <!-----!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    <div id="help">
+                        <div localize="[content_filter_denied.help]">
+                            Please contact Network Support to dispute the policy, or visit Symantec <a href="http://sitereview.bluecoat.com/index.jsp?referrer=bccloud&amp;url=https:&#x2F;&#x2F;www.gyan.dev&#x2F;ffmpeg&#x2F;builds&#x2F;packages&#x2F;ffmpeg-8.1.2-essentials_build.zip">Web Page Review</a> if you believe this URL is incorrectly categorized.<span class="displayNone">&#160;</span>
+                        </div>
+                    </div>
+           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+<span localize=""> If you feel this website should be allowed, you may submit a request using below path & choose the <span class="blink-text" style="font-size: 1.3em;">appropriate category</span> for automatic enablement :-</span>
+</p>
+<p>
+<span localize=""> <b> SR Path : <a href="https://oneconnect.hcltech.com/esc?id=sc_cat_item&sys_id=7a2acfab4752ca9028b888bc416d43a9" style="color:blue; text-decoration:underline">Access Restricted Website</a> &rarr; Fill up Details &rarr; Order Now </font></b></span>
+</p>
+
+
+                    <p id="httpCode"><span localize="[techSupport]">Tech support information</span>: content_filter_denied
+                    </p>
+<ul>
+                        <li id="Date and Time"><span localize="[Date and Time]" >Date and Time:</span> <span class="additional" style="color: blue"><script type="text/javascript"> document.write((new Date()).toString()); </script>
+                            <span class="displayNone">&#160;</span></span></li>
+                        <li id="addIP"><span localize="[clientIP]">Client IP:</span> <span class="additional" style="color: blue">49.36.42.133
+                            <span class="displayNone">&#160;</span></span></li>
+                        <li id="addUserName"><span localize="[username]">Username:</span> <span class="additional" style="color: blue">HCLTECH\Naveedahamed.d
+                            <span class="displayNone">&#160;</span></span></li>
+                        <li id="addURL"><span localize="[URL]">URL:</span> <span class="additional" style="color: blue">https:&#x2F;&#x2F;www.gyan.dev&#x2F;ffmpeg&#x2F;builds&#x2F;packages&#x2F;ffmpeg-8.1.2-essentials_build.zip
+                            <span class="displayNone">&#160;</span></span></li>
+                        <li id="addURL"><span localize="[Category]" style="font-weight: bold; background-color: yellow; border: 1px solid #ddd; padding: 0 4px;">Category:</span>
+                        <span class="additional" style="color: blue; font-weight: bold;">Technology&#x2F;Internet <span class="blink-text" style="color: black; font-size: 4.0em; margin-left: 6px;vertical-align: bottom">&#11013;</span>
+                            <span class="displayNone">&#160;</span></span></li>
+                        <li id="addUserAgent"><span localize="[userAgent]">User Agent:</span>
+                            <span class="additional" style="color: blue">curl&#x2F;8.19.0
+                                <span class="displayNone">&#180;</span>
+                            </span>                        </li>
+                        </li>
+						<li id="addGeolocation"><span >Client Geolocation:</span>
+							<span class="additional" style="color: blue">India
+								<span class="displayNone">&#160;</span>
+							</span>
+						</li>
+                        <li id="addErrorId"><span>Error ID:</span>
+                            <span class="additional" style="color: blue"><span id='bcExceptionRationale'></span>
+                                <span class="displayNone">&#160;</span>
+                            </span>
+                    </ul>
+
+<span localize=> For Assistance Raise One Connect Ticket in Above Path </span>
+
+                    <p id="contactPhone">
+                        <span localize="[phone]">Phone</span><span>:&#160;</span><span id="contactPhoneValue"></span>
+
+ </p>
+                    <p id="contactEmail">
+                        <span localize="[email]">Email</span><span>:&#160;</span><span id="contactEmailValue"></span>
+                    </p>
+                </div>
+                <div id="additionalInfo" class="int curved">
+
+                </div>
+            </div>
+        </div>
+        <div id="footer" style="margin-top:45px;">
+            <div id="copyright">&#169; 2026 HCL TECHNOLOGIES LIMITED</div>
+        </div>
+    </div>
+</div>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     WARNING: DO NOT REMOVE!
+     THIS SECTION ENABLES ALL PAGE FUNCTIONALITY
+     REMOVING THIS WILL PREVENT BLOCK PAGES FROM WORKING
+     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- START --- DO NOT REMOVE --- START -->
+     <div style="display: none">
+    <div id="hashedpw">25D55AD283AA400AF464C76D713C07AD</div>
+    <div id="jumpto"> </div>
+
+    <div id="coach_continue_url_div"> </div>
+    <div id="application_name">none</div>
+    <div id="application_action_name">-</div>
+    <div id="response_categories">Technology&#x2F;Internet</div>
+    <div id="url_host">www.gyan.dev</div>
+    <div id="url_address">208.94.117.187</div>
+    <div id="url_port">443</div>
+    <div id="client_address">49.36.42.133</div>
+    <div id="category_review_url">http://sitereview.bluecoat.com/sitereview.jsp?referrer=136&amp;url=https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-8.1.2-essentials_build.zip</div>
+    <div id="last_error"></div>
+    <div id="x_cs_auth_form_action_url">http:&#x2F;&#x2F;www.cfauth.com&#x2F;?bcfru=aHR0cHM6Ly93d3cuZ3lhbi5kZXYvZmZtcGVnL2J1aWxkcy9wYWNrYWdlcy9mZm1wZWctOC4xLjItZXNzZW50aWFsc19idWlsZC56aXA=</div>
+    <div id="x_auth_challenge_string"></div>
+    <div id="x_cs_auth_form_domain_field"></div>
+    <div id="cs_username">Naveedahamed.d</div>
+    <div id="x_cs_auth_request_id"></div>
+    <div id="x_auth_private_challenge_state"></div>
+    <div id="sc_auth_status"></div>
+    <div id="reason">Either &#x27;force_deny&#x27; or &#x27;force_exception&#x27; was matched in policy</div>
+    <div id="method">GET</div>
+    <div id="x_radius_splash_username"></div>
+    <div id="x_radius_splash_session_id">0</div>
+    <div id="x_rs_ocsp_error"></div>
+    <div id="x_virus_id"></div>
+    <div id="x_virus_details"></div>
+    <div id="empty"></div>
+    <div id="ssl_failure_reason"></div>
+    <div id="server_connection_socket_errno"></div>
+    <div id="icap_error_details"></div>
+    <div id="redirect_location"></div>
+    <div id="exception_rationale">CF-B209</div>
+    <div id="exception_request_rationale"></div>
+</div>
+
+<!-- END --- DO NOT REMOVE --- END -->
+</body>
+</html>

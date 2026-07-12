@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script>
+      (() => {
+        const params = new URLSearchParams(window.location.search || "");
+        const allowStandalone = params.get("standalone") === "1";
+        const forceHostedRedirect = params.get("redirectTest") === "1";
+        const hostname = window.location.hostname || "";
+        const protocol = window.location.protocol || "";
+        const isLoopbackHost = /^(?:127\.0\.0\.1|localhost|::1|\[::1\])$/i.test(hostname);
+        const isHostedSurface = forceHostedRedirect || /\.github\.io$/i.test(hostname) || (protocol === "https:" && !isLoopbackHost);
+
+        if (!isHostedSurface || allowStandalone) {
+          return;
+        }
+
+        const candidatePaths = [
+          "../../public/index.html",
+          "../../public/",
+          "../public/index.html",
+          "../public/",
+          "/public/index.html",
+          "/public/",
+          "./public/index.html",
+          "./public/"
+        ];
+
+        const buildTargetHref = (candidatePath) => {
+          const target = new URL(candidatePath, window.location.href);
+          const search = new URLSearchParams(target.search || "");
+          search.set("static", "1");
+          target.search = search.toString();
+          target.hash = "#tab=tutorial";
+          return target.href;
+        };
+
+        const renderFallback = () => {
+          const start = () => {
+            document.documentElement.style.background = "#f4fbfc";
+            document.body.style.margin = "0";
+            document.body.style.minHeight = "100vh";
+            document.body.style.display = "grid";
+            document.body.style.placeItems = "center";
+            document.body.style.padding = "24px";
+            document.body.style.fontFamily = "Inter, Arial, sans-serif";
+            document.body.innerHTML = `
+              <main style="width:min(100%,720px);padding:32px;border:1px solid #b9dce5;border-radius:24px;background:rgba(255,255,255,0.96);box-shadow:0 24px 72px rgba(16,32,51,0.12);color:#102033;">
+                <p style="margin:0 0 12px;color:#00796f;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;">Care Nova guide source</p>
+                <h1 style="margin:0;font-size:40px;line-height:1.05;">Open the app workspace</h1>
+                <p style="margin:16px 0 0;color:#4f6277;font-size:18px;line-height:1.55;">This standalone guide source is not the public app entry point. Open the Care Nova workspace and use the Guide tab there.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;">
+                  <a href="../../public/index.html?static=1#tab=tutorial" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;background:#00796f;color:#ffffff;font-weight:800;text-decoration:none;">Open Care Nova</a>
+                  <a href="../../index.html" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;border:1px solid #b9dce5;background:#ffffff;color:#215a88;font-weight:800;text-decoration:none;">Open launcher</a>
+                </div>
+              </main>
+            `;
+          };
+
+          if (document.body) {
+            start();
+            return;
+          }
+
+          document.addEventListener("DOMContentLoaded", start, { once: true });
+        };
+
+        const resolveHostedApp = async () => {
+          for (const candidatePath of candidatePaths) {
+            try {
+              const probeUrl = new URL(candidatePath, window.location.href);
+              const response = await fetch(probeUrl.href, { cache: "no-store" });
+
+              if (!response.ok) {
+                continue;
+              }
+
+              const contentType = response.headers.get("content-type") || "";
+              if (contentType && !/text\/html/i.test(contentType)) {
+                continue;
+              }
+
+              window.location.replace(buildTargetHref(candidatePath));
+              return;
+            } catch (error) {
+              // Keep checking fallback candidates.
+            }
+          }
+
+          renderFallback();
+        };
+
+        window.__careNovaGuideRedirectPromise = resolveHostedApp();
+      })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f4fbfc;
+      }
+
+      body {
+        color: #102033;
+        font-family: Arial, sans-serif;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 88% 14%, rgba(31, 110, 203, 0.18), rgba(31, 110, 203, 0) 30%),
+          radial-gradient(circle at 8% 86%, rgba(7, 137, 133, 0.16), rgba(7, 137, 133, 0) 32%),
+          linear-gradient(135deg, #f4fbfc 0%, #ffffff 52%, #eef9fb 100%);
+      }
+
+      .ambient-grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.32;
+        background-image:
+          linear-gradient(rgba(31, 110, 203, 0.08) 1px, rgba(31, 110, 203, 0) 1px),
+          linear-gradient(90deg, rgba(7, 137, 133, 0.07) 1px, rgba(7, 137, 133, 0) 1px);
+        background-size: 72px 72px;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f4fbfc;
+        opacity: 0;
+        transform-origin: center center;
+      }
+
+      .scene:first-child {
+        opacity: 1;
+      }
+
+      .scene-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: minmax(0, 0.93fr) minmax(0, 1.07fr);
+        gap: 54px;
+        padding: 78px 88px 106px;
+      }
+
+      .scene-left,
+      .scene-right {
+        min-width: 0;
+      }
+
+      .scene-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 26px;
+      }
+
+      .chapter-label {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid rgba(7, 137, 133, 0.24);
+        border-radius: 999px;
+        background: rgba(231, 251, 246, 0.88);
+        color: #056a66;
+        padding: 13px 18px;
+        font-family: Consolas, monospace;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .chapter-label::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #078985;
+        box-shadow: 0 0 0 8px rgba(7, 137, 133, 0.12);
+      }
+
+      .title {
+        max-width: 790px;
+        font-family: Georgia, serif;
+        font-size: 68px;
+        line-height: 1.03;
+        font-weight: 900;
+        letter-spacing: 0;
+        color: #102033;
+      }
+
+      .explain {
+        max-width: 760px;
+        color: #53667d;
+        font-size: 29px;
+        line-height: 1.34;
+        font-weight: 700;
+      }
+
+      .use-card {
+        max-width: 760px;
+        border: 1px solid rgba(31, 110, 203, 0.15);
+        border-left: 10px solid #078985;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 18px 46px rgba(11, 27, 49, 0.09);
+        padding: 22px 26px;
+      }
+
+      .use-card strong,
+      .quality-card strong,
+      .next-ribbon strong {
+        display: block;
+        color: #0b1b31;
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .use-card span,
+      .quality-card span,
+      .next-ribbon span {
+        display: block;
+        margin-top: 7px;
+        color: #53667d;
+        font-size: 20px;
+        line-height: 1.32;
+        font-weight: 700;
+      }
+
+      .scene-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dashboard {
+        width: 920px;
+        min-height: 720px;
+        display: grid;
+        grid-template-rows: auto auto auto 1fr auto;
+        gap: 18px;
+        border: 1px solid rgba(31, 110, 203, 0.16);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 30px 78px rgba(11, 27, 49, 0.16);
+        padding: 30px;
+      }
+
+      .window-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 1px solid rgba(83, 102, 125, 0.16);
+        padding-bottom: 18px;
+        color: #102033;
+        font-size: 21px;
+        font-weight: 900;
+      }
+
+      .window-bar code {
+        color: #1f6ecb;
+        font-family: Consolas, monospace;
+        font-size: 19px;
+        font-weight: 900;
+      }
+
+      .action-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .action-card,
+      .bullet-card {
+        border: 1px solid rgba(31, 110, 203, 0.15);
+        border-radius: 20px;
+        background: #f4fbfc;
+        padding: 20px;
+      }
+
+      .action-card b {
+        display: block;
+        color: #078985;
+        font-family: Consolas, monospace;
+        font-size: 18px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .action-card span {
+        display: block;
+        margin-top: 10px;
+        color: #102033;
+        font-size: 21px;
+        line-height: 1.22;
+        font-weight: 900;
+      }
+
+      .bullet-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .bullet-card {
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        gap: 16px;
+        align-items: start;
+        background: #ffffff;
+      }
+
+      .bullet-index {
+        width: 50px;
+        height: 50px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background: #e7fbf6;
+        color: #078985;
+        font-family: Consolas, monospace;
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .bullet-card strong {
+        display: block;
+        color: #102033;
+        font-size: 23px;
+        line-height: 1.12;
+        font-weight: 900;
+      }
+
+      .bullet-card span {
+        display: block;
+        margin-top: 7px;
+        color: #53667d;
+        font-size: 19px;
+        line-height: 1.28;
+        font-weight: 700;
+      }
+
+      .quality-card {
+        border: 1px solid rgba(7, 137, 133, 0.18);
+        border-radius: 22px;
+        background: linear-gradient(135deg, #e7fbf6, #ffffff);
+        padding: 22px 24px;
+      }
+
+      .next-ribbon {
+        border-radius: 999px;
+        background: #0b1b31;
+        color: #ffffff;
+        padding: 18px 24px;
+      }
+
+      .next-ribbon strong,
+      .next-ribbon span {
+        color: #ffffff;
+      }
+
+      .next-ribbon span {
+        color: rgba(244, 251, 252, 0.78);
+      }
+
+      .scene-number {
+        position: absolute;
+        left: 88px;
+        bottom: 52px;
+        z-index: 3;
+        color: rgba(16, 32, 51, 0.48);
+        font-family: Consolas, monospace;
+        font-size: 19px;
+        font-weight: 900;
+      }
+
+      .safety-line {
+        position: absolute;
+        right: 88px;
+        bottom: 52px;
+        z-index: 3;
+        color: rgba(83, 102, 125, 0.86);
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .progress-hud {
+        position: absolute;
+        left: 88px;
+        right: 88px;
+        bottom: 28px;
+        z-index: 8;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 22px;
+        align-items: center;
+        pointer-events: none;
+      }
+
+      .progress-track {
+        height: 10px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(83, 102, 125, 0.15);
+      }
+
+      .progress-fill {
+        width: 100%;
+        height: 100%;
+        transform: scaleX(0);
+        transform-origin: left center;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #078985, #1f6ecb);
+      }
+
+      .progress-meta {
+        color: #53667d;
+        font-family: Consolas, monospace;
+        font-size: 16px;
+        font-weight: 900;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="308"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div class="ambient-grid" data-layout-ignore></div>
+      <div id="sceneMount"></div>
+      <div class="progress-hud">
+        <div class="progress-track"><div class="progress-fill"></div></div>
+        <div class="progress-meta">CARE NOVA AI GUIDE V24 / 22 CHAPTERS / 05:26</div>
+      </div>
+    </div>
+
+    <script>
+      const sceneDuration = 14;
+      const chapters = [
+        {
+          section: "What it is",
+          title: "Care Nova is a local-first health agent workspace.",
+          explain: "Use it to organize health questions, records, vitals, medicines, labs, visits, safety checks, and insurance support.",
+          use: "Watch this before your first complete patient run.",
+          enter: "Patient goal",
+          check: "Tabs and limits",
+          receive: "App map",
+          bullets: [
+            ["One workspace", "Each tab has a focused autonomous helper."],
+            ["Local memory", "Patient context is reused from saved records."],
+            ["Safe guidance", "Answers stay educational and next-step focused."]
+          ],
+          quality: "Purpose, boundary, and tab roles are clear.",
+          next: "Save the first-run plan and choose the active patient."
+        },
+        {
+          section: "Privacy setup",
+          title: "Start with local data and the active patient.",
+          explain: "Care Nova stores patient data on the local app server and can mirror records to the local OneDrive workspace.",
+          use: "Use this when setting up a new device.",
+          enter: "Storage choice",
+          check: "Local vault",
+          receive: "Privacy path",
+          bullets: [
+            ["Localhost store", "Memory, records, and training stay on this machine."],
+            ["OneDrive mirror", "A local copy helps protect against accidental loss."],
+            ["No cloud default", "Private records are not uploaded automatically."]
+          ],
+          quality: "Local storage, mirror, and sharing choice are understood.",
+          next: "Verify the vault, mirror, and sharing settings."
+        },
+        {
+          section: "Profile",
+          title: "The profile becomes the base memory for answers.",
+          explain: "Add age, known conditions, medicines, allergies, baseline readings, doctor, caregiver, and emergency contact.",
+          use: "Do this before asking health questions.",
+          enter: "Patient facts",
+          check: "Context fit",
+          receive: "Reusable memory",
+          bullets: [
+            ["Patient details", "Name, age, conditions, allergies, and care team."],
+            ["Medicine list", "Names, timing, reason used, and known reactions."],
+            ["Baseline values", "Usual BP, sugar, pulse, weight, and important notes."]
+          ],
+          quality: "Patient context is complete enough for routing.",
+          next: "Save profile, medicines, allergies, readings, and contacts."
+        },
+        {
+          section: "Best input",
+          title: "Ask one clear question with useful context.",
+          explain: "A strong message includes the main concern, start time, severity, readings, medicine timing, and warning signs.",
+          use: "Use this format in every agent tab.",
+          enter: "Focused concern",
+          check: "Risk clues",
+          receive: "Cleaner answer",
+          bullets: [
+            ["Main concern", "Example: headache, cough, missed dose, or high BP."],
+            ["Timing", "Say when it started and whether it is improving."],
+            ["Safety signs", "Mention chest pain, breathing trouble, fainting, or weakness."]
+          ],
+          quality: "Symptom, timing, severity, readings, and red flags are present.",
+          next: "Verify timing, severity, readings, medicine timing, and warning signs."
+        },
+        {
+          section: "Agentic flow",
+          title: "Every request follows the same safe agent loop.",
+          explain: "The system loads memory, classifies intent, routes to one agent, checks safety, writes a simple reply, then updates memory.",
+          use: "This is the model flow behind every tab.",
+          enter: "Question",
+          check: "Route trace",
+          receive: "Guarded reply",
+          bullets: [
+            ["Memory store", "Loads prior symptoms, medicines, and records."],
+            ["Intent route", "Chooses the best focused owner agent."],
+            ["Guardrails", "Blocks diagnosis, prescriptions, and unsafe advice."]
+          ],
+          quality: "Memory, route, agent, safety, reply, and save are visible.",
+          next: "Watch memory, route, one agent, guardrails, reply, and save."
+        },
+        {
+          section: "General",
+          title: "General is your first-layer health question agent.",
+          explain: "Use General when you are unsure where to start or need a plain-language next step for a symptom or question.",
+          use: "Start here for everyday health questions.",
+          enter: "Symptom and goal",
+          check: "First risk band",
+          receive: "Safe next step",
+          bullets: [
+            ["Enter", "Symptom, timing, severity, readings, and goal."],
+            ["It returns", "Risk level, reason, next step, and missing details."],
+            ["Save", "Useful answers become part of local patient memory."]
+          ],
+          quality: "One question receives one safe first step.",
+          next: "Save the plain next step plus missing details to ask later."
+        },
+        {
+          section: "Specialist",
+          title: "Specialist reviews core disease areas in depth.",
+          explain: "Use Specialist for heart, diabetes, kidney, asthma, thyroid, liver, brain, stomach, and chronic-care questions.",
+          use: "Use it when the concern links to a condition.",
+          enter: "Disease area",
+          check: "Risk factors",
+          receive: "Doctor questions",
+          bullets: [
+            ["Choose area", "Pick the body system or condition being reviewed."],
+            ["See reasoning", "Risk factors, tests to discuss, and red flags."],
+            ["Prepare care", "Build doctor questions and follow-up points."]
+          ],
+          quality: "Condition, recent change, risk factors, and questions are included.",
+          next: "Save disease focus, red flags, tests to discuss, and care questions."
+        },
+        {
+          section: "Atlas",
+          title: "Atlas is the built-in health learning library.",
+          explain: "Search disease, symptom, medicine, test, prevention, imaging, first-aid, and warning-sign guides.",
+          use: "Use it when you want to learn before acting.",
+          enter: "Topic search",
+          check: "Guide sections",
+          receive: "Reference card",
+          bullets: [
+            ["Disease guides", "Overview, symptoms, tests, care options, and precautions."],
+            ["Medicine topics", "Uses, safety signals, and pharmacist questions."],
+            ["Prevention", "Daily habits, screening, monitoring, and safety tips."]
+          ],
+          quality: "Overview, tracking, care options, and precautions are reviewed.",
+          next: "Bookmark overview, symptoms, tests, prevention, and precautions."
+        },
+        {
+          section: "Vitals",
+          title: "Vitals turns readings into safer daily context.",
+          explain: "Track BP, pulse, oxygen, sugar, temperature, BMI, sleep, hydration, activity, and measurement quality.",
+          use: "Use it for high BP, sugar review, fever, pulse, or BMI.",
+          enter: "Values and timing",
+          check: "Trend context",
+          receive: "Reading review",
+          bullets: [
+            ["Enter values", "Add date, time, meal, medicine, symptom, and repeat reading."],
+            ["Get context", "See trend, risk band, maintenance tips, and alerts."],
+            ["Save trend", "Keep readings in Records for future comparison."]
+          ],
+          quality: "Values include time, symptoms, medicine, and repeat context.",
+          next: "Save reading value, time, symptoms, medicine, and repeat context."
+        },
+        {
+          section: "Medicine",
+          title: "Medicine guides safe medicine conversations.",
+          explain: "Ask about generic or branded medicines, uses, side effects, missed timing, allergy signs, interactions, and storage.",
+          use: "Use it before changing anything yourself.",
+          enter: "Medicine name",
+          check: "Safety signals",
+          receive: "Pharmacist questions",
+          bullets: [
+            ["Enter", "Medicine name, timing, reason used, and symptoms."],
+            ["Check", "Side effects, duplicate ingredients, and interaction questions."],
+            ["Output", "Pharmacist-ready questions and safety reminders."]
+          ],
+          quality: "Medicine name, timing, reaction, and interaction concern are entered.",
+          next: "Save medicine name, timing, concern, reaction, and pharmacist questions."
+        },
+        {
+          section: "Labs",
+          title: "Labs turns reports into clear review points.",
+          explain: "Upload or paste report values, extract markers, explain results, compare trends, find gaps, and download summaries.",
+          use: "Use it when a report needs plain-language review.",
+          enter: "Report values",
+          check: "Units and trends",
+          receive: "Summary report",
+          bullets: [
+            ["Paste values", "Include test name, value, unit, range, and report date."],
+            ["Trend review", "Compare prior value and symptoms when available."],
+            ["Download", "Create a patient-ready summary for review."]
+          ],
+          quality: "Report date, units, range, trend, and missing values are captured.",
+          next: "Download report summary with marker, range, date, and questions."
+        },
+        {
+          section: "Wellness",
+          title: "Wellness builds age-aware daily routines.",
+          explain: "Create plans for sleep, diet, hydration, walking, stress, mental wellness, prevention, and habit feedback.",
+          use: "Use it when the goal is a safer routine.",
+          enter: "Habit goal",
+          check: "Age and limits",
+          receive: "Weekly plan",
+          bullets: [
+            ["Age group", "Adjust advice to life stage and health context."],
+            ["Routine fit", "Make goals realistic for work, sleep, and energy."],
+            ["Feedback", "Mark what worked so the next plan improves."]
+          ],
+          quality: "Routine fits age, condition, schedule, and energy level.",
+          next: "Save weekly habit plan, age group, goals, and feedback."
+        },
+        {
+          section: "Visits",
+          title: "Visits prepares hospital-ready appointments.",
+          explain: "Prepare booking reason, follow-up notes, doctor questions, urgency, specialty choice, and visit handoff text.",
+          use: "Use it before booking or follow-up.",
+          enter: "Visit reason",
+          check: "Urgency and records",
+          receive: "Booking note",
+          bullets: [
+            ["Specialty", "Match the issue to a suitable care department."],
+            ["Questions", "Carry focused points for the doctor."],
+            ["Handoff", "Keep symptoms, readings, and records ready."]
+          ],
+          quality: "Visit reason, specialty, urgency, records, and questions are ready.",
+          next: "Prepare booking reason, specialty, urgency, records, and questions."
+        },
+        {
+          section: "Safety",
+          title: "Use Safety when warning signs appear.",
+          explain: "Chest pain, breathing trouble, fainting, one-sided weakness, severe allergy, confusion, or rapid worsening need urgent attention.",
+          use: "Use this before routine tabs when red flags exist.",
+          enter: "Warning sign",
+          check: "Urgency reason",
+          receive: "First safe action",
+          bullets: [
+            ["Red flags", "Identify symptoms that should not wait."],
+            ["Boundary", "The app explains urgency but does not call emergency services."],
+            ["Collect", "Prepare symptoms, time, medicines, vitals, and patient facts."]
+          ],
+          quality: "Warning signs and escalation boundary are reviewed first.",
+          next: "Escalate warning signs first; do not wait for perfect details."
+        },
+        {
+          section: "Insurance",
+          title: "Insurance organizes claims and coverage questions.",
+          explain: "Handle claims, coverage, documents, prior authorization, EOB review, benefits, appeals, and plan-fit support.",
+          use: "Use it for paperwork and claim readiness.",
+          enter: "Claim facts",
+          check: "Document gaps",
+          receive: "Coverage checklist",
+          bullets: [
+            ["Claim file", "Keep policy, bill, EOB, doctor note, and deadlines together."],
+            ["Questions", "Separate medical facts from coverage questions."],
+            ["Appeals", "Track missing documents and next contact."]
+          ],
+          quality: "Policy, EOB, documents, dates, and appeal deadline are organized.",
+          next: "Track claim type, policy, documents, deadlines, and appeal notes."
+        },
+        {
+          section: "Records",
+          title: "Records keeps useful patient evidence searchable.",
+          explain: "Store patient history, local files, OneDrive mirror copies, grouped record types, and patient-specific exports.",
+          use: "Use it after meaningful checks.",
+          enter: "Verified fact",
+          check: "Type and date",
+          receive: "Local history",
+          bullets: [
+            ["Record type", "Symptoms, vitals, labs, medicines, visits, or claims."],
+            ["Patient match", "Keep records attached to the right active profile."],
+            ["Export", "Prepare patient-specific reports when needed."]
+          ],
+          quality: "Every saved record has patient, type, date, and source.",
+          next: "Store patient, record type, date, source, and follow-up task."
+        },
+        {
+          section: "Summary",
+          title: "Summary creates a doctor-ready handoff.",
+          explain: "Review what happened, current risk trend, record quality, missing context, readiness score, and doctor-ready notes.",
+          use: "Open this before a visit or care handoff.",
+          enter: "Saved records",
+          check: "Gaps and trend",
+          receive: "Handoff note",
+          bullets: [
+            ["Timeline", "Recent symptoms, readings, labs, medicines, and visits."],
+            ["Gaps", "Missing values and questions still needing review."],
+            ["Download", "Create a patient-specific summary for sharing."]
+          ],
+          quality: "Latest events, gaps, risk, and doctor note are visible.",
+          next: "Share doctor-ready summary, latest risk, gaps, and timeline."
+        },
+        {
+          section: "Modes and language",
+          title: "Use Guided for simple steps and Expert for depth.",
+          explain: "Guided reduces clutter for patients. Expert exposes more panels, route trace, evidence, review detail, and workflow context.",
+          use: "Switch based on who is using the app.",
+          enter: "Mode choice",
+          check: "User need",
+          receive: "Right interface",
+          bullets: [
+            ["Guided", "Best for patients, demos, and quick checks."],
+            ["Expert", "Best for evidence review and deeper workflow detail."],
+            ["Language", "Use interface language controls for accessible use."]
+          ],
+          quality: "Guided and Expert modes support different users.",
+          next: "Choose Guided for simple use or Expert for evidence review."
+        },
+        {
+          section: "Online and offline",
+          title: "Online can enrich; offline keeps the core working.",
+          explain: "Online mode can use approved references. Offline mode still uses saved records, cached guides, local memory, and the same workflow.",
+          use: "Use this when connectivity changes.",
+          enter: "Connection state",
+          check: "Source trust",
+          receive: "Continuity",
+          bullets: [
+            ["Offline", "Records, memory, guides, and training remain available."],
+            ["Online", "Approved references can enrich answers when available."],
+            ["Cache", "Useful references can be stored locally for later."]
+          ],
+          quality: "Online enrichment is optional and cached locally.",
+          next: "Cache approved online references for future offline use."
+        },
+        {
+          section: "Accuracy loop",
+          title: "Improve future routing with approved feedback.",
+          explain: "Save useful answers, approve feedback, mark missing context, and let local calibration improve route fit.",
+          use: "Use this after a good or weak answer.",
+          enter: "Reviewer feedback",
+          check: "Route fit",
+          receive: "Better calibration",
+          bullets: [
+            ["Helpful", "Mark answers that used the right tab and context."],
+            ["Missing", "Add facts that would have improved the response."],
+            ["Governed facts", "Feedback improves routing, not medical facts."]
+          ],
+          quality: "Feedback improves route fit without changing governed medical facts.",
+          next: "Approve helpful feedback and add missing context."
+        },
+        {
+          section: "Best workflow",
+          title: "Profile, tab, one question, safety, save, summary.",
+          explain: "This repeatable loop keeps the model focused, improves memory quality, and makes the output useful after the session.",
+          use: "Use this as the daily operating method.",
+          enter: "One task",
+          check: "Safety first",
+          receive: "Saved output",
+          bullets: [
+            ["Profile", "Confirm the active patient first."],
+            ["Ask", "Choose one tab and ask one clear question."],
+            ["Save", "Store the useful result and open Summary."]
+          ],
+          quality: "Repeatable workflow keeps the model focused.",
+          next: "Repeat profile, tab, one question, safety, save, and summary."
+        },
+        {
+          section: "Safe close",
+          title: "Care Nova educates, organizes, and prepares.",
+          explain: "It does not diagnose, prescribe, calculate personal dosage, call emergency services, or replace professional medical care.",
+          use: "Keep this boundary visible for every user.",
+          enter: "Health question",
+          check: "Safety boundary",
+          receive: "Prepared next step",
+          bullets: [
+            ["Education", "Use answers to understand and prepare."],
+            ["Organization", "Keep records, summaries, and questions together."],
+            ["Real care", "Clinicians and emergency teams make medical decisions."]
+          ],
+          quality: "Final decisions stay with clinicians and real care teams.",
+          next: "Use Care Nova for preparation, then involve qualified care teams."
+        }
+      ];
+
+      const sceneMount = document.getElementById("sceneMount");
+      const totalDuration = chapters.length * sceneDuration;
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, (character) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        })[character]);
+      }
+
+      function chapterNumber(index) {
+        return String(index + 1).padStart(2, "0");
+      }
+
+      chapters.forEach((chapter, index) => {
+        const number = chapterNumber(index);
+        const scene = document.createElement("section");
+        scene.id = `s${number}`;
+        scene.className = "scene";
+        scene.style.zIndex = String(index + 1);
+        scene.style.opacity = index === 0 ? "1" : "0";
+        scene.innerHTML = `
+          <div class="scene-content">
+            <div class="scene-left">
+              <div class="chapter-label">V24 chapter ${number} / 22 - ${escapeHtml(chapter.section)}</div>
+              <h1 class="title">${escapeHtml(chapter.title)}</h1>
+              <p class="explain">${escapeHtml(chapter.explain)}</p>
+              <div class="use-card">
+                <strong>Use when</strong>
+                <span>${escapeHtml(chapter.use)}</span>
+              </div>
+            </div>
+            <div class="scene-right">
+              <div class="dashboard">
+                <div class="window-bar">
+                  <span>Enter - Check - Receive</span>
+                  <code>${number} / 22</code>
+                </div>
+                <div class="action-grid">
+                  <div class="action-card"><b>Enter</b><span>${escapeHtml(chapter.enter)}</span></div>
+                  <div class="action-card"><b>Check</b><span>${escapeHtml(chapter.check)}</span></div>
+                  <div class="action-card"><b>Receive</b><span>${escapeHtml(chapter.receive)}</span></div>
+                </div>
+                <div class="bullet-stack">
+                  ${chapter.bullets.map((bullet, bulletIndex) => `
+                    <div class="bullet-card">
+                      <div class="bullet-index">${bulletIndex + 1}</div>
+                      <div><strong>${escapeHtml(bullet[0])}</strong><span>${escapeHtml(bullet[1])}</span></div>
+                    </div>
+                  `).join("")}
+                </div>
+                <div class="quality-card">
+                  <strong>Quality check</strong>
+                  <span>${escapeHtml(chapter.quality)}</span>
+                </div>
+                <div class="next-ribbon">
+                  <strong>Next action</strong>
+                  <span>${escapeHtml(chapter.next)}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scene-number">Tutorial ${number} / 22 - ${String(index * sceneDuration).padStart(3, "0")}s</div>
+          <div class="safety-line">Education, organization, and preparation only. Not diagnosis or emergency automation.</div>
+        `;
+        sceneMount.appendChild(scene);
+      });
+
+      window.__timelines = window.__timelines || {};
+      const noopTimeline = {
+        set() { return this; },
+        from() { return this; },
+        fromTo() { return this; },
+        to() { return this; }
+      };
+      const tl = window.gsap ? gsap.timeline({ paused: true }) : noopTimeline;
+
+      tl.fromTo(".progress-fill", { scaleX: 0 }, { scaleX: 1, duration: totalDuration, ease: "none", overwrite: "auto" }, 0);
+
+      chapters.forEach((chapter, index) => {
+        const number = chapterNumber(index);
+        const selector = `#s${number}`;
+        const start = index * sceneDuration;
+
+        if (index === 0) {
+          tl.set(selector, { opacity: 1, filter: "blur(0px)", scale: 1 }, 0);
+        } else {
+          const previousSelector = `#s${chapterNumber(index - 1)}`;
+          const transitionAt = start - 0.92;
+          tl.to(previousSelector, { filter: "blur(18px)", scale: 1.025, opacity: 0, duration: 0.78, ease: "power1.inOut", overwrite: "auto" }, transitionAt);
+          tl.fromTo(selector, { opacity: 0, filter: "blur(18px)", scale: 0.985 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.86, ease: "power2.out", overwrite: "auto" }, transitionAt + 0.12);
+        }
+
+        tl.from(`${selector} .chapter-label`, { y: 28, opacity: 0, duration: 0.48, ease: "power3.out", overwrite: "auto" }, start + 0.22);
+        tl.from(`${selector} .title`, { x: -48, opacity: 0, duration: 0.72, ease: "expo.out", overwrite: "auto" }, start + 0.42);
+        tl.from(`${selector} .explain`, { y: 34, opacity: 0, duration: 0.58, ease: "power2.out", overwrite: "auto" }, start + 0.72);
+        tl.from(`${selector} .use-card`, { scale: 0.96, opacity: 0, duration: 0.5, ease: "back.out(1.4)", overwrite: "auto" }, start + 1.0);
+        tl.from(`${selector} .dashboard`, { x: 58, opacity: 0, duration: 0.7, ease: "power4.out", overwrite: "auto" }, start + 0.62);
+        tl.from(`${selector} .action-card`, { y: 26, opacity: 0, duration: 0.4, stagger: 0.07, ease: "sine.out", overwrite: "auto" }, start + 1.12);
+        tl.from(`${selector} .bullet-card`, { y: 22, opacity: 0, duration: 0.38, stagger: 0.065, ease: "power2.out", overwrite: "auto" }, start + 1.38);
+        tl.from(`${selector} .quality-card`, { y: 20, opacity: 0, duration: 0.42, ease: "power1.out", overwrite: "auto" }, start + 1.68);
+        tl.from(`${selector} .next-ribbon`, { y: 18, opacity: 0, duration: 0.44, ease: "power3.out", overwrite: "auto" }, start + 1.92);
+        tl.from(`${selector} .scene-number, ${selector} .safety-line`, { opacity: 0, duration: 0.45, ease: "power1.out", overwrite: "auto" }, start + 1.18);
+      });
+
+      tl.to("#s22 .scene-content, #s22 .scene-number, #s22 .safety-line", { opacity: 0, y: -24, duration: 0.72, ease: "power2.inOut", overwrite: "auto" }, totalDuration - 1.05);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

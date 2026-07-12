@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf8f6">
+  <title>Care Nova AI Launcher</title>
+  <style>
+    :root {
+      color: #102033;
+      background: linear-gradient(135deg, #effdfa 0%, #f7fbff 50%, #eef6ff 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .launch-card {
+      width: min(100%, 680px);
+      padding: clamp(24px, 5vw, 48px);
+      border: 1px solid #b9dce5;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 28px 80px rgba(16, 32, 51, 0.14);
+      text-align: center;
+    }
+
+    .logo {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      border: 1px solid #b9dce5;
+      background: #f0fffb;
+      color: #07877d;
+      font-size: 2.5rem;
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3.3rem);
+      letter-spacing: 0;
+      line-height: 1;
+    }
+
+    p {
+      margin: 16px auto 0;
+      max-width: 42rem;
+      color: #475b72;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 22px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #e9fbf6;
+      color: #006d62;
+      font-weight: 800;
+    }
+
+    .status.is-offline {
+      background: #eef6ff;
+      color: #215a88;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: currentColor;
+      box-shadow: 0 0 0 6px rgba(7, 135, 125, 0.12);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    a {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0 22px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .primary {
+      background: #07877d;
+      color: #fff;
+    }
+
+    .secondary {
+      border: 1px solid #b9dce5;
+      background: #fff;
+      color: #215a88;
+    }
+
+    .detail {
+      margin-top: 18px;
+      font-size: 0.94rem;
+      color: #647789;
+    }
+  </style>
+</head>
+<body>
+  <main class="launch-card" aria-live="polite">
+    <div class="logo" aria-hidden="true">+</div>
+    <h1>Care Nova AI</h1>
+    <p id="launchCopy">Preparing Care Nova. On this device the launcher can open the full localhost workspace, and on public hosting it opens the browser-local workspace automatically.</p>
+    <div class="status" id="launchStatus"><span class="dot"></span><span id="launchStatusText">Preparing workspace</span></div>
+    <div class="actions">
+      <a id="openLiveLink" class="primary" href="http://127.0.0.1:4173/">Open live workspace</a>
+      <a id="openOfflineLink" class="secondary" href="public/?static=1&v=5.0.358">Open offline workspace</a>
+    </div>
+    <p class="detail" id="launchDetail">The offline workspace keeps the UI, browser memory, and local guidance available even when localhost is not reachable.</p>
+  </main>
+  <script>
+    (() => {
+      const assetVersion = "5.0.358";
+      const liveUrl = new URL("http://127.0.0.1:4173/");
+      const staticUrl = new URL("public/index.html", window.location.href);
+      const currentSearch = new URLSearchParams(window.location.search || "");
+      const liveSearch = new URLSearchParams(currentSearch);
+      const staticSearch = new URLSearchParams(currentSearch);
+      const launchCopyNode = document.getElementById("launchCopy");
+      const statusNode = document.getElementById("launchStatus");
+      const statusTextNode = document.getElementById("launchStatusText");
+      const detailNode = document.getElementById("launchDetail");
+      const liveLink = document.getElementById("openLiveLink");
+      const offlineLink = document.getElementById("openOfflineLink");
+      let redirected = false;
+
+      staticSearch.set("static", "1");
+      staticSearch.set("v", assetVersion);
+      staticSearch.delete("refresh");
+      staticSearch.delete("cacheReset");
+      liveSearch.delete("static");
+      liveSearch.delete("refresh");
+      liveSearch.delete("cacheReset");
+      staticUrl.search = staticSearch.toString();
+      staticUrl.hash = window.location.hash;
+      liveUrl.search = liveSearch.toString();
+      liveUrl.hash = window.location.hash;
+
+      liveLink.href = liveUrl.href;
+      offlineLink.href = staticUrl.href;
+
+      const hostname = window.location.hostname || "";
+      const protocol = window.location.protocol || "";
+      const isLoopbackHost = /^(?:127\.0\.0\.1|localhost|::1|\[::1\])$/i.test(hostname);
+      const isHostedStaticSurface = /\.github\.io$/i.test(hostname) || (protocol === "https:" && !isLoopbackHost);
+
+      const setStatus = (message, detail, offline = false) => {
+        statusTextNode.textContent = message;
+        detailNode.textContent = detail;
+        statusNode.classList.toggle("is-offline", offline);
+      };
+
+      const redirectTo = (targetUrl, message, detail, offline = false) => {
+        if (redirected) {
+          return;
+        }
+
+        redirected = true;
+        setStatus(message, detail, offline);
+        window.setTimeout(() => window.location.replace(targetUrl), 220);
+      };
+
+      const healthProbe = {
+        attempts: 4,
+        requestTimeoutMs: 900,
+        retryDelayMs: 350
+      };
+
+      const wait = (milliseconds) => new Promise((resolve) => {
+        window.setTimeout(resolve, milliseconds);
+      });
+
+      const probeLocalServer = async () => {
+        for (let attempt = 0; attempt < healthProbe.attempts; attempt += 1) {
+          const controller = new AbortController();
+          const timeoutId = window.setTimeout(() => controller.abort(), healthProbe.requestTimeoutMs);
+
+          try {
+            const response = await fetch("http://127.0.0.1:4173/api/health", {
+              cache: "no-store",
+              mode: "cors",
+              signal: controller.signal
+            });
+
+            if (!response.ok) {
+              throw new Error("Local server responded without healthy status.");
+            }
+
+            const payload = await response.json();
+
+            if (payload && payload.ok === true) {
+              return true;
+            }
+          } catch {
+            // Ignore transient localhost startup failures and retry briefly.
+          } finally {
+            window.clearTimeout(timeoutId);
+          }
+
+          if (attempt < healthProbe.attempts - 1) {
+            setStatus(
+              "Waiting for local server",
+              "Care Nova is giving localhost a few extra seconds before switching to the offline workspace.",
+              false
+            );
+            await wait(healthProbe.retryDelayMs);
+          }
+        }
+
+        return false;
+      };
+
+      if (isHostedStaticSurface) {
+        liveLink.hidden = true;
+        if (launchCopyNode) {
+          launchCopyNode.textContent = "Opening the browser-local Care Nova workspace for the hosted deployment. Localhost probing is skipped on public GitHub Pages so the app opens cleanly.";
+        }
+        redirectTo(
+          staticUrl.href,
+          "Opening hosted workspace",
+          "The hosted package opens the browser-local Care Nova workspace directly and avoids localhost checks on the public URL.",
+          true
+        );
+        return;
+      }
+
+      probeLocalServer().then((serverReady) => {
+        if (serverReady) {
+          redirectTo(
+            liveUrl.href,
+            "Opening live workspace",
+            "Localhost is running, so Care Nova is switching to the full server-backed workspace.",
+            false
+          );
+          return;
+        }
+
+        redirectTo(
+          staticUrl.href,
+          "Opening offline workspace",
+          "Localhost is not reachable, so Care Nova is opening the browser-local offline workspace instead of a browser error page.",
+          true
+        );
+      });
+    })();
+  </script>
+</body>
+</html>
